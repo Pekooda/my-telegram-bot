@@ -9,7 +9,7 @@ from aiogram.enums import ParseMode
 from collections import defaultdict, Counter
 from datetime import datetime, timedelta, timezone, time
 
-TOKEN = "MY_TOKEN"
+TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 BOT_START = datetime.now(timezone.utc)
