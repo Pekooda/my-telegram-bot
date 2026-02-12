@@ -10,6 +10,10 @@ from collections import defaultdict, Counter
 from datetime import datetime, timedelta, timezone, time
 
 TOKEN = os.getenv("BOT_TOKEN")
+PIXABAY_KEY = os.getenv("PIXABAY")
+PEXELS_KEY = os.getenv("PEXELS")
+USER_AGENT = os.getenv("USER")
+
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 BOT_START = datetime.now(timezone.utc)
@@ -40,12 +44,9 @@ def format_menu_text(commands_map: dict) -> str:
 
 
 #пиксебей
-PIXABAY_KEY   = "50465322-eaafc6cab26134551397d7139"
-PEXELS_KEY = "awStroXjhtKGUbg63QfNc3AYJVwzpSIj1HcvO7BYc6wRSISfdgC7CsIr"
 DEFAULT = [""]
 
 #реддит
-USER_AGENT     = "telegram-bot:v0.1 (by /u/Disastrous-Swan6729)"
 def search_reddit_images(query: str, limit: int = 50) -> list[str]:
     headers = {"User-Agent": USER_AGENT}
     params  = {"q": query, "limit": limit, "include_over_18": "off", "sort": "relevance", "spoiler": "off"}
