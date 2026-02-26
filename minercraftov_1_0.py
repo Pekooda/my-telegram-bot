@@ -736,7 +736,7 @@ async def vse(message: Message):
 
 
 ### РАБОТА КОМАНД
-    if message.text.startswith("/"):
+    if message.text and message.text.startswith("/"):
         parts = message.text.split(maxsplit=1)
         cmd_with_slash = parts[0]
         args = parts[1] if len(parts) > 1 else ""
