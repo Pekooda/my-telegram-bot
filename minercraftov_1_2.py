@@ -1,19 +1,17 @@
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
-import asyncio, logging, random, re, requests, sys, inspect, html, os, json
+import asyncio, logging, random, re, requests, sys, inspect, html, os, json, ffmpeg, subprocess
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 from pathlib import Path
 from aiogram import Bot, Dispatcher, types, F, BaseMiddleware
-from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ChatPermissions
-from aiogram.client.bot import DefaultBotProperties
+from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ChatPermissions, FSInputFile
+from aiogram.types.input_sticker import InputSticker
 from aiogram.filters import Command, CommandObject, BaseFilter
 from aiogram.enums import ParseMode
-from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 from collections import defaultdict, Counter
 from datetime import datetime, timedelta, timezone, time
 from dotenv import load_dotenv
-from aiohttp import web
 
 
 ### КЛЮЧИКИ АЙДИШКИ (СЕКРЕТНО!)
@@ -56,6 +54,7 @@ WATER = json.loads(WATER_str)
 
 ### Я ВИЖУ МЕДИА
 VORO_UIQ = os.getenv("E_VORO_UIQ")
+CRO_UIQ = os.getenv("E_CRO_UIQ")
 VEI_UIQ = os.getenv("E_VEI_UIQ")
 ADALI_UIQ = os.getenv("E_ADALI_UIQ")
 SAD_UIQ_str = os.getenv("E_SAD_UIQ", "[]")
@@ -65,10 +64,7 @@ BAD_UIQ = json.loads(BAD_UIQ_str)
 
 
 ### СТАНДАРТНЫЕ ПАРАМЕТРЫ
-bot = Bot(
-    token=TOKEN_KEY,
-    default=DefaultBotProperties(parse_mode=ParseMode.HTML)
-)
+bot = Bot(token=TOKEN_KEY)
 dp = Dispatcher()
 TZ = timezone.utc
 BOT_START = datetime.now(TZ)
@@ -437,6 +433,97 @@ async def handle_media_id(message: Message):
     )
 
 
+### Сделать что-то со стикерпаком
+## Параметризация
+CREATIV: dict[int, asyncio.Task] = {}
+async def timeout_wait(user_id: int):
+    await asyncio.sleep(300)
+    if user_id in CREATIV:
+        CREATIV.pop(user_id)
+        try:
+            await bot.send_message(user_id, "время вышло крч")
+        except Exception:
+            pass
+
+def gduration(path):
+    process = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", path],
+        capture_output=True,
+        text=True
+    )
+    if not process.stdout.strip():
+        raise Exception(f"FFprobe failed: {process.stderr}")
+    return float(process.stdout.strip())
+def convert_to_sticker(input_path, output_path):
+    duration = gduration(input_path)
+    filters = "scale=512:512"
+    if duration > 2.95:
+        speed = duration / 2.95
+        filters += f",setpts=PTS/{speed}"
+    subprocess.run([
+        "ffmpeg", "-y", "-i", input_path, "-vf", filters, "-an", "-c:v", "libvpx-vp9", "-b:v", "350k", "-c:a", "libopus", "-b:a", "32k", "-t", "2.95", output_path
+    ])
+## Команда
+async def sp(message: types.Message, args: str):
+#    if message.from_user.id != PEKO_ID:
+#        return await message.reply("нет, ты не можешь")
+    if message.chat.type != "private":
+        return await message.reply(f"Эту команду можно использовать лишь в ЛС")
+    user_id = message.from_user.id
+    if user_id in CREATIV:
+        CREATIV[user_id].cancel()
+    task = asyncio.create_task(timeout_wait(user_id))
+    CREATIV[user_id] = task
+    await message.answer("давай, шли видео мне")
+## Медиа
+@dp.message(lambda message: message.from_user.id in CREATIV, F.chat.type == "private")
+async def handle_media_id(message: Message):
+    user_id = message.from_user.id
+    if message.video or message.animation:
+        if message.video.file_size and message.video.file_size > 20*1024*1024:
+            await message.reply("Слишком большая колбаса")
+            pass
+        try:
+            input_path = "input.mp4"
+            output_path = "output.webm"
+            await bot.download(
+                message.video,
+                destination=input_path
+            )
+            convert_to_sticker(input_path, output_path)
+            input_sticker = InputSticker(
+                sticker=FSInputFile(output_path),
+                format="video",
+                emoji_list=["🔥"]
+            )
+#            await bot.create_new_sticker_set(
+#                user_id=user_id,
+#                name="blablalablala40_by_MinerCraftov_Bot",
+#                title="Da blin",
+#                stickers=[input_sticker]
+#            )
+            await bot.add_sticker_to_set(
+                user_id=PEKO_ID,
+                name="blablalablala40_by_MinerCraftov_Bot",
+                sticker=input_sticker
+            )
+            await message.reply("вроде стикер добавлен? хз?")
+            await bot.send_message(PEKO_ID, f"мужик по имени {message.from_user.full_name} швирнул стикер в стикерпак, а швирнулось ли?")
+        except Exception as e:
+            await message.answer(f"чРерореро: {e}")
+            pass
+    else:
+        task = CREATIV.pop(user_id)
+        task.cancel()
+        os.remove(input.mp4)
+        os.remove(output.webm)
+        return await message.answer("чот не то, всё сначало блин")
+    task = CREATIV.pop(user_id)
+    task.cancel()
+    os.remove(input_path)
+    os.remove(output_path)
+
+
 
 
 
@@ -673,14 +760,14 @@ async def vse(message: Message):
     if message.text:
         if message.date < BOT_START:
             pass
-        if message.text.lower() == "иди спать, майнер крафтов":
+        if message.text.lower() == "майнер крафтов, спать":
             if not bot_enabled:
                 return
             if message.from_user.id != PEKO_ID:
                 return await message.reply("не пойду я спать не хочу")
             bot_enabled = False
             return await message.reply("хорошо, иду спать, всем спокойного сна")
-        if message.text.lower() == "просыпайся, майнер крафтов":
+        if message.text.lower() == "майнер крафтов, проснуться":
             if bot_enabled:
                 return
             if message.from_user.id != PEKO_ID:
@@ -696,7 +783,7 @@ async def vse(message: Message):
     global RANDSTICK, RAND
     chat_id = message.chat.id
     if message.chat.id != OT_ID:
-        outout = ("monitor", "v", "fox", "voro", "leafy", "firey", "two", "dandy", "bobr", "pvz", "teto", "scampton", "bear", "bobr", "jimo", "pon", "skelet", "lomat", "cow")
+        outout = ("monitor", "v", "fox", "voro", "leafy", "firey", "two", "dandy", "bobr", "pvz", "teto", "scampton", "bear", "bobr", "jimo", "pon", "skelet", "lomat", "jevil", "mtt", "cow")
         REALLYOUT = {k: RANDSTICK[k] for k in outout}
         RAND = REALLYOUT
     else: 
@@ -709,9 +796,9 @@ async def vse(message: Message):
     if message.from_user.id == JUNK_ID and rich["oda"][chat_id]:
         await message.reply("*здесь злой текст о том, что Джанкил должен ~~отправится за игру в форсакен~~ отправиться кодить*")
     if message.from_user.id == HURM_ID and rich["sad"][chat_id]:
-        if message.text.lower() == "😭" or message.text.lower() == "🥺":
+        if message.text and (message.text.lower() == "😭" or message.text.lower() == "🥺"):
             return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
-        if message.sticker.file_unique_id in SAD_UIQ:
+        if message.sticker and message.sticker.file_unique_id in SAD_UIQ:
             return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
 
 
@@ -818,7 +905,7 @@ async def vse(message: Message):
             await message.reply("не зли меня, бяка >=(")
 ## Реакция на стикеры
     if message.sticker:
-        if message.sticker.file_unique_id == VORO_UIQ:
+        if message.sticker.file_unique_id == VORO_UIQ or message.sticker.file_unique_id == CRO_UIQ:
             await message.reply("Воро")
         if message.sticker.file_unique_id == VEI_UIQ:
             await message.reply_sticker(sticker=CHEZ_NIQ)
@@ -845,9 +932,7 @@ async def vse(message: Message):
 #### БУДИЛЬНИКИ
 async def alarms():
 ### Параметризация
-    global bot_enabled
     now = datetime.now(MSK)
-
 ### Сообщение админу о включении
     await bot.send_message(PEKO_ID, "доброе утро!")
 
@@ -858,19 +943,23 @@ async def alarms():
 
 ### Сообщение о времени
     while True:
+        now = datetime.now(MSK)
 ## Сообщение о 13:56
-        if MSKnow.hour == 13 and MSKnow.minute == 56:
+        if now.hour == 13 and now.minute == 56:
             await bot.send_photo(OT_ID, photo=VTRI_NIQ)
             await bot.send_photo(COVINOC_ID, photo=VTRI_NIQ)
             await asyncio.sleep(61)
         await asyncio.sleep(5)
 ## Сообщение о 19:52
-        if MSKnow.hour == 19 and MSKnow.minute == 52:
+        if now.hour == 19 and now.minute == 52:
             await bot.send_message(OT_ID, "📻📻📻")
             await asyncio.sleep(61)
         await asyncio.sleep(5)
-
-
+async def pivtime():
+    while True:
+        if random.random() < 0.0005122:
+            await bot.send_message(OT_ID, "Пивоминутка")
+        await asyncio.sleep(60) 
 
 
 
@@ -944,31 +1033,24 @@ async def console_sender():
 
 
 
-WEBHOOK_PATH = "/tg_update"
-WEBHOOK_SECRET = "telegkasecretnaya"
-WEBHOOK_URL = f"https://my-telegram-bot-on3x.onrender.com{WEBHOOK_PATH}"
 
-async def on_startup(app):
-    await bot.set_webhook(WEBHOOK_URL, secret_token=WEBHOOK_SECRET)
-
-async def on_shutdown(app):
-    await bot.delete_webhook()
 
 ####запись и запуск бота
-#async def main():
-app = web.Application()
-SimpleRequestHandler(
-    dispatcher=dp,
-    bot=bot,
-    secret_token=WEBHOOK_SECRET
-).register(app, path=WEBHOOK_PATH)
-setup_application(app, dp, bot=bot)
-app.on_startup.append(on_startup)
-app.on_shutdown.append(on_shutdown)
+async def main():
+    await asyncio.gather(
+        dp.start_polling(bot, skip_updates=False),
+        alarms(),
+        console_sender(),
+        pivtime()
+    )
+    for t in pending:
+        t.cancel()
+    try:
+        await bot.session.close()
+    except Exception:
+        pass
 if __name__ == "__main__":
     try:
-        port = int(os.environ.get("PORT", 10000))
-        web.run_app(app, host="0.0.0.0", port=port)
-#        asyncio.run(main())
+        asyncio.run(main())
     except KeyboardInterrupt:
         print(f"я спать пошла, спокойной ночи\n")
