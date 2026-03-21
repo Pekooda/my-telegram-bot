@@ -447,7 +447,7 @@ async def timeout_wait(user_id: int):
 
 def gduration(path):
     process = subprocess.run(
-        ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", path],
+        ["ffprobe", "-hide_banner", "-loglevel", "quiet", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", path],
         capture_output=True,
         text=True
     )
@@ -461,7 +461,7 @@ def convert_to_sticker(input_path, output_path):
         speed = duration / 2.95
         filters += f",setpts=PTS/{speed}"
     subprocess.run([
-        "ffmpeg", "-y", "-i", input_path, "-vf", filters, "-an", "-c:v", "libvpx-vp9", "-b:v", "350k", "-c:a", "libopus", "-b:a", "32k", "-t", "2.95", output_path
+        "ffmpeg", "-hide_banner", "-loglevel", "quiet", "-y", "-i", input_path, "-vf", filters, "-an", "-c:v", "libvpx-vp9", "-b:v", "350k", "-c:a", "libopus", "-b:a", "32k", "-t", "2.95", output_path
     ])
 ## Команда
 async def sp(message: types.Message, args: str):
