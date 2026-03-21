@@ -56,7 +56,7 @@ async def main():
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, "0.0.0.0", 8000)
+    site = web.TCPSite(runner, "0.0.0.0", 10000)
     await site.start()
     await asyncio.Event().wait()
 
