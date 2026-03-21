@@ -36,7 +36,7 @@ async def alarms():
                 async with session.get(url, timeout=30) as resp:
                     logging.debug(f'ping NICE', resp.status)
         except Exception as e:
-            logging.debug(f'ping reror: {e}')
+            logging.debug(f'ping RERORERO: {e}')
         await asyncio.sleep(300)
 async def bittest():
     while True:
