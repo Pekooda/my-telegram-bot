@@ -24,7 +24,8 @@ URL = "https://my-telegram-bot-on3x.onrender.com/"
 ### Начало жизни
 @dp.message(Command("start"))
 async def start(message: Message):
-    await message.answer("Я работаю.")
+    await message.answer("Я работаю и код переписан")
+    print("you get pivo")
 
 
 #### БУДИЛЬНИКИ
@@ -49,6 +50,9 @@ async def handle(request):
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
+
+    asyncio.create_task(alarms())
+
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
@@ -56,7 +60,6 @@ async def main():
     await site.start()
     await asyncio.Event().wait()
 
-    asyncio.create_task(alarms())
 
 
 
