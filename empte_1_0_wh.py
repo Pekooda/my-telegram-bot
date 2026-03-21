@@ -44,6 +44,7 @@ async def alarms():
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
+    app.router.add_get("/", lambda request: web.Response(text="OK", status=200))
     logging.basicConfig(level=logging.DEBUG)
     logging.debug('T1')
     asyncio.create_task(alarms())
