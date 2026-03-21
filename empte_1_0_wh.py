@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 ### КЛЮЧИКИ АЙДИШКИ (СЕКРЕТНО!)
 load_dotenv()
 TOKEN_KEY = os.getenv("E_TOKEN_KEY")
-bot = Bot(token=TOKEN_KEY)
+bot = Bot(TOKEN_KEY)
 dp = Dispatcher()
 PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 URL = "https://my-telegram-bot-on3x.onrender.com/"
@@ -24,20 +24,17 @@ URL = "https://my-telegram-bot-on3x.onrender.com/"
 ### Начало жизни
 @dp.message(Command("start"))
 async def start(message: Message):
-    await message.answer("Я работаю и код переписан")
-    print("you get pivo")
+    await message.answer("Я работаю. НЕТ")
 
 
 #### БУДИЛЬНИКИ
 async def alarms():
 ### Сообщение админу о включении
-    await bot.send_message(PEKO_ID, "dsaоброе утро!")
+    await bot.send_message(PEKO_ID, "доброе утро! НЕТ")
     while True:
         try:
             requests.get(URL, timeout=5)
-            print("ping ok")
         except:
-            print("ping error")
         time.sleep(600)
 
 
@@ -50,15 +47,12 @@ async def handle(request):
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
-
     asyncio.create_task(alarms())
-
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 10000)
     await site.start()
-    print("pinaaa")
     await asyncio.Event().wait()
 
 
