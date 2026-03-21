@@ -36,17 +36,6 @@ async def vse(message: Message):
         if commanda:
             await commanda(message, args)
 
-#### БУДИЛЬНИКИ
-async def alarms():
-### Сообщение админу о включении
-    await bot.send_message(PEKO_ID, "доброе утро! НЕТ")
-    while True:
-        try:
-            requests.get(URL, timeout=5)
-        except:
-            time.sleep(600)
-
-
 async def handle(request):
     data = await request.json()
     await dp.feed_update(bot, data)
@@ -56,7 +45,6 @@ async def handle(request):
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
-    asyncio.create_task(alarms())
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
