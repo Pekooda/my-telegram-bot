@@ -30,23 +30,19 @@ async def handle(request):
 
 async def on_startup(app):
     app["alarms_task"] = asyncio.create_task(alarms())
-async def on_cleanup(app):
-    app["alarms_task"].cancel()
 
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
 
     app.on_startup.append(on_startup)
-    app.on_cleanup.append(on_cleanup)
 
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
-    port = int(os.environ.get("PORT", 10000))
-    site = web.TCPSite(runner, "0.0.0.0", port)
+    site = web.TCPSite(runner, "0.0.0.0", 10000)
     await site.start()
-    print("Yay!")
+
     await asyncio.Event().wait()
 
 
