@@ -3,8 +3,8 @@
 
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
-import asyncio, os, requests, time
-from aiogram import Bot, Dispatcher
+import asyncio, os, requests
+from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from aiogram.filters import Command
 from aiohttp import web
@@ -22,10 +22,19 @@ URL = "https://my-telegram-bot-on3x.onrender.com/"
 
 #### КОМАНДЫ БОТА
 ### Начало жизни
-@dp.message(Command("start"))
-async def start(message: Message):
-    await message.answer("Я работаю. НЕТ")
+async def start(message: types.Message, args: str):
+    await message.answer(f"Я работаю. НЕТ")
 
+@dp.message()
+async def vse(message: Message):
+    if message.text and message.text.startswith("/"):
+        parts = message.text.split(maxsplit=1)
+        cmd_with_slash = parts[0]
+        args = parts[1] if len(parts) > 1 else ""
+        cmd = cmd_with_slash.lstrip("/").split("@", 1)[0].lower()
+        commanda = globals().get(cmd)
+        if commanda:
+            await commanda(message, args)
 
 #### БУДИЛЬНИКИ
 async def alarms():
