@@ -38,7 +38,7 @@ async def alarms():
             logging.debug('ping ok')
         except:
             logging.debug('ping reror')
-        time.sleep(300)
+        await asyncio.sleep(300)
 
 
 async def main():
