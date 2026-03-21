@@ -33,7 +33,7 @@ async def alarms():
     while True:
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(URL, timeout=30) as resp:
+                async with session.get(URL, timeout=5) as resp:
                     logging.debug(f"ping NICE: {resp.status}")
         except Exception as e:
             logging.debug(f'ping RERORERO: {e}')
@@ -43,14 +43,29 @@ async def bittest():
         await bot.send_message(PEKO_ID, "SPAM")
         await asyncio.sleep(30)
 
+async def on_startup(app):
+    app["task1"] = asyncio.create_task(alarms())
+    app["task2"] = asyncio.create_task(bittest())
+async def on_cleanup(app):
+    for name in ["task1", "task2"]:
+        task = app.get(name)
+        if task:
+            task.cancel()
+            try:
+                await task
+            except:
+                pass
+
 
 async def main():
     app = web.Application()
     app.router.add_get("/", lambda request: web.Response(text="OK", status=200))
     app.router.add_post("/webhook", handle)
     logging.basicConfig(level=logging.DEBUG)
-    asyncio.create_task(alarms())
-    asyncio.create_task(bittest())
+    app.on_startup.append(on_startup)
+    app.on_cleanup.append(on_cleanup)
+#    asyncio.create_task(alarms())
+#    asyncio.create_task(bittest())
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
