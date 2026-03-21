@@ -17,6 +17,7 @@ TOKEN_KEY = os.getenv("E_TOKEN_KEY")
 bot = Bot(token=TOKEN_KEY)
 dp = Dispatcher()
 PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
+URL = "https://my-telegram-bot-on3x.onrender.com/"
 
 
 #### КОМАНДЫ БОТА
@@ -30,7 +31,14 @@ async def start(message: Message):
 #### БУДИЛЬНИКИ
 async def alarms():
 ### Сообщение админу о включении
-    await bot.send_message(PEKO_ID, "ыоброе утро!")
+    await bot.send_message(PEKO_ID, "dsaоброе утро!")
+    while True:
+        try:
+            requests.get(URL, timeout=5)
+            print("ping ok")
+        except:
+            print("ping error")
+        time.sleep(600)
 
 
 async def handle(request):
@@ -50,6 +58,7 @@ async def main():
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 10000)
     await site.start()
+    print("pinaaa")
     await asyncio.Event().wait()
 
 
