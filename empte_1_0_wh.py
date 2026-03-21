@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 ### КЛЮЧИКИ АЙДИШКИ (СЕКРЕТНО!)
 load_dotenv()
 TOKEN_KEY = os.getenv("E_TOKEN_KEY")
-bot = Bot("TOKEN_KEY")
+bot = Bot(token=TOKEN_KEY)
 dp = Dispatcher()
 PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 URL = "https://my-telegram-bot-on3x.onrender.com/"
