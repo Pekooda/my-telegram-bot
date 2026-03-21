@@ -17,14 +17,19 @@ async def start(message: Message):
     await message.answer("Carry")
 
 async def handle(request):
-    data = await request.json()
-    await dp.feed_update(bot, data)
-    return web.Response()
+    try:
+        data = await request.json()
+        await dp.feed_update(bot, data)
+    except Exception as e:
+        print("Webhook parse error:", e)
+        return web.Response(text="Bad Request", status=400)
+
+    return web.Response(text="OK", status=200)
 
 #### БУДИЛЬНИКИ
 async def alarms():
 ### Сообщение админу о включении
-    await bot.send_message(PEKO_ID, "доброе утро!")
+    await bot.send_message(PEKO_ID, "фыфыоброе утро!")
 
 
 async def main():
