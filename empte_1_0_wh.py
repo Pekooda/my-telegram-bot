@@ -33,7 +33,7 @@ async def alarms():
     while True:
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(url, timeout=30) as resp:
+                async with session.get(URL, timeout=30) as resp:
                     logging.debug(f'ping NICE', resp.status)
         except Exception as e:
             logging.debug(f'ping RERORERO: {e}')
