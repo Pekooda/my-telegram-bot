@@ -34,7 +34,7 @@ async def alarms():
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(URL, timeout=30) as resp:
-                    logging.debug(f'ping NICE', resp.status)
+                    logging.debug(f"ping NICE: {resp.status}")
         except Exception as e:
             logging.debug(f'ping RERORERO: {e}')
         await asyncio.sleep(300)
