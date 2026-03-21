@@ -1,4 +1,4 @@
-import asyncio, os, logging, requests
+import asyncio, os, logging, requests, aiohttp
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message, Update
 from aiogram.filters import Command
