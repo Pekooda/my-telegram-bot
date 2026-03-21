@@ -32,8 +32,9 @@ async def alarms():
     await bot.send_message(PEKO_ID, "BOSTARTMESS")
     while True:
         try:
-            requests.get(URL, timeout=30)
-            logging.debug('ping ok')
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, timeout=30) as resp:
+                    logging.debug(f'ping NICE', resp.status)
         except Exception as e:
             logging.debug(f'ping reror: {e}')
         await asyncio.sleep(300)
