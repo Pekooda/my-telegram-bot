@@ -8,6 +8,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import Command
 from aiohttp import web
+from dotenv import load_dotenv
 
 
 ### КЛЮЧИКИ АЙДИШКИ (СЕКРЕТНО!)
