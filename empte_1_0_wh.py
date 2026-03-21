@@ -15,7 +15,7 @@ URL = "https://my-telegram-bot-on3x.onrender.com/"
 @dp.message(Command("start"))
 async def start(message: Message):
     logging.debug('T0')
-    await message.answer("Carry")
+    await message.answer("Carry on")
 
 async def handle(request):
     try:
