@@ -1,6 +1,6 @@
 import asyncio, os, logging
 from aiogram import Bot, Dispatcher
-from aiogram.types import Message
+from aiogram.types import Message, Update
 from aiogram.filters import Command
 from aiohttp import web
 from dotenv import load_dotenv
@@ -19,7 +19,8 @@ async def start(message: Message):
 async def handle(request):
     try:
         data = await request.json()
-        await dp.feed_update(bot, data)
+        update = Update(**data)
+        await dp.feed_update(bot, update)
     except Exception as e:
         logging.debug("Webhook parse error:", e)
         return web.Response(text="Bad Request", status=400)
