@@ -1,4 +1,4 @@
-import asyncio, os
+import asyncio, os, logging
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import Command
@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv("E_TOKEN_KEY")
+PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 bot = Bot(TOKEN)
 dp = Dispatcher()
 
@@ -20,9 +21,21 @@ async def handle(request):
     await dp.feed_update(bot, data)
     return web.Response()
 
+#### БУДИЛЬНИКИ
+async def alarms():
+### Сообщение админу о включении
+    await bot.send_message(PEKO_ID, "доброе утро!")
+
+
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
+    logging.basicConfig(level=logging.DEBUG)
+    logging.debug('no bug')
+    logging.info('no info')
+    logging.warning('no warn')
+    print("T0")
+    asyncio.create_task(alarms())
     print("T1")
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     print("T2")
