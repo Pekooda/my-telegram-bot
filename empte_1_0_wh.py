@@ -35,7 +35,7 @@ async def alarms():
         try:
             requests.get(URL, timeout=5)
         except:
-        time.sleep(600)
+            time.sleep(600)
 
 
 async def handle(request):
