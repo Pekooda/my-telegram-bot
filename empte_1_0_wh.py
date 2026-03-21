@@ -31,14 +31,7 @@ async def start(message: Message):
 #### БУДИЛЬНИКИ
 async def alarms():
 ### Сообщение админу о включении
-    await bot.send_message(PEKO_ID, "доброе утро!")
-    while True:
-        try:
-            requests.get(URL, timeout=5)
-            print("ping ok")
-        except:
-            print("ping error")
-        time.sleep(600)
+    await bot.send_message(PEKO_ID, "боброе утро!")
 
 
 async def handle(request):
