@@ -32,11 +32,15 @@ async def alarms():
     await bot.send_message(PEKO_ID, "BOSTARTMESS")
     while True:
         try:
-            requests.get(URL, timeout=5)
+            requests.get(URL, timeout=30)
             logging.debug('ping ok')
         except Exception as e:
             logging.debug(f'ping reror: {e}')
         await asyncio.sleep(300)
+async def bittest():
+    while True:
+        await bot.send_message(PEKO_ID, "SPAM")
+        await asyncio.sleep(30)
 
 
 async def main():
@@ -45,6 +49,7 @@ async def main():
     app.router.add_post("/webhook", handle)
     logging.basicConfig(level=logging.DEBUG)
     asyncio.create_task(alarms())
+    asyncio.create_task(bittest())
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
