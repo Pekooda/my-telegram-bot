@@ -12,6 +12,7 @@ dp = Dispatcher()
 
 @dp.message(Command("start"))
 async def start(message: Message):
+    print("T7")
     await message.answer("Carry")
 
 async def handle(request):
@@ -22,15 +23,18 @@ async def handle(request):
 async def main():
     app = web.Application()
     app.router.add_post("/webhook", handle)
-
+    print("T1")
     await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
-
+    print("T2")
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, "0.0.0.0", 8000)
+    print("T3")
+    site = web.TCPSite(runner, "0.0.0.0", 10000)
+    print("T4")
     await site.start()
-
+    print("T5")
     await asyncio.Event().wait()
+    print("T6")
 
 if __name__ == "__main__":
     asyncio.run(main())
