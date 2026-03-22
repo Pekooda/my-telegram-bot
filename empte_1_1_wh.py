@@ -40,11 +40,8 @@ async def handle(request: Request):
     await dp.feed_update(bot, update)
     return {"ok": True}
 
-#@app.get("/kaithhealthcheck")
-#async def root():
-#    return {"status": "ok"}
-@app.get("/")
-def root():
+@app.api_route("/kaithhealthcheck", methods=["GET", "HEAD"])
+async def root():
     return {"status": "ok"}
 
 URL = "https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook"
