@@ -10,6 +10,7 @@ TOKEN = os.getenv("E_TOKEN_KEY")
 PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 bot = Bot(TOKEN)
 dp = Dispatcher()
+app = FastAPI()
 
 @dp.message(Command("start"))
 async def start(message: Message):
@@ -30,8 +31,6 @@ async def bittest():
     while True:
         await bot.send_message(PEKO_ID, "SPAM")
         await asyncio.sleep(30)
-
-app = FastAPI()
 
 @app.post("/webhook")
 async def handle(request):
