@@ -1,6 +1,4 @@
 aiogram==3.21.0
 requests==2.32.4
-fastapi
 dotenv
-uvicorn
-typing
+aiohttp
