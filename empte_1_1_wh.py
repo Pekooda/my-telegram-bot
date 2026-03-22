@@ -51,7 +51,7 @@ async def root():
 @app.on_event("startup")
 async def on_startup():
     await bot.delete_webhook(drop_pending_updates=True)
-    await bot.set_webhook("https://my-telegram-bot-40.leapcell.dev/webhook")
+    await bot.set_webhook("https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook")
     app["task1"] = asyncio.create_task(alarms())
     app["task2"] = asyncio.create_task(bittest())
 @app.on_event("cleanup")
