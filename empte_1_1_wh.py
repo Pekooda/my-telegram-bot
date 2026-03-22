@@ -27,6 +27,11 @@ async def bittest():
         await bot.send_message(PEKO_ID, "SPAM")
         await asyncio.sleep(30)
 
+
+@app.api_route("/{path:path}", methods=["GET", "HEAD"])
+async def catch_all(path: str):
+    return {"status": "ok"}
+
 @app.post("/webhook")
 async def handle(request: Request):
     try:
@@ -36,10 +41,6 @@ async def handle(request: Request):
     except Exception as e:
         logging.error(f"Webhook error: {e}, data={data}")
     return {"ok": True}
-
-@app.api_route("/{path:path}", methods=["GET", "HEAD"])
-async def catch_all(path: str):
-    return {"status": "ok"}
 
 URL = "https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook"
 @app.on_event("startup")
@@ -58,9 +59,8 @@ async def on_startup():
 
 @app.on_event("shutdown")
 async def on_cleanup():
-    for task in app.state.tasks:
+    for task in getattr(app.state, "tasks", []):
         task.cancel()
-    for task in app.state.tasks:
         try:
             await task
         except asyncio.CancelledError:
