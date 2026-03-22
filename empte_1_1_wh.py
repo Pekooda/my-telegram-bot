@@ -1,4 +1,4 @@
-import asyncio, os, logging, requests, aiohttp
+import asyncio, os, logging, requests
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message, Update
 from aiogram.filters import Command
@@ -15,26 +15,20 @@ app = FastAPI()
 
 @dp.message(Command("start"))
 async def start(message: Message):
-    logging.debug('T0')
     await message.answer("Carry on")
 
-async def alarms():
-    await bot.send_message(PEKO_ID, "BOSTARTMESS")
-
-
-async def bittest():
-    while True:
-        await bot.send_message(PEKO_ID, "SPAM")
-        await asyncio.sleep(30)
+#async def alarms():
+#    await bot.send_message(PEKO_ID, "BOSTARTMESS")
+#async def bittest():
+#    while True:
+#        await bot.send_message(PEKO_ID, "SPAM")
+#        await asyncio.sleep(30)
 
 
 @app.get("/kaithhealth")
-@app.head("/kaithhealth")
-async def tugeza():
-    return {"status": "ok"}
-
-@app.api_route("/{path:path}", methods=["GET", "HEAD"])
-async def catch_all(path: str):
+@app.get("/kaithhealthcheck")
+@app.get("/kaithheathcheck")
+async def health():
     return {"status": "ok"}
 
 @app.post("/webhook")
@@ -56,17 +50,3 @@ async def on_startup():
             await bot.set_webhook(URL)
     except TelegramRetryAfter as e:
         await asyncio.sleep(e.retry_after)
-    if not hasattr(app.state, "tasks"):
-        app.state.tasks = [
-            asyncio.create_task(alarms()),
-            asyncio.create_task(bittest())
-        ]
-
-@app.on_event("shutdown")
-async def on_cleanup():
-    for task in getattr(app.state, "tasks", []):
-        task.cancel()
-        try:
-            await task
-        except asyncio.CancelledError:
-            pass
