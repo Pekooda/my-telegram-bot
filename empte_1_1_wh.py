@@ -51,15 +51,17 @@ async def root():
 async def on_startup():
     await bot.delete_webhook(drop_pending_updates=True)
     await bot.set_webhook("https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook")
-    app["task1"] = asyncio.create_task(alarms())
-    app["task2"] = asyncio.create_task(bittest())
-@app.on_event("cleanup")
-async def on_cleanup(app):
-    for name in ["task1", "task2"]:
-        task = app.get(name)
-        if task:
-            task.cancel()
-            try:
-                await task
-            except:
-                pass
+    app.state.tasks = [
+        asyncio.create_task(alarms()),
+        asyncio.create_task(bittest())
+    ]
+
+@app.on_event("shutdown")
+async def on_cleanup():
+    for task in app.state.tasks:
+        task.cancel()
+    for task in app.state.tasks:
+        try:
+            await task
+        except asyncio.CancelledError:
+            pass
