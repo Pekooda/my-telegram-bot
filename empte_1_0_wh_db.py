@@ -13,10 +13,6 @@ dp = Dispatcher()
 URL = "https://my-telegram-bot-on3x.onrender.com/webhook"
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-
-
-
-
 @dp.message(Command("start"))
 async def start(message: Message):
     logging.debug('T0')
@@ -25,7 +21,8 @@ async def start(message: Message):
 @dp.message(Command("count"))
 async def count(message: Message):
     user_id = message.from_user.id
-    async with app["chest"].acquire() as conn:
+    await message.answer(f"Ща не ща ибо щаща")
+    async with app["db"].acquire() as conn:
         value = await conn.fetchval(
             """
             INSERT INTO counters (user_id, value)
@@ -36,10 +33,7 @@ async def count(message: Message):
             """,
             user_id,
         )
-
     await message.answer(f"Ща: {value}")
-
-
 
 
 async def alarms():
@@ -57,19 +51,6 @@ async def bittest():
         await bot.send_message(PEKO_ID, "SPAM")
         await asyncio.sleep(30)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 async def handle(request):
     try:
         data = await request.json()
@@ -81,6 +62,8 @@ async def handle(request):
     return web.Response(text="OK", status=200)
 
 async def on_startup(app):
+    app["task1"] = asyncio.create_task(alarms())
+    app["task2"] = asyncio.create_task(bittest())
     app["chest"] = await asyncpg.create_pool(dsn=DATABASE_URL)
     async with app["chest"].acquire() as conn:
         await conn.execute(
@@ -91,9 +74,8 @@ async def on_startup(app):
             )
             """
         )
-    app["task1"] = asyncio.create_task(alarms())
-    app["task2"] = asyncio.create_task(bittest())
 async def on_cleanup(app):
+    await app["chest"].close()
     for name in ["task1", "task2"]:
         task = app.get(name)
         if task:
@@ -102,8 +84,6 @@ async def on_cleanup(app):
                 await task
             except:
                 pass
-    await app["db"].close()
-    await bot.session.close()
 
 
 async def main():
@@ -113,11 +93,12 @@ async def main():
     logging.basicConfig(level=logging.DEBUG)
     app.on_startup.append(on_startup)
     app.on_cleanup.append(on_cleanup)
-    await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
+    await bot.set_webhook(URL)
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 10000)
     await site.start()
     await asyncio.Event().wait()
+
 if __name__ == "__main__":
     asyncio.run(main())
