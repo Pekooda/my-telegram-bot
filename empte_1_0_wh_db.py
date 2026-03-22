@@ -22,7 +22,7 @@ async def start(message: Message):
 async def count(message: Message):
     user_id = message.from_user.id
     await message.answer(f"Ща не ща ибо щаща")
-    async with app["db"].acquire() as conn:
+    async with app["chest"].acquire() as conn:
         value = await conn.fetchval(
             """
             INSERT INTO counters (user_id, value)
