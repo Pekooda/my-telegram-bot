@@ -1,11 +1,4 @@
 aiogram==3.21.0
-pillow==11.3.0
 requests==2.32.4
-aiohttp
-subprocess
-ffmpeg
-python-dotenv==1.2.1
-pilmoji
-aiohttp
-emoji
+fastapi
 dotenv
