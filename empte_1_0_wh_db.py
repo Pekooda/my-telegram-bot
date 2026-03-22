@@ -13,6 +13,9 @@ dp = Dispatcher()
 URL = "https://my-telegram-bot-on3x.onrender.com/webhook"
 DATABASE_URL = os.getenv("DATABASE_URL")
 
+app = web.Application()
+logging.basicConfig(level=logging.DEBUG)
+
 @dp.message(Command("start"))
 async def start(message: Message):
     logging.debug('T0')
@@ -87,10 +90,8 @@ async def on_cleanup(app):
 
 
 async def main():
-    app = web.Application()
     app.router.add_get("/", lambda request: web.Response(text="OK", status=200))
     app.router.add_post("/webhook", handle)
-    logging.basicConfig(level=logging.DEBUG)
     app.on_startup.append(on_startup)
     app.on_cleanup.append(on_cleanup)
     await bot.set_webhook(URL)
