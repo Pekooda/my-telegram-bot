@@ -24,6 +24,13 @@ async def start(message: Message):
 #        await bot.send_message(PEKO_ID, "SPAM")
 #        await asyncio.sleep(30)
 
+async def alarms():
+    await bot.send_message(PEKO_ID, "BOSTARTMESS")
+async def bittest():
+    while True:
+        await bot.send_message(PEKO_ID, "SPAM")
+        await asyncio.sleep(30)
+
 
 @app.get("/kaithhealth")
 @app.get("/kaithhealthcheck")
@@ -50,3 +57,17 @@ async def on_startup():
             await bot.set_webhook(URL)
     except TelegramRetryAfter as e:
         await asyncio.sleep(e.retry_after)
+    if not hasattr(app.state, "tasks"):
+        app.state.tasks = [
+            asyncio.create_task(bittest())
+        ]
+        asyncio.create_task(alarms())
+
+@app.on_event("shutdown")
+async def on_shutdown():
+    for task in getattr(app.state, "tasks", []):
+        task.cancel()
+        try:
+            await task
+        except asyncio.CancelledError:
+            pass
