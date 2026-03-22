@@ -28,6 +28,11 @@ async def bittest():
         await asyncio.sleep(30)
 
 
+@app.get("/kaithhealth")
+@app.head("/kaithhealth")
+async def tugeza():
+    return {"status": "ok"}
+
 @app.api_route("/{path:path}", methods=["GET", "HEAD"])
 async def catch_all(path: str):
     return {"status": "ok"}
