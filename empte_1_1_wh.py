@@ -33,14 +33,10 @@ async def bittest():
         await asyncio.sleep(30)
 
 @app.post("/webhook")
-async def handle(request):
-    try:
-        data = await request.json()
-        update = Update(**data)
-        await dp.feed_update(bot, update)
-    except Exception as e:
-        logging.debug("Webhook parse error:", e)
-        return {"ok": False}
+async def handle(request: Request):
+    data = await request.json()
+    update = Update(**data)
+    await dp.feed_update(bot, update)
     return {"ok": True}
 
 @app.get("/kaithhealthcheck")
