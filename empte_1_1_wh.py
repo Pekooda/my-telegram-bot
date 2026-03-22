@@ -47,10 +47,15 @@ async def handle(request):
 async def root():
     return {"status": "ok"}
 
+URL = "https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook"
 @app.on_event("startup")
 async def on_startup():
-    await bot.delete_webhook(drop_pending_updates=True)
-    await bot.set_webhook("https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook")
+    try:
+        info = await bot.get_webhook_info()
+        if info.url != URL:
+            await bot.set_webhook(URL)
+    except TelegramRetryAfter as e:
+        await asyncio.sleep(e.retry_after)
     app.state.tasks = [
         asyncio.create_task(alarms()),
         asyncio.create_task(bittest())
