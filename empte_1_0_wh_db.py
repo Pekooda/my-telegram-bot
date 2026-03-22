@@ -12,8 +12,6 @@ bot = Bot(TOKEN)
 dp = Dispatcher()
 URL = "https://my-telegram-bot-on3x.onrender.com/webhook"
 DATABASE_URL = os.getenv("DATABASE_URL")
-app = web.Application()
-logging.basicConfig(level=logging.INFO)
 
 
 
@@ -84,7 +82,6 @@ async def handle(request):
 
 async def on_startup(app):
     app["chest"] = await asyncpg.create_pool(dsn=DATABASE_URL)
-
     async with app["chest"].acquire() as conn:
         await conn.execute(
             """
@@ -94,37 +91,33 @@ async def on_startup(app):
             )
             """
         )
-
-    info = await bot.get_webhook_info()
-    if info.url != URL:
-        await bot.delete_webhook(drop_pending_updates=True)
-        await bot.set_webhook(URL)
-    if "tasks" not in app:
-        app["tasks"] = [
-            asyncio.create_task(alarms()),
-            asyncio.create_task(bittest())
-        ]
+    app["task1"] = asyncio.create_task(alarms())
+    app["task2"] = asyncio.create_task(bittest())
 async def on_cleanup(app):
-    for task in app.get("tasks", []):
-        task.cancel()
-        try:
-            await task
-        except asyncio.CancelledError:
-            pass
+    for name in ["task1", "task2"]:
+        task = app.get(name)
+        if task:
+            task.cancel()
+            try:
+                await task
+            except:
+                pass
     await app["db"].close()
     await bot.session.close()
 
 
 async def main():
+    app = web.Application()
     app.router.add_get("/", lambda request: web.Response(text="OK", status=200))
     app.router.add_post("/webhook", handle)
+    logging.basicConfig(level=logging.DEBUG)
     app.on_startup.append(on_startup)
     app.on_cleanup.append(on_cleanup)
+    await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 10000)
     await site.start()
     await asyncio.Event().wait()
-
 if __name__ == "__main__":
     asyncio.run(main())
