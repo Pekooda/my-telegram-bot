@@ -3,3 +3,4 @@ requests==2.32.4
 fastapi
 dotenv
 uvicorn
+typing

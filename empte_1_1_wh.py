@@ -4,6 +4,7 @@ from aiogram.types import Message, Update
 from aiogram.filters import Command
 from fastapi import FastAPI, Request
 from dotenv import load_dotenv
+from typing import Union
 
 load_dotenv()
 TOKEN = os.getenv("E_TOKEN_KEY")
@@ -39,8 +40,11 @@ async def handle(request: Request):
     await dp.feed_update(bot, update)
     return {"ok": True}
 
-@app.get("/kaithhealthcheck")
-async def root():
+#@app.get("/kaithhealthcheck")
+#async def root():
+#    return {"status": "ok"}
+@app.get("/")
+def root():
     return {"status": "ok"}
 
 URL = "https://my-telegram-bot-pekooda6337-pamex4dh.leapcell.dev/webhook"
