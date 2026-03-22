@@ -27,8 +27,7 @@ async def start(message: Message):
 @dp.message(Command("count"))
 async def count(message: Message):
     user_id = message.from_user.id
-
-    async with app["db"].acquire() as conn:
+    async with app["chest"].acquire() as conn:
         value = await conn.fetchval(
             """
             INSERT INTO counters (user_id, value)
