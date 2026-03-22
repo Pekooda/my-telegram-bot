@@ -43,7 +43,7 @@ async def handle(request):
         return {"ok": False}
     return {"ok": True}
 
-@app.get("/")
+@app.get("/kaithhealthcheck")
 async def root():
     return {"status": "ok"}
 
