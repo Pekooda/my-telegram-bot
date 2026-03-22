@@ -2,16 +2,18 @@
 # 1.0 - релиз бота
 # 1.1 - фикс багов
 # 1.2 - релиз создания стикерпаков
-# 1.3 - шкала ярости и орлюки, поддержка базы данных
+# 1.3 - шкала ярости и орлюки, поддержка базы данных, короче всё всё всё
+# 1.3.wh - вебхук
 
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
 import asyncio, logging, random, re, requests, sys, inspect, html, os, json, ffmpeg, subprocess, math, emoji, aiohttp
+from aiohttp import web
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from io import BytesIO
 from pathlib import Path
 from aiogram import Bot, Dispatcher, types, F, BaseMiddleware
-from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ChatPermissions, FSInputFile
+from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ChatPermissions, FSInputFile, Update
 from aiogram.types.input_sticker import InputSticker
 from aiogram.filters import Command, CommandObject, BaseFilter
 from aiogram.enums import ParseMode
@@ -25,6 +27,7 @@ from pilmoji.helpers import getsize
 ### КЛЮЧИКИ АЙДИШКИ (СЕКРЕТНО!)
 load_dotenv()
 TOKEN_KEY = os.getenv("E_TOKEN_KEY")
+URL_KEY = os.getenv("E_URL_KEY")
 PIXABAY_KEY = os.getenv("E_PIXABAY_KEY")
 PEXELS_KEY = os.getenv("E_PEXELS_KEY")
 REDDIT_KEY = os.getenv("E_REDDIT_KEY")
@@ -59,6 +62,7 @@ MY_CHEST = os.getenv("E_MY_CHEST")
 
 
 
+
 ### ПЕРЕМЕННЫЕ
 bot = Bot(token=TOKEN_KEY)
 dp = Dispatcher()
@@ -87,13 +91,13 @@ def closechest(chest):
 
 
 def nozerolast(parts, numb):
-    if not parts[numb].lstrip("-").isdigit():
-        return 0
     if len(parts) > numb:
         COUNT = int(parts[numb])
     else:
         return 1
     if COUNT < 1:
+        return 0
+    if not parts[numb].lstrip("-").isdigit():
         return 0
     return COUNT
 
@@ -127,7 +131,8 @@ def nozerolast(parts, numb):
 #### КОМАНДЫ БОТА
 ### Начало жизни
 async def start(message: types.Message, args: str):
-    await message.answer(f"Я работаю. Меня запустили в {MSKnow}")
+    rand = random.randint(0, 1000)
+    await message.answer(f"Я работаю. Меня запустили в {MSKnow}. Число: {rand}")
 
 
 ### ВОЗМОЖНО выдать админку
@@ -187,18 +192,56 @@ def shopcheck(message, user_id, chest):
         if tovar not in chest["shop_items"][f"{user_id}"]:
             chest["shop_items"][f"{user_id}"][tovar] = 0
     return chest
-def pointycheck(message, user_id, chest):
+def pointycheck(message, game, chest):
+    date = datetime.now(MSK).day
+    used = False
+    user_id = message.from_user.id
     if f"{user_id}" not in chest["pointy"]:
-        chest["pointy"][f"{user_id}"] = 0
-    return chest
+        chest["pointy"][f"{user_id}"]["VALUE"] = 0
+        chest["pointy"][f"{user_id}"]["DATE"] = 0
+    if chest["pointy"][f"{user_id}"]["DATE"] == date:
+        used = True
+    if game:
+        chest["pointy"][f"{user_id}"]["DATE"] = date
+    return chest, used
+
+
+
+mgcheck = defaultdict(bool)
+
+
+async def mathgame(user_id: int):
+    global mgcheck
+    mgcheck[str(user_id)] = True
+    d1 = random.randint(1, 100)
+    d2 = random.randint(1, 100)
+    dz = random.chouce("+", "-")
+    de = str(d1) + dz + str(d2)
+    desc = """
+Математика!
+В течении 10 секунд реши следующее уравнение:
+{de}
+"""
+    for i in range(20):
+        await asyncio.sleep(0.5)
+
+
+async def mganswer():
+    return
 
 ## Сама игра
-async def necredit(message: types.Message, args: str):
+async def chip(message: types.Message, args: str):
+    return await message.reply(f"Команда находится в состоянии ПОЧИНКИ")
     chest = openchest()
     user_id = message.from_user.id
-    chest = pointycheck(message, user_id, chest)
+    chest, used = pointycheck(message, False, chest)
+    if used:
+        return await message.reply(f"Ты уже играл сегодня :/")
+    right, done = asyncio.create_task(mathgame(message.chat.id))
+    wait = await done
+    return
     change = random.choice(chest["WINS"])
-    chest["pointy"][f"{user_id}"] += change
+    chest["pointy"][f"{user_id}"]["VALUE"] += change
     if change > 0:
         prefix = f"🟢 Вы выиграли!\nНачислено кубков: {change}\n"
     elif change < 0:
@@ -207,15 +250,17 @@ async def necredit(message: types.Message, args: str):
         prefix = f"🟡 Ничья!\n"
     await message.reply(
         f"{prefix}\n"
-        f"Сейчас у вас кубков: {chest["pointy"][f"{user_id}"]}"
+        f"Сейчас у вас кубков: {chest["pointy"][f"{user_id}"]["VALUE"]}"
     )
+    chest, used = pointycheck(message, True, chest)
     closechest(chest)
 
 ## Узнать количество кубков
 async def pointy(message: types.Message, args: str):
+    return await message.reply(f"Команда находится в состоянии ПОЧИНКИ")
     chest = openchest()
     user_id = message.from_user.id
-    pointycheck(message, user_id, chest)
+    pointycheck(message, False, chest)
     chest = shopcheck(message, user_id, chest)
     nanameme = []
     for tovar, value in chest["shop_items"][f"{user_id}"].items():
@@ -227,7 +272,7 @@ async def pointy(message: types.Message, args: str):
         nanameme.append(veshi)
     info = "".join(nanameme).strip()
     await message.reply(f"""
-У вас сейчас кубков: {chest["pointy"][f"{user_id}"]}
+У вас сейчас кубков: {chest["pointy"][f"{user_id}"]["VALUE"]}
 Приобретены такие товары:
 {info}
 """)
@@ -235,6 +280,7 @@ async def pointy(message: types.Message, args: str):
 
 ## Магазин
 async def shop(message: types.Message, args: str):
+    return await message.reply(f"Команда находится в состоянии ПОЧИНКИ")
     user_id = message.from_user.id
     chest = openchest()
     parts = (message.text or "").split()
@@ -256,27 +302,29 @@ async def shop(message: types.Message, args: str):
             return await message.reply("""
 У вас недостаточно кубков, чтобы приобрести этот продукт =(
 """)
-        chest["pointy"][f"{user_id}"] -= PRICE
+        chest["pointy"][f"{user_id}"]["VALUE"] -= PRICE
         VALUE = chest["shop"]["buy"][f"{TYPE}"]["value"] * COUNT
         chest["shop_items"][f"{user_id}"][TYPE] += VALUE
         await message.reply(f"""
 Вы купили {chest["shop"]["buy"][f"{TYPE}"]["name"].lower()} в количестве {VALUE} шт. потратив {PRICE} кубков
-Сейчас у вас {chest["shop_items"][f"{user_id}"][f"{TYPE}"]} ед. товара и {chest["pointy"][f"{user_id}"]} кубков
+Сейчас у вас {chest["shop_items"][f"{user_id}"][f"{TYPE}"]} ед. товара и {chest["pointy"][f"{user_id}"]["VALUE"]} кубков
 """)
     closechest(chest)
 
 
 ### Рычаги
 async def richagi(message: types.Message, args: str, cmd_name: str):
-    chat_id = message.chat.id
-    if args.lstrip("-").isdigit():
-        chat_id = int(args)
-    chest = openchest()
-    coma = cmd_name.removeprefix("/").strip()
-    cmd = chest["rich"][f"{chat_id}"][f"{coma}"]
-    if (cmd_name == ("eda" or "sad") and message.from_user.id == HURM_ID) or (cmd_name == "uda" and message.from_user.id == TIM_ID):
+    if cmd_name == ("eda" or "sad") and message.from_user.id == HURM_ID:
         return await message.reply("Тибе низя. >=|")
-    texting = (message.text or "").split(maxsplit=1)
+    if cmd_name == "uda" and message.from_user.id != PEKO_ID:
+        return await message.reply("Нэ")
+    texting = (message.text or "").split()
+    if message.from_user.id == PEKO_ID and len(texting) > 2 and texting[2].lstrip("-").isdigit():
+        chat_id = int(texting[2])
+    else:
+        chat_id = message.chat.id
+    chest = openchest()
+    cmd = chest["rich"][f"{chat_id}"][f"{cmd_name}"]
     if len(texting) < 2:
         return await message.reply(f"Состояние {cmd_name}: {'🟢' if cmd else '🔴'} {cmd}\n\nЧтобы переключить режим, нужно вписать дополнительно \"on\" или \"off\"")
     else:
@@ -284,12 +332,12 @@ async def richagi(message: types.Message, args: str, cmd_name: str):
         if text == "on" and cmd:
             await message.reply(f"⚠️ Рычаг {cmd_name} уже включён")
         elif text == "on" and not cmd:
-            chest["rich"][f"{chat_id}"][f"{coma}"] = True
+            chest["rich"][f"{chat_id}"][f"{cmd_name}"] = True
             await message.reply(f"✅ Рычаг {cmd_name} сменен на 🟢 True")
         elif text == "off" and not cmd:
             await message.reply(f"⚠️ Рычаг {cmd_name} уже выключен")
         elif text == "off" and cmd:
-            chest["rich"][f"{chat_id}"][f"{coma}"] = False
+            chest["rich"][f"{chat_id}"][f"{cmd_name}"] = False
             await message.reply(f"✅ Рычаг {cmd_name} сменен на 🔴 False")
         else:
             await message.reply(f"Чтобы переключить режим, нужно вписать дополнительно \"on\" или \"off\"")
@@ -310,6 +358,11 @@ async def wts(message: types.Message, args: str):
 
 ## Случайный стикер
 async def rs(message: types.Message, args: str):
+    if message.chat.id != OT_ID:
+        REALLYOUT = {k: RANDSTICK[k] for k in outout}
+        RAND = REALLYOUT
+    else: 
+        RAND = RANDSTICK
     topic = random.choice(list(RAND.keys()))
     pack = random.choice(RAND[topic])
     try:
@@ -365,6 +418,8 @@ async def mercy(message: types.Message, args: str):
 
 ## Покупка гнева
 async def gnev(message: types.Message, args: str):
+    if message.from_user.id != PEKO_ID:
+        return await message.answer(f"простиии, но ты не можешь...")
     if message.chat.id != OT_ID and message.from_user.id != PEKO_ID:
         return await message.answer(f"Вот давай не в крысу, мой гнев выливать лишь публично")
     chat_id = message.chat.id
@@ -380,7 +435,7 @@ async def gnev(message: types.Message, args: str):
         for subname, key in chest["kazn"].items():
             template = f"""
 {"🟢" if key.get("NOW", 0) else "⚪️"} {key.get("NAME", "НЕТУ ИМЕНИ")} - {key.get("INFO", "НЕТУ ОПИСАНИЯ")}
-{"Количество применений" if key.get("TYPE", 0) == "use" else "Время действия"}: {key.get("VALUE", "???")} {"минут" if key.get("TYPE", 0) == "time" else ""}
+{"Количество доступных применений" if key.get("TYPE", 0) == "use" else "Текущее время действия"}: {key.get("NOW", "???")} {"минут" if key.get("TYPE", 0) == "time" else ""}
 Сила моего гнева, чтобы использовать: {key.get("PRICE", "???")}
 Чтобы использовать, пропишите <code>/gnev {subname}</code>"""
             nanameme.append(template)
@@ -470,7 +525,7 @@ async def rp(message: types.Message, query: str):
         filtered.append(h)
     pool = filtered or hits
     choice = random.choice(pool)
-    img_url = choice.get("webformatURL") or choice.get("previewURL")
+    img_url = choice.get("webformatURL")
     if RP:
         await message.answer_photo(img_url)
     else:
@@ -1106,8 +1161,6 @@ async def vse(message: Message):
         EMER = chest["rich"]["5513644023"].keys()
         args = ""
         if YES in EMER:
-            if len(parts) == 3:
-                args = parts[2]
             await richagi(message, args, YES)
         if YES == "mercy":
             await mercy(message, args)
@@ -1258,6 +1311,8 @@ async def vse(message: Message):
     if message.text:
         if message.text.lower() == "кейн, купи пиво":
             await message.answer("Кейн, купи пиво")
+        if message.text.lower() == "сколько пива":
+            await message.answer("Пива мноооооооогоооо🍺🍺🍺🍺🍺")
         if message.text.lower() == "я вернулся":
             await message.answer_sticker(sticker=MAX_NIQ)
         if message.text.lower() == "кобо":
@@ -1271,11 +1326,11 @@ async def vse(message: Message):
         if message.text.lower() == "2763":
             await message.reply_sticker(sticker=LEAFY_NIQ)
 ## Реакция на текст в сообщении
-        if "все" in message.text.lower() and random.random() < 0.01:
+        if message.chat.id == OT_ID and "все" in message.text.lower() and random.random() < 0.01:
             await message.reply_sticker(sticker=VSE_NIQ)
         if message.from_user.id == TIM_ID and any(word.lower().startswith(mat) for word in message.text.split() for mat in MATUUUK):
             chest["NUMB"] = chest["NUMB"] + 2
-            await ORLUK(message, "")
+            await orluk(message, "")
         if "майнера крафтов" in message.text.lower():
             if message.from_user.id == TIM_ID:
                 await message.reply("ты меня решил по полной разозлить >=( Моя сила ярости удвоена!")
@@ -1303,10 +1358,14 @@ async def vse(message: Message):
                 args = ""
                 await rs(message, args)
             unique_id = message.animation.file_unique_id
+            id = message.animation.file_id
             if f"{unique_id}" not in chest["GIFTIM"]:
-                chest["GIFTIM"][f"{unique_id}"] = 0
-            chest["GIFTIM"][f"{unique_id}"] += 1
-            chest["NUMB"] += chest["GIFTIM"][f"{unique_id}"]
+                chest["GIFTIM"][f"{unique_id}"] = {}
+                chest["GIFTIM"][f"{unique_id}"]["VALUE"] = 0
+            chest["GIFTIM"][f"{unique_id}"]["GIF"] = id
+            chest["GIFTIM"][f"{unique_id}"]["VALUE"] += 1
+            chest["NUMB"] += chest["GIFTIM"][f"{unique_id}"]["VALUE"]
+            print(f"ГИФКА ТИМА: {id}")
     closechest(chest)
 
 
@@ -1346,8 +1405,6 @@ async def alarms():
             await bot.send_message(OT_ID, "📻📻📻")
             await asyncio.sleep(51)
         await asyncio.sleep(10)
-
-
 async def pivtime():
     while True:
         await asyncio.sleep(60)
@@ -1356,7 +1413,7 @@ async def pivtime():
         chest = openchest()
         for key in chest["kazn"]:
             if chest["kazn"][key]["TYPE"] == "time":
-                chest["kazn"][key]["NOW"] == max(0, chest["kazn"][key]["NOW"] - 1)
+                chest["kazn"][key]["NOW"] = max(0, chest["kazn"][key]["NOW"] - 1)
         closechest(chest)
 async def timchill():
     while True:
@@ -1365,25 +1422,6 @@ async def timchill():
         if chest["NUMB"] > 0:
             chest["NUMB"] -= 1
             closechest(chest)
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 async def send_sticker(cmd: str):
     packs = RANDSTICK.get(cmd)
     if not packs:
@@ -1421,23 +1459,76 @@ async def console_sender():
 
 
 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async deff sitecheck():
+    while True:
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(URL_KEY, timeout=5) as resp:
+                    logging.debug(f"ping NICE: {resp.status}")
+        except Exception as e:
+            logging.debug(f'ping RERORERO: {e}')
+        await asyncio.sleep(600)
+
+async def handle(request):
+    try:
+        data = await request.json()
+        update = Update(**data)
+        await dp.feed_update(bot, update)
+    except Exception as e:
+        logging.debug("Webhook parse REROREROR:", e)
+        return web.Response(text="Bad Request", status=400)
+    return web.Response(text="OK", status=200)
+async def on_startup(app):
+    app["task1"] = asyncio.create_task(alarms())
+    app["task2"] = asyncio.create_task(console_sender())
+    app["task3"] = asyncio.create_task(pivtime())
+    app["task4"] = asyncio.create_task(timchill())
+    app["task5"] = asyncio.create_task(sitecheck())
+async def on_cleanup(app):
+    for name in ["task1", "task2", "task3", "task4", "task5"]:
+        task = app.get(name)
+        if task:
+            task.cancel()
+            try:
+                await task
+            except:
+                pass
+
 ####запись и запуск бота
 async def main():
-    await asyncio.gather(
-        dp.start_polling(bot, skip_updates=False),
-        alarms(),
-        console_sender(),
-        pivtime(),
-        timchill()
-    )
-    for t in pending:
-        t.cancel()
-    try:
-        await bot.session.close()
-    except Exception:
-        pass
+    app = web.Application()
+    app.router.add_get("/", lambda request: web.Response(text="OK", status=200))
+    app.router.add_post("/webhook", handle)
+    logging.basicConfig(level=logging.DEBUG)
+    app.on_startup.append(on_startup)
+    app.on_cleanup.append(on_cleanup)
+    await bot.set_webhook(URL_KEY + "webhook")
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", 10000)
+    await site.start()
+    await asyncio.Event().wait()
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print(f"я спать пошла, спокойной ночи\n")
+    asyncio.run(main())

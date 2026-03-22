@@ -2,7 +2,7 @@ import asyncio, os, logging, requests, aiohttp
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message, Update
 from aiogram.filters import Command
-from aiohttp import web
+from fastapi import FastAPI, Request
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,7 +10,6 @@ TOKEN = os.getenv("E_TOKEN_KEY")
 PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 bot = Bot(TOKEN)
 dp = Dispatcher()
-URL = "https://my-telegram-bot-on3x.onrender.com/"
 
 @dp.message(Command("start"))
 async def start(message: Message):
@@ -32,6 +31,9 @@ async def bittest():
         await bot.send_message(PEKO_ID, "SPAM")
         await asyncio.sleep(30)
 
+app = FastAPI()
+
+@app.post("/webhook")
 async def handle(request):
     try:
         data = await request.json()
@@ -39,12 +41,20 @@ async def handle(request):
         await dp.feed_update(bot, update)
     except Exception as e:
         logging.debug("Webhook parse error:", e)
-        return web.Response(text="Bad Request", status=400)
-    return web.Response(text="OK", status=200)
+        return {"ok": False}
+    return {"ok": True}
 
-async def on_startup(app):
+@app.get("/")
+async def root():
+    return {"status": "ok"}
+
+@app.on_event("startup")
+async def on_startup():
+    await bot.delete_webhook(drop_pending_updates=True)
+    await bot.set_webhook("https://my-telegram-bot-40.leapcell.dev/webhook")
     app["task1"] = asyncio.create_task(alarms())
     app["task2"] = asyncio.create_task(bittest())
+@app.on_event("cleanup")
 async def on_cleanup(app):
     for name in ["task1", "task2"]:
         task = app.get(name)
@@ -54,21 +64,3 @@ async def on_cleanup(app):
                 await task
             except:
                 pass
-
-
-async def main():
-    app = web.Application()
-    app.router.add_get("/", lambda request: web.Response(text="OK", status=200))
-    app.router.add_post("/webhook", handle)
-    logging.basicConfig(level=logging.DEBUG)
-    app.on_startup.append(on_startup)
-    app.on_cleanup.append(on_cleanup)
-    await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, "0.0.0.0", 10000)
-    await site.start()
-    await asyncio.Event().wait()
-
-if __name__ == "__main__":
-    asyncio.run(main())
