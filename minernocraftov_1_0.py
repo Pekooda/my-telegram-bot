@@ -853,7 +853,7 @@ async def main():
     logging.basicConfig(level=logging.DEBUG)
     app.on_startup.append(on_startup)
     app.on_cleanup.append(on_cleanup)
-    await bot.set_webhook("https://my-telegram-bot-on3x.onrender.com/webhook")
+    await bot.set_webhook(URL + "webhook")
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", 10000)
