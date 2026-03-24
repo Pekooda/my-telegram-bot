@@ -58,7 +58,7 @@ chest = {
     "kazn": {
         "st": {
             "NAME": "Banish of Time",
-            "PRICE": 3,
+            "PRICE": 10,
             "VALUE": 5,
             "NOW": 0,
             "INFO": "in 5 minutes I'll destroy every GIF/Sticker from Tim",
@@ -66,7 +66,7 @@ chest = {
         },
         "lv": {
             "NAME": "Banish of Absorb",
-            "PRICE": 3,
+            "PRICE": 10,
             "VALUE": 3,
             "NOW": 0,
             "INFO": "in 3 minutes I'll absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish",
@@ -74,7 +74,7 @@ chest = {
         },
         "sk": {
             "NAME": "Banish of Convert",
-            "PRICE": 3,
+            "PRICE": 10,
             "VALUE": 4,
             "NOW": 0,
             "INFO": "in 4 minutes I'll convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker",
@@ -82,7 +82,7 @@ chest = {
         },
         "ob": {
             "NAME": "Banish of Destroy",
-            "PRICE": 3,
+            "PRICE": 10,
             "VALUE": 5,
             "NOW": 0,
             "INFO": "i'll destroy next 5 GIF/Stickers from Tim",
@@ -222,7 +222,7 @@ def nozerolast(parts, numb):
 
 async def destroy(message: types.Message, args: str):
     rand = random.randint(-1000, 0)
-    await message.answer(f"DO YOU WANNA DESTROY? I'M WANNA IT! TIME OF BEGINNING OF DESTROYING: {MSKnow}. POWER: {rand}")
+    await message.answer(f"DO YOU WANNA DESTROY? I'M WANNA IT!")
 
 async def evildata(message: types.Message, args: str):
     if message.from_user.id != PEKO_ID:
@@ -743,7 +743,7 @@ async def vse(message: Message):
             if chest["kazn"]["lv"]["NOW"]:
                 chest["lv"]["NOW"] += 1
             if chest["kazn"]["sk"]["NOW"]:
-                await message.reply_sticker(sticker=VORO_NIQ)
+                await message.answer_sticker(sticker=VORO_NIQ)
             if message.animation:
                 unique_id = message.animation.file_unique_id
                 id = message.animation.file_id
