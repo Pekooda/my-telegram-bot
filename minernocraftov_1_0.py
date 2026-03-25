@@ -282,6 +282,7 @@ async def evildata(message: types.Message, args: str):
         return await message.reply("Nooo, you can't get that secret files! 👿👿👿")
     global chest
     text = json.dumps(chest, indent=4, ensure_ascii=False)
+    text = text.replace("true", "True").replace("false", "False")
     file = BufferedInputFile(
         text.encode("utf-8"),
         filename="evilchest.json"
