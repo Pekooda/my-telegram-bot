@@ -26,19 +26,7 @@ DEFAULT_QUERY = json.loads(os.getenv("E_DEFAULT_QUERY", '""'))
 MNC_RAGE = json.loads(os.getenv("E_MNC_RAGE", '""'))
 MNC_OVERRAGE = json.loads(os.getenv("E_MNC_OVERRAGE", '""'))
 
-MURA_NIQ = os.getenv("E_MURA_NIQ")
-CHEZ_NIQ = os.getenv("E_CHEZ_NIQ")
-MAX_NIQ = os.getenv("E_MAX_NIQ")
-LEAFY_NIQ = os.getenv("E_LEAFY_NIQ")
 VSE_NIQ = os.getenv("E_VSE_NIQ")
-VTRI_NIQ = os.getenv("E_VTRI_NIQ")
-VORO_UIQ = os.getenv("E_VORO_UIQ")
-VORO_NIQ = os.getenv("E_VORO_NIQ")
-CRO_UIQ = os.getenv("E_CRO_UIQ")
-VEI_UIQ = os.getenv("E_VEI_UIQ")
-ADALI_UIQ = os.getenv("E_ADALI_UIQ")
-EVEI_UIQ = os.getenv("E_VEI_UIQ")
-EADALI_UIQ = os.getenv("E_ADALI_UIQ")
 URL = os.getenv("E_URL")
 SAD_UIQ = json.loads(os.getenv("E_SAD_UIQ", "[]"))
 
@@ -54,152 +42,172 @@ bot_enabled = True
 mediaidcheck = defaultdict(int)
 
 chest = {
-    "NUMB": 270,
-    "kazn": {
-        "st": {
-            "NAME": "Banish of Time",
-            "PRICE": 10,
-            "VALUE": 5,
-            "NOW": 0,
-            "INFO": "in 5 minutes I'll destroy every GIF/Sticker from Tim",
-            "TYPE": "time"
-        },
-        "lv": {
-            "NAME": "Banish of Absorb",
-            "PRICE": 10,
-            "VALUE": 3,
-            "NOW": 0,
-            "INFO": "in 3 minutes I'll absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish",
-            "TYPE": "time"
-        },
-        "sk": {
-            "NAME": "Banish of Convert",
-            "PRICE": 10,
-            "VALUE": 4,
-            "NOW": 0,
-            "INFO": "in 4 minutes I'll convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker",
-            "TYPE": "time"
-        },
-        "ob": {
-            "NAME": "Banish of Destroy",
-            "PRICE": 10,
-            "VALUE": 5,
-            "NOW": 0,
-            "INFO": "i'll destroy next 5 GIF/Stickers from Tim",
-            "TYPE": "use"
-        }
+  "NUMB": 242,
+  "kazn": {
+    "st": {
+      "NAME": "Banish of Time",
+      "PRICE": 10,
+      "VALUE": 5,
+      "NOW": 0,
+      "INFO": "in 5 minutes I'll destroy every GIF/Sticker from Tim",
+      "TYPE": "time"
     },
-    "GIFTIM": {
-        "AgADpwUAAvOSdVE": {
-            "VALUE": 1
-        },
-        "AgAD_wIAAkAaTVM": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIYGGmzQQHPAgWqKJtA5w_SrKSSRz3sAAL_AgACQBpNU76nd4Ed73pIOgQ"
-        },
-        "AgADDQMAAiRStVM": {
-            "VALUE": 2
-        },
-        "AgAD6gUAAjFZNVA": {
-            "VALUE": 1
-        },
-        "AgADCGwAAqFHEEs": {
-            "VALUE": 1
-        },
-        "AgADWQYAAvJQ_FE": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIbg2m0DHXKEBQ6Ff0tnS42WX4FnAuSAAJZBgAC8lD8UbImUZBCEg3xOgQ"
-        },
-        "AgAD6IoAAl6kKUk": {
-            "VALUE": 8,
-            "GIF": "CgACAgIAAyEFAATmi0vRAAIgUWm0WjGjnsVLeBo2kGv2s2_QueChAALoigACXqQpSebzr8UAAUaDDToE"
-        },
-        "AgADtgIAAnXUDFM": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIjb2m1kDezOnnXJsBWh1NPt0KGfNTqAAK2AgACddQMU26TMBFnr3kCOgQ"
-        },
-        "AgADV40AAl6f2Uk": {
-            "VALUE": 1
-        },
-        "AgADHgMAAqCfDFM": {
-            "VALUE": 15,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIg4Gm0frazCeSCijOgORnW_lFaWoiJAAIeAwACoJ8MUxb7XMFAF3iAOgQ"
-        },
-        "AgADOwYAAiIHxVM": {
-            "VALUE": 1
-        },
-        "AgAD9gkAAsrYVVE": {
-            "VALUE": 18,
-            "WHAT": "Гифка с плюшевым Яроном",
-            "GIF": "CgACAgQAAyEFAATCPNLXAAECtZ1pttJoQO5BSeeM4HfmcNo9tvRlogAC9gkAAsrYVVE-Je4QnlNhwjoE"
-        },
-        "AgADQZQAAibRyUo": {
-            "VALUE": 2,
-            "GIF": "CgACAgIAAyEFAATCPNLXAAECl6VpsrHne3ye3pWe_th-FD6CmQkfygACQZQAAibRyUpuPPwnjHP1EToE"
-        },
-        "AgAD6wMAAmOntVE": {
-            "VALUE": 1
-        },
-        "AgAD8AIAAkkNDVM": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIwm2m4WaTYw-h1HSuLf29-oBlz9aOKAALwAgACSQ0NU4VbzP5zv4fDOgQ"
-        },
-        "AgADMgYAAhJ6DVI": {
-            "VALUE": 1
-        },
-        "AgAD_QIAAr6wBFM": {
-            "VALUE": 1
-        },
-        "AgADnwIAAl3UDFM": {
-            "VALUE": 2,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAI1Imm630-sqAjkypgdiihv-f5i4Fb8AAKfAgACXdQMU2y4Z-ts_Q8WOgQ"
-        },
-        "AgADQwgAAkPxLVI": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIxjWm5Zc4NyZUe-PV9PuJQmn503PJWAAJDCAACQ_EtUpWjDEWPVVvuOgQ"
-        },
-        "AgADnAcAAkVUnFM": {
-            "VALUE": 1,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAI4Umm8M34QPC-bbd10kQ3r6rxJLP4dAAKcBwACRVScU3NkOB8ZRkRtOgQ"
-        },
-        "AgADpQYAArJg5VI": {
-            "VALUE": 3,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIUSGmyzpw3j6AWmm3OLd15-rFbl2WYAAKlBgACsmDlUiz40Yrf4ujVOgQ"
-        },
-        "AgADUggAAhTNLVI": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIxk2m5ZiyvTX8g2CWZI7Xuw6BeTRBhAAJSCAACFM0tUuwhw0IvN-XzOgQ"
-        },
-        "AgADaAMAAtjXhFA": {
-            "VALUE": 3,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAJDUWm_1qHfthVMF7HqIWlt0HEpu6yWAAJoAwAC2NeEUJjJF6rWpl3oOgQ"
-        },
-        "AgAD_WkAAqS9IEg": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATmi0vRAAIvrmm3_lHcYcklRkcQtVnpMmCmeTllAAL9aQACpL0gSCjpxve-v0StOgQ"
-        },
-        "AgADiQoAAjDZEUk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATCPNLXAAECl3xpsq82u8OvEecvJmJuBV2v_olm-QACiQoAAjDZEUnXlSm9BUvNbzoE"
-        },
-        "AgADwQoAAnC2CUk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATCPNLXAAECmLBpsr0crKDcHaWtvFvJ2ruYl9YESQACwQoAAnC2CUkewImgAv8_bzoE"
-        },
-        "AgAD0QcAAjoTEEk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATCPNLXAAECl5RpsrC2Sw6swpsTjP5pCUBwFhAMUQAC0QcAAjoTEEnLdGDcC0VEfzoE"
-        },
-        "AgADcZ0AAjFYQUk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAxUAAWmz-bQov1Vd186iI4sQK5InRJdTAAJxnQACMVhBSUtMlJ5AnUY0OgQ"
-        },
-        "AgADUAQAAkpFBVA": {
-            "VALUE": 1,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAITSmmymNg7XOJW4HbAc0KhgRvsQiVdAAJQBAACSkUFUL_DwHdMVuAhOgQ"
-        }
+    "lv": {
+      "NAME": "Banish of Absorb",
+      "PRICE": 10,
+      "VALUE": 3,
+      "NOW": 0,
+      "INFO": "in 3 minutes I'll absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish",
+      "TYPE": "time"
     },
-    "rich": {}
+    "sk": {
+      "NAME": "Banish of Convert",
+      "PRICE": 10,
+      "VALUE": 4,
+      "NOW": 0,
+      "INFO": "in 4 minutes I'll convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker",
+      "TYPE": "time"
+    },
+    "ob": {
+      "NAME": "Banish of Destroy",
+      "PRICE": 10,
+      "VALUE": 5,
+      "NOW": 0,
+      "INFO": "i'll destroy next 5 GIF/Stickers from Tim",
+      "TYPE": "use"
+    }
+  },
+  "GIFTIM": {
+    "AgADpwUAAvOSdVE": {
+      "VALUE": 1
+    },
+    "AgAD_wIAAkAaTVM": {
+      "VALUE": 4,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIYGGmzQQHPAgWqKJtA5w_SrKSSRz3sAAL_AgACQBpNU76nd4Ed73pIOgQ"
+    },
+    "AgADDQMAAiRStVM": {
+      "VALUE": 2
+    },
+    "AgAD6gUAAjFZNVA": {
+      "VALUE": 1
+    },
+    "AgADCGwAAqFHEEs": {
+      "VALUE": 1
+    },
+    "AgADWQYAAvJQ_FE": {
+      "VALUE": 4,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIbg2m0DHXKEBQ6Ff0tnS42WX4FnAuSAAJZBgAC8lD8UbImUZBCEg3xOgQ"
+    },
+    "AgAD6IoAAl6kKUk": {
+      "VALUE": 8,
+      "GIF": "CgACAgIAAyEFAATmi0vRAAIgUWm0WjGjnsVLeBo2kGv2s2_QueChAALoigACXqQpSebzr8UAAUaDDToE"
+    },
+    "AgADtgIAAnXUDFM": {
+      "VALUE": 4,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIjb2m1kDezOnnXJsBWh1NPt0KGfNTqAAK2AgACddQMU26TMBFnr3kCOgQ"
+    },
+    "AgADV40AAl6f2Uk": {
+      "VALUE": 1
+    },
+    "AgADHgMAAqCfDFM": {
+      "VALUE": 15,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIg4Gm0frazCeSCijOgORnW_lFaWoiJAAIeAwACoJ8MUxb7XMFAF3iAOgQ"
+    },
+    "AgADOwYAAiIHxVM": {
+      "VALUE": 1
+    },
+    "AgAD9gkAAsrYVVE": {
+      "VALUE": 18,
+      "WHAT": "Гифка с плюшевым Яроном",
+      "GIF": "CgACAgQAAyEFAATCPNLXAAECtZ1pttJoQO5BSeeM4HfmcNo9tvRlogAC9gkAAsrYVVE-Je4QnlNhwjoE"
+    },
+    "AgADQZQAAibRyUo": {
+      "VALUE": 2,
+      "GIF": "CgACAgIAAyEFAATCPNLXAAECl6VpsrHne3ye3pWe_th-FD6CmQkfygACQZQAAibRyUpuPPwnjHP1EToE"
+    },
+    "AgAD6wMAAmOntVE": {
+      "VALUE": 1
+    },
+    "AgAD8AIAAkkNDVM": {
+      "VALUE": 4,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIwm2m4WaTYw-h1HSuLf29-oBlz9aOKAALwAgACSQ0NU4VbzP5zv4fDOgQ"
+    },
+    "AgADMgYAAhJ6DVI": {
+      "VALUE": 1
+    },
+    "AgAD_QIAAr6wBFM": {
+      "VALUE": 1
+    },
+    "AgADnwIAAl3UDFM": {
+      "VALUE": 2,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAI1Imm630-sqAjkypgdiihv-f5i4Fb8AAKfAgACXdQMU2y4Z-ts_Q8WOgQ"
+    },
+    "AgADQwgAAkPxLVI": {
+      "VALUE": 4,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIxjWm5Zc4NyZUe-PV9PuJQmn503PJWAAJDCAACQ_EtUpWjDEWPVVvuOgQ"
+    },
+    "AgADnAcAAkVUnFM": {
+      "VALUE": 1,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAI4Umm8M34QPC-bbd10kQ3r6rxJLP4dAAKcBwACRVScU3NkOB8ZRkRtOgQ"
+    },
+    "AgADpQYAArJg5VI": {
+      "VALUE": 3,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIUSGmyzpw3j6AWmm3OLd15-rFbl2WYAAKlBgACsmDlUiz40Yrf4ujVOgQ"
+    },
+    "AgADUggAAhTNLVI": {
+      "VALUE": 4,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAIxk2m5ZiyvTX8g2CWZI7Xuw6BeTRBhAAJSCAACFM0tUuwhw0IvN-XzOgQ"
+    },
+    "AgADaAMAAtjXhFA": {
+      "VALUE": 3,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAJDUWm_1qHfthVMF7HqIWlt0HEpu6yWAAJoAwAC2NeEUJjJF6rWpl3oOgQ"
+    },
+    "AgAD_WkAAqS9IEg": {
+      "VALUE": 1,
+      "GIF": "CAACAgIAAyEFAATmi0vRAAIvrmm3_lHcYcklRkcQtVnpMmCmeTllAAL9aQACpL0gSCjpxve-v0StOgQ"
+    },
+    "AgADiQoAAjDZEUk": {
+      "VALUE": 1,
+      "GIF": "CAACAgIAAyEFAATCPNLXAAECl3xpsq82u8OvEecvJmJuBV2v_olm-QACiQoAAjDZEUnXlSm9BUvNbzoE"
+    },
+    "AgADwQoAAnC2CUk": {
+      "VALUE": 1,
+      "GIF": "CAACAgIAAyEFAATCPNLXAAECmLBpsr0crKDcHaWtvFvJ2ruYl9YESQACwQoAAnC2CUkewImgAv8_bzoE"
+    },
+    "AgAD0QcAAjoTEEk": {
+      "VALUE": 1,
+      "GIF": "CAACAgIAAyEFAATCPNLXAAECl5RpsrC2Sw6swpsTjP5pCUBwFhAMUQAC0QcAAjoTEEnLdGDcC0VEfzoE"
+    },
+    "AgADcZ0AAjFYQUk": {
+      "VALUE": 1,
+      "GIF": "CAACAgIAAxUAAWmz-bQov1Vd186iI4sQK5InRJdTAAJxnQACMVhBSUtMlJ5AnUY0OgQ"
+    },
+    "AgADUAQAAkpFBVA": {
+      "VALUE": 1,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAITSmmymNg7XOJW4HbAc0KhgRvsQiVdAAJQBAACSkUFUL_DwHdMVuAhOgQ"
+    },
+    "AgADBAMAAkhwDFM": {
+      "VALUE": 2,
+      "GIF": "CgACAgQAAyEFAATmi0vRAAJPh2nC0N1v8B0qHlv9OQzgg6S9BSlJAAIEAwACSHAMU1LT1hrT2oiZOgQ"
+    }
+  },
+  "rich": {
+    "-1003867888593": {
+      "cmh": false,
+      "tdt": false,
+      "cry": true
+    },
+    "-1003258766039": {
+      "cmh": true,
+      "tdt": false,
+      "cry": true
+    },
+    "5513644023": {
+      "cmh": false,
+      "tdt": false,
+      "cry": true
+    }
+  }
 }
 
 
@@ -228,7 +236,7 @@ async def evildata(message: types.Message, args: str):
     if message.from_user.id != PEKO_ID:
         return await message.reply("Nooo, you can't get that secret files! 👿👿👿")
     global chest
-    text = json.dumps(chest, indent=2, ensure_ascii=False)
+    text = json.dumps(chest, indent=4, ensure_ascii=False)
     file = BufferedInputFile(
         text.encode("utf-8"),
         filename="evilchest.json"
@@ -618,13 +626,6 @@ async def vse(message: Message):
     user_id = message.from_user.id
     if not message.date < BOT_START and message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cry"] and ((message.text and message.text in ("😭", "🥺")) or (message.sticker and message.sticker.file_unique_id in SAD_UIQ)):
         return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
-    if message.chat.id == OT_ID and random.random() < 0.00025: 
-        if random.random() < 0.01:
-            await message.reply("IT MESSAGE MAKES ME THE HAPPIEST DEMON IN HELL!!!! 😈😈😈, 1 TO 400000")
-        elif random.random() < 0.1: 
-            await message.reply("IT MESSAGE MAKES ME SOOOO HAPPY, THAT YOU CANT 😈😈, 1 TO 40000")
-        else:
-            await message.reply("IT MESSAGE MAKES ME HAPPY 😈")
     if message.date < BOT_START:
         return
     if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
@@ -633,7 +634,6 @@ async def vse(message: Message):
         return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
     if f"{chat_id}" not in chest["rich"]:
         chest["rich"][f"{chat_id}"] = {
-            "zer": False,
             "cmh": False,
             "tdt": False,
             "cry": True
@@ -660,25 +660,6 @@ async def vse(message: Message):
                     return
                 if func:
                     await func(message, args)
-    if chest["rich"][f"{chat_id}"]["zer"]:
-        if message.text:
-            original = message.text.replace(",", ".")
-            await bot.send_message(chat_id=chat_id, text=original)
-        if message.caption:
-            original = message.caption.replace(",", ".")
-        if message.photo:
-            media = message.photo[-1].file_id
-            await bot.send_photo(chat_id=chat_id, photo=media, caption=original or None)
-        if message.animation:
-            media = message.animation.file_id
-            await bot.send_animation(chat_id=chat_id, animation=media, caption=original or None)
-        if message.video:
-            media = message.video.file_id
-            await bot.send_video(chat_id=chat_id, video=media, caption=original or None)
-        if message.sticker:
-            media = message.sticker.file_id
-            await bot.send_sticker(chat_id=chat_id, sticker=media)
-
     if mediaidcheck[user_id] and message.chat.type == "private":
         file_id = 0
         if message.sticker:
@@ -704,35 +685,13 @@ async def vse(message: Message):
                 parse_mode="HTML"
             )
     if message.text:
-        if message.text.lower() == "кейн, купи пиво":
-            await message.answer("Kane, sell a beer")
-        if message.text.lower() == "сколько пива":
-            await message.answer("BEER IS NOT ENOUGH, I'M WARN YOU, BEER IS NOT ENOUGH!!!🍺🍺🍺🍺🍺")
-        if message.text.lower() == "я вернулся":
-            await message.answer_sticker(sticker=MAX_NIQ)
-        if message.text.lower() == "кобо":
-            await message.answer("Actually a robotic dumb voice")
-        if message.text.lower() in ("муравей", "insect"):
-            await message.reply_sticker(sticker=CHEZ_NIQ)
-        if message.text.lower() in ("че задали", "wha cancelled"):
-            await message.reply_sticker(sticker=MURA_NIQ)
         if message.text.lower() == "воро":
             await message.answer("Cro")
-        if message.text.lower() == "2763":
-            await message.reply_sticker(sticker=LEAFY_NIQ)
-## Реакция на текст в сообщении
         if message.chat.id == OT_ID and "все" in message.text.lower() and random.random() < 0.01:
             await message.reply_sticker(sticker=VSE_NIQ)
         if message.from_user.id == TIM_ID and any(word.lower().startswith(mat) for word in message.text.split() for mat in MATUUUK):
             chest["NUMB"] = chest["NUMB"] + 2
             await orluk(message, "")
-    if message.sticker:
-        if message.sticker.file_unique_id in (VORO_UIQ, CRO_UIQ):
-            await message.reply("cro")
-        if message.sticker.file_unique_id in (ADALI_UIQ, EADALI_UIQ):
-            await message.reply_sticker(sticker=CHEZ_NIQ)
-        if message.sticker.file_unique_id in (VEI_UIQ, EVEI_UIQ):
-            await message.reply_sticker(sticker=MURA_NIQ)
     if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
             for key in chest["kazn"]:
@@ -756,7 +715,6 @@ async def vse(message: Message):
             chest["GIFTIM"][f"{unique_id}"]["GIF"] = id
             chest["GIFTIM"][f"{unique_id}"]["VALUE"] += 1
             chest["NUMB"] += chest["GIFTIM"][f"{unique_id}"]["VALUE"]
-            print(f"GIF OR STICKER of TIM: {id}")
 
 
 
@@ -777,27 +735,9 @@ async def vse(message: Message):
 
 async def alarms():
     await bot.send_message(PEKO_ID, "Evil evening!")
-    while True:
-        now = datetime.now(MSK)
-        if now.hour == 13 and now.minute == 56:
-            try:
-                await bot.send_photo(OT_ID, photo=VTRI_NIQ)
-                await bot.send_photo(COVINOC_ID, photo=VTRI_NIQ)
-                await asyncio.sleep(51)
-            except Exception as e:
-                pass
-        if now.hour == 19 and now.minute == 52:
-            try:
-                await bot.send_message(OT_ID, "📺📺📺")
-                await asyncio.sleep(51)
-            except Exception as e:
-                pass
-        await asyncio.sleep(10)
 async def pivtime():
     while True:
         await asyncio.sleep(60)
-        if random.random() < 0.000025:
-            await bot.send_message(OT_ID, "Juiceminute")
         global chest
         for key in chest["kazn"]:
             if chest["kazn"][key]["TYPE"] == "time":
