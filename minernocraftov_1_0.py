@@ -608,20 +608,20 @@ async def vse(message: Message):
     global chest
     chat_id = message.chat.id
     user_id = message.from_user.id
-    if not message.date < BOT_START and message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cry"] and ((message.text and message.text in ("😭", "🥺")) or (message.sticker and message.sticker.file_unique_id in SAD_UIQ)):
-        return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
     if message.date < BOT_START:
         return
-    if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["tdt"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
     if f"{chat_id}" not in chest["rich"]:
         chest["rich"][f"{chat_id}"] = {
             "cmh": False,
             "tdt": False,
             "cry": True
         }
+    if not message.date < BOT_START and message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cry"] and ((message.text and message.text in ("😭", "🥺")) or (message.sticker and message.sticker.file_unique_id in SAD_UIQ)):
+        return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
+    if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
+        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["tdt"]:
+        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
         if message.text:
             parts = message.text.split(maxsplit=1)
