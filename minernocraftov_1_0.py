@@ -42,156 +42,217 @@ bot_enabled = True
 mediaidcheck = defaultdict(int)
 
 chest = {
-  "NUMB": 242,
-  "kazn": {
-    "st": {
-      "NAME": "Banish of Time",
-      "PRICE": 10,
-      "VALUE": 5,
-      "NOW": 0,
-      "INFO": "in 5 minutes I'll destroy every GIF/Sticker from Tim",
-      "TYPE": "time"
+    "NUMB": 217,
+    "kazn": {
+        "st": {
+            "NAME": "Banish of Time",
+            "PRICE": 10,
+            "VALUE": 5,
+            "NOW": 0,
+            "INFO": "in 5 minutes I'll destroy every GIF/Sticker from Tim",
+            "TYPE": "time"
+        },
+        "lv": {
+            "NAME": "Banish of Absorb",
+            "PRICE": 10,
+            "VALUE": 3,
+            "NOW": 0,
+            "INFO": "in 3 minutes I'll absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish",
+            "TYPE": "time"
+        },
+        "sk": {
+            "NAME": "Banish of Convert",
+            "PRICE": 10,
+            "VALUE": 4,
+            "NOW": 0,
+            "INFO": "in 4 minutes I'll convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker",
+            "TYPE": "time"
+        },
+        "ob": {
+            "NAME": "Banish of Destroy",
+            "PRICE": 10,
+            "VALUE": 5,
+            "NOW": 25,
+            "INFO": "i'll destroy next 5 GIF/Stickers from Tim",
+            "TYPE": "use"
+        }
     },
-    "lv": {
-      "NAME": "Banish of Absorb",
-      "PRICE": 10,
-      "VALUE": 3,
-      "NOW": 0,
-      "INFO": "in 3 minutes I'll absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish",
-      "TYPE": "time"
+    "GIFTIM": {
+        "AgADpwUAAvOSdVE": {
+            "VALUE": 1
+        },
+        "AgAD_wIAAkAaTVM": {
+            "VALUE": 4,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAIYGGmzQQHPAgWqKJtA5w_SrKSSRz3sAAL_AgACQBpNU76nd4Ed73pIOgQ"
+        },
+        "AgADDQMAAiRStVM": {
+            "VALUE": 2
+        },
+        "AgAD6gUAAjFZNVA": {
+            "VALUE": 2,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAJTXWnEDfkjC2H9R0tEtBXRN6Wk_WqWAALqBQACMVk1UNLtkldaOPAoOgQ"
+        },
+        "AgADCGwAAqFHEEs": {
+            "VALUE": 1
+        },
+        "AgADWQYAAvJQ_FE": {
+            "VALUE": 4,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAIbg2m0DHXKEBQ6Ff0tnS42WX4FnAuSAAJZBgAC8lD8UbImUZBCEg3xOgQ"
+        },
+        "AgAD6IoAAl6kKUk": {
+            "VALUE": 8,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAIgUWm0WjGjnsVLeBo2kGv2s2_QueChAALoigACXqQpSebzr8UAAUaDDToE"
+        },
+        "AgADtgIAAnXUDFM": {
+            "VALUE": 4,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAIjb2m1kDezOnnXJsBWh1NPt0KGfNTqAAK2AgACddQMU26TMBFnr3kCOgQ"
+        },
+        "AgADV40AAl6f2Uk": {
+            "VALUE": 1
+        },
+        "AgADHgMAAqCfDFM": {
+            "VALUE": 15,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAIg4Gm0frazCeSCijOgORnW_lFaWoiJAAIeAwACoJ8MUxb7XMFAF3iAOgQ"
+        },
+        "AgADOwYAAiIHxVM": {
+            "VALUE": 1
+        },
+        "AgAD9gkAAsrYVVE": {
+            "VALUE": 18,
+            "WHAT": "Гифка с плюшевым Яроном",
+            "GIF": "CgACAgQAAyEFAATCPNLXAAECtZ1pttJoQO5BSeeM4HfmcNo9tvRlogAC9gkAAsrYVVE-Je4QnlNhwjoE"
+        },
+        "AgADQZQAAibRyUo": {
+            "VALUE": 2,
+            "GIF": "CgACAgIAAyEFAATCPNLXAAECl6VpsrHne3ye3pWe_th-FD6CmQkfygACQZQAAibRyUpuPPwnjHP1EToE"
+        },
+        "AgAD6wMAAmOntVE": {
+            "VALUE": 1
+        },
+        "AgAD8AIAAkkNDVM": {
+            "VALUE": 4,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAIwm2m4WaTYw-h1HSuLf29-oBlz9aOKAALwAgACSQ0NU4VbzP5zv4fDOgQ"
+        },
+        "AgADMgYAAhJ6DVI": {
+            "VALUE": 1
+        },
+        "AgAD_QIAAr6wBFM": {
+            "VALUE": 1
+        },
+        "AgADnwIAAl3UDFM": {
+            "VALUE": 2,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAI1Imm630-sqAjkypgdiihv-f5i4Fb8AAKfAgACXdQMU2y4Z-ts_Q8WOgQ"
+        },
+        "AgADQwgAAkPxLVI": {
+            "VALUE": 10,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAJNx2nCXl05ZirrYheTq2sNjhSyDpf6AAJDCAACQ_EtUiuMmbScs83BOgQ"
+        },
+        "AgADnAcAAkVUnFM": {
+            "VALUE": 1,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAI4Umm8M34QPC-bbd10kQ3r6rxJLP4dAAKcBwACRVScU3NkOB8ZRkRtOgQ"
+        },
+        "AgADpQYAArJg5VI": {
+            "VALUE": 3,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAIUSGmyzpw3j6AWmm3OLd15-rFbl2WYAAKlBgACsmDlUiz40Yrf4ujVOgQ"
+        },
+        "AgADUggAAhTNLVI": {
+            "VALUE": 5,
+            "GIF": "CgACAgQAAyEFAATCPNLXAAEDAi1pwm6wMP-ndxvgTfhblNFaYioOSwACUggAAhTNLVIaB8ncuV___joE"
+        },
+        "AgADaAMAAtjXhFA": {
+            "VALUE": 3,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAJDUWm_1qHfthVMF7HqIWlt0HEpu6yWAAJoAwAC2NeEUJjJF6rWpl3oOgQ"
+        },
+        "AgAD_WkAAqS9IEg": {
+            "VALUE": 1,
+            "GIF": "CAACAgIAAyEFAATmi0vRAAIvrmm3_lHcYcklRkcQtVnpMmCmeTllAAL9aQACpL0gSCjpxve-v0StOgQ"
+        },
+        "AgADiQoAAjDZEUk": {
+            "VALUE": 1,
+            "GIF": "CAACAgIAAyEFAATCPNLXAAECl3xpsq82u8OvEecvJmJuBV2v_olm-QACiQoAAjDZEUnXlSm9BUvNbzoE"
+        },
+        "AgADwQoAAnC2CUk": {
+            "VALUE": 1,
+            "GIF": "CAACAgIAAyEFAATCPNLXAAECmLBpsr0crKDcHaWtvFvJ2ruYl9YESQACwQoAAnC2CUkewImgAv8_bzoE"
+        },
+        "AgAD0QcAAjoTEEk": {
+            "VALUE": 1,
+            "GIF": "CAACAgIAAyEFAATCPNLXAAECl5RpsrC2Sw6swpsTjP5pCUBwFhAMUQAC0QcAAjoTEEnLdGDcC0VEfzoE"
+        },
+        "AgADcZ0AAjFYQUk": {
+            "VALUE": 1,
+            "GIF": "CAACAgIAAxUAAWmz-bQov1Vd186iI4sQK5InRJdTAAJxnQACMVhBSUtMlJ5AnUY0OgQ"
+        },
+        "AgADUAQAAkpFBVA": {
+            "VALUE": 2,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAJTY2nEDgtS-RF_oyKMnU1DLjVDuWUQAAJQBAACSkUFUCjw_AE5sXngOgQ"
+        },
+        "AgADBAMAAkhwDFM": {
+            "VALUE": 2,
+            "GIF": "CgACAgQAAyEFAATmi0vRAAJPh2nC0N1v8B0qHlv9OQzgg6S9BSlJAAIEAwACSHAMU1LT1hrT2oiZOgQ"
+        },
+        "AgAD9nAAAnFAWEs": {
+            "VALUE": 1,
+            "GIF": "CAACAgIAAyEFAATmi0vRAAJRuWnDxpdX2cLa-nG2IXna_eN6DtsXAAL2cAACcUBYS9tl95CsAAHbQToE"
+        },
+        "AgADFJoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTi2nEFIfzGwI_OQfAHlzjRGF7gM_bAAIUmgACYOEgSnESAAHiycQiUToE"
+        },
+        "AgADFpoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTjGnEFIdu-iYIY7yjj35tLjzrdx5HAAIWmgACYOEgSsiUUUnFQMUdOgQ"
+        },
+        "AgADF5oAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTjWnEFIi53YKrNxTjoDJpHIGOga8lAAIXmgACYOEgSkk7CuMd4HAkOgQ"
+        },
+        "AgADGJoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTjmnEFIj-MKE7KY1E-8yWpxfRL5UeAAIYmgACYOEgSghY0jSv4BzIOgQ"
+        },
+        "AgADGZoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTj2nEFIl0smJJi6IduhExyohqvXCdAAIZmgACYOEgShLtEIb5UAJKOgQ"
+        },
+        "AgADaZoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTnGnEGFp6_W8F_jsw3bCaeqy2_zEnAAJpmgACYOEgSisKfm5cLFaJOgQ"
+        },
+        "AgADapoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTnWnEGGLqqT9ZM0j7n5kkheT3yIgcAAJqmgACYOEgSudmRimQAcvjOgQ"
+        },
+        "AgADa5oAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTnmnEGGKdEDmKlyrBeL8XZrxDhflDAAJrmgACYOEgSh0VVypNwIXMOgQ"
+        },
+        "AgADbJoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJTn2nEGGM26GmkSlKc6-sp6Yo3Q4B3AAJsmgACYOEgSvaS7Sk6DS4QOgQ"
+        },
+        "AgADbZoAAmDhIEo": {
+            "VALUE": 1,
+            "GIF": "CgACAgIAAyEFAATmi0vRAAJToGnEGGNKEdxOeIOCKEG65sGyk4O_AAJtmgACYOEgSoT8KmQSbx9bOgQ"
+        }
     },
-    "sk": {
-      "NAME": "Banish of Convert",
-      "PRICE": 10,
-      "VALUE": 4,
-      "NOW": 0,
-      "INFO": "in 4 minutes I'll convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker",
-      "TYPE": "time"
-    },
-    "ob": {
-      "NAME": "Banish of Destroy",
-      "PRICE": 10,
-      "VALUE": 5,
-      "NOW": 0,
-      "INFO": "i'll destroy next 5 GIF/Stickers from Tim",
-      "TYPE": "use"
+    "rich": {
+        "-1003258766039": {
+            "cmh": false,
+            "tdt": false,
+            "cry": true
+        },
+        "-1003867888593": {
+            "cmh": false,
+            "tdt": false,
+            "cry": true
+        },
+        "5513644023": {
+            "cmh": false,
+            "tdt": false,
+            "cry": true
+        }
     }
-  },
-  "GIFTIM": {
-    "AgADpwUAAvOSdVE": {
-      "VALUE": 1
-    },
-    "AgAD_wIAAkAaTVM": {
-      "VALUE": 4,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIYGGmzQQHPAgWqKJtA5w_SrKSSRz3sAAL_AgACQBpNU76nd4Ed73pIOgQ"
-    },
-    "AgADDQMAAiRStVM": {
-      "VALUE": 2
-    },
-    "AgAD6gUAAjFZNVA": {
-      "VALUE": 1
-    },
-    "AgADCGwAAqFHEEs": {
-      "VALUE": 1
-    },
-    "AgADWQYAAvJQ_FE": {
-      "VALUE": 4,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIbg2m0DHXKEBQ6Ff0tnS42WX4FnAuSAAJZBgAC8lD8UbImUZBCEg3xOgQ"
-    },
-    "AgAD6IoAAl6kKUk": {
-      "VALUE": 8,
-      "GIF": "CgACAgIAAyEFAATmi0vRAAIgUWm0WjGjnsVLeBo2kGv2s2_QueChAALoigACXqQpSebzr8UAAUaDDToE"
-    },
-    "AgADtgIAAnXUDFM": {
-      "VALUE": 4,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIjb2m1kDezOnnXJsBWh1NPt0KGfNTqAAK2AgACddQMU26TMBFnr3kCOgQ"
-    },
-    "AgADV40AAl6f2Uk": {
-      "VALUE": 1
-    },
-    "AgADHgMAAqCfDFM": {
-      "VALUE": 15,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIg4Gm0frazCeSCijOgORnW_lFaWoiJAAIeAwACoJ8MUxb7XMFAF3iAOgQ"
-    },
-    "AgADOwYAAiIHxVM": {
-      "VALUE": 1
-    },
-    "AgAD9gkAAsrYVVE": {
-      "VALUE": 18,
-      "WHAT": "Гифка с плюшевым Яроном",
-      "GIF": "CgACAgQAAyEFAATCPNLXAAECtZ1pttJoQO5BSeeM4HfmcNo9tvRlogAC9gkAAsrYVVE-Je4QnlNhwjoE"
-    },
-    "AgADQZQAAibRyUo": {
-      "VALUE": 2,
-      "GIF": "CgACAgIAAyEFAATCPNLXAAECl6VpsrHne3ye3pWe_th-FD6CmQkfygACQZQAAibRyUpuPPwnjHP1EToE"
-    },
-    "AgAD6wMAAmOntVE": {
-      "VALUE": 1
-    },
-    "AgAD8AIAAkkNDVM": {
-      "VALUE": 4,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIwm2m4WaTYw-h1HSuLf29-oBlz9aOKAALwAgACSQ0NU4VbzP5zv4fDOgQ"
-    },
-    "AgADMgYAAhJ6DVI": {
-      "VALUE": 1
-    },
-    "AgAD_QIAAr6wBFM": {
-      "VALUE": 1
-    },
-    "AgADnwIAAl3UDFM": {
-      "VALUE": 2,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAI1Imm630-sqAjkypgdiihv-f5i4Fb8AAKfAgACXdQMU2y4Z-ts_Q8WOgQ"
-    },
-    "AgADQwgAAkPxLVI": {
-      "VALUE": 4,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIxjWm5Zc4NyZUe-PV9PuJQmn503PJWAAJDCAACQ_EtUpWjDEWPVVvuOgQ"
-    },
-    "AgADnAcAAkVUnFM": {
-      "VALUE": 1,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAI4Umm8M34QPC-bbd10kQ3r6rxJLP4dAAKcBwACRVScU3NkOB8ZRkRtOgQ"
-    },
-    "AgADpQYAArJg5VI": {
-      "VALUE": 3,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIUSGmyzpw3j6AWmm3OLd15-rFbl2WYAAKlBgACsmDlUiz40Yrf4ujVOgQ"
-    },
-    "AgADUggAAhTNLVI": {
-      "VALUE": 4,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAIxk2m5ZiyvTX8g2CWZI7Xuw6BeTRBhAAJSCAACFM0tUuwhw0IvN-XzOgQ"
-    },
-    "AgADaAMAAtjXhFA": {
-      "VALUE": 3,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAJDUWm_1qHfthVMF7HqIWlt0HEpu6yWAAJoAwAC2NeEUJjJF6rWpl3oOgQ"
-    },
-    "AgAD_WkAAqS9IEg": {
-      "VALUE": 1,
-      "GIF": "CAACAgIAAyEFAATmi0vRAAIvrmm3_lHcYcklRkcQtVnpMmCmeTllAAL9aQACpL0gSCjpxve-v0StOgQ"
-    },
-    "AgADiQoAAjDZEUk": {
-      "VALUE": 1,
-      "GIF": "CAACAgIAAyEFAATCPNLXAAECl3xpsq82u8OvEecvJmJuBV2v_olm-QACiQoAAjDZEUnXlSm9BUvNbzoE"
-    },
-    "AgADwQoAAnC2CUk": {
-      "VALUE": 1,
-      "GIF": "CAACAgIAAyEFAATCPNLXAAECmLBpsr0crKDcHaWtvFvJ2ruYl9YESQACwQoAAnC2CUkewImgAv8_bzoE"
-    },
-    "AgAD0QcAAjoTEEk": {
-      "VALUE": 1,
-      "GIF": "CAACAgIAAyEFAATCPNLXAAECl5RpsrC2Sw6swpsTjP5pCUBwFhAMUQAC0QcAAjoTEEnLdGDcC0VEfzoE"
-    },
-    "AgADcZ0AAjFYQUk": {
-      "VALUE": 1,
-      "GIF": "CAACAgIAAxUAAWmz-bQov1Vd186iI4sQK5InRJdTAAJxnQACMVhBSUtMlJ5AnUY0OgQ"
-    },
-    "AgADUAQAAkpFBVA": {
-      "VALUE": 1,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAITSmmymNg7XOJW4HbAc0KhgRvsQiVdAAJQBAACSkUFUL_DwHdMVuAhOgQ"
-    },
-    "AgADBAMAAkhwDFM": {
-      "VALUE": 2,
-      "GIF": "CgACAgQAAyEFAATmi0vRAAJPh2nC0N1v8B0qHlv9OQzgg6S9BSlJAAIEAwACSHAMU1LT1hrT2oiZOgQ"
-    }
-  },
-  "rich": {}
 }
 
 
@@ -617,11 +678,20 @@ async def vse(message: Message):
             "cry": True
         }
     if not message.date < BOT_START and message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cry"] and ((message.text and message.text in ("😭", "🥺")) or (message.sticker and message.sticker.file_unique_id in SAD_UIQ)):
-        return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
+        try:
+            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        except Exception as e:
+            pass
     if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        try:
+            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        except Exception as e:
+            pass
     if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["tdt"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        try:
+            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        except Exception as e:
+            pass
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
         if message.text:
             parts = message.text.split(maxsplit=1)
@@ -680,7 +750,10 @@ async def vse(message: Message):
         if message.from_user.id == TIM_ID:
             for key in chest["kazn"]:
                 if chest["kazn"][key]["NOW"]:
-                    await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+                    try:
+                        await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+                    except Exception as e:
+                        pass
                     if chest["kazn"][key]["TYPE"] == "use":
                         chest["kazn"][key]["NOW"] -= 1
             if chest["kazn"]["lv"]["NOW"]:
