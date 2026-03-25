@@ -236,22 +236,7 @@ chest = {
             "GIF": "CgACAgIAAyEFAATmi0vRAAJToGnEGGNKEdxOeIOCKEG65sGyk4O_AAJtmgACYOEgSoT8KmQSbx9bOgQ"
         }
     },
-    "rich": {
-        "-1003258766039": {
-            "cmh": false,
-            "tdt": false,
-            "cry": true
-        },
-        "-1003867888593": {
-            "cmh": false,
-            "tdt": false,
-            "cry": true
-        },
-        "5513644023": {
-            "cmh": false,
-            "tdt": false,
-            "cry": true
-        }
+    "rich": {}
     }
 }
 
