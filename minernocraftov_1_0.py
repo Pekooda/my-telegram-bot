@@ -755,10 +755,11 @@ async def handle(request):
     return web.Response(text="OK", status=200)
 
 async def on_startup(app):
+    logging.debug("=== STARTED ===")
     app["task1"] = asyncio.create_task(alarms())
     app["task2"] = asyncio.create_task(pingser())
 async def on_cleanup(app):
-    for name in ["task1", "task4"]:
+    for name in ["task1", "task2"]:
         task = app.get(name)
         if task:
             task.cancel()
