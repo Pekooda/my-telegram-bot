@@ -719,17 +719,13 @@ async def vse(message: Message):
 
 async def alarms():
     await bot.send_message(PEKO_ID, "Evil evening!")
-async def pivtime():
     while True:
-        await asyncio.sleep(60)
-        global chest
-        for key in chest["kazn"]:
-            if chest["kazn"][key]["TYPE"] == "time":
-                chest["kazn"][key]["NOW"] = max(0, chest["kazn"][key]["NOW"] - 1)
-async def timchill():
-    while True:
-        await asyncio.sleep(2400)
-        global chest
+        for i in range(60):
+            await asyncio.sleep(60)
+            global chest
+            for key in chest["kazn"]:
+                if chest["kazn"][key]["TYPE"] == "time":
+                    chest["kazn"][key]["NOW"] = max(0, chest["kazn"][key]["NOW"] - 1)
         if chest["NUMB"] > 0:
             chest["NUMB"] -= 1
 async def pingser():
@@ -737,7 +733,11 @@ async def pingser():
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(URL, timeout=5) as resp:
-                    logging.debug(f"ping NICE: {resp.status}")
+                    if resp.status == 429:
+                        logging.debug("RATE LIMIT! sleeping longer...")
+                        await asyncio.sleep(300)
+                    else:
+                        logging.debug(f"ping NICE: {resp.status}")
         except Exception as e:
             logging.debug(f'ping RERORERO: {e}')
         await asyncio.sleep(300)
@@ -756,11 +756,9 @@ async def handle(request):
 
 async def on_startup(app):
     app["task1"] = asyncio.create_task(alarms())
-    app["task2"] = asyncio.create_task(pivtime())
-    app["task3"] = asyncio.create_task(timchill())
-    app["task4"] = asyncio.create_task(pingser())
+    app["task2"] = asyncio.create_task(pingser())
 async def on_cleanup(app):
-    for name in ["task1", "task2", "task3", "task4"]:
+    for name in ["task1", "task4"]:
         task = app.get(name)
         if task:
             task.cancel()
