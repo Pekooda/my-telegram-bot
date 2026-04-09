@@ -56,6 +56,8 @@ MC_OVERRAGE = json.loads(os.getenv("E_MC_OVERRAGE", '""'))
 outout = tuple(json.loads(os.getenv("E_outout")))
 MY_CHEST = os.getenv("E_MY_CHEST")
 
+URL = os.getenv("E_URL_KEY")
+
 
 
 ### ПЕРЕМЕННЫЕ
