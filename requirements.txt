@@ -1,6 +1,6 @@
 aiogram==3.21.0
 aiohttp
 requests==2.32.4
-dotenv
-PIL
-ffmpeg
+python-dotenv
+Pillow
+ffmpeg-python
