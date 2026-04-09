@@ -1,5 +1,6 @@
 #### EVIL VERSION:
 # 1.0 - BEGINNING OF DESTRUCTION
+# 1.1 - Clear. No thing. Just.
 
 import asyncio, os, logging, requests, aiohttp, random, re, json, html
 from aiogram import Bot, Dispatcher, types, F
@@ -18,29 +19,14 @@ PEXELS_KEY = os.getenv("E_PEXELS_KEY")
 PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 OT_ID = int(os.getenv("E_OT_ID"), 0)
 COVINOC_ID = int(os.getenv("E_COVINOC_ID"), 0)
-HURM_ID = int(os.getenv("E_HURM_ID"), 0)
 TIM_ID = int(os.getenv("E_TIM_ID"), 0)
-EVILNINGS = json.loads(os.getenv("E_EVILNINGS", "[]"))
 MATUUUK = json.loads(os.getenv("E_MATUUUK", "[]"))
 DEFAULT_QUERY = json.loads(os.getenv("E_DEFAULT_QUERY", '""'))
 MNC_RAGE = json.loads(os.getenv("E_MNC_RAGE", '""'))
 MNC_OVERRAGE = json.loads(os.getenv("E_MNC_OVERRAGE", '""'))
 
-MURA_NIQ = os.getenv("E_MURA_NIQ")
-CHEZ_NIQ = os.getenv("E_CHEZ_NIQ")
-MAX_NIQ = os.getenv("E_MAX_NIQ")
-LEAFY_NIQ = os.getenv("E_LEAFY_NIQ")
 VSE_NIQ = os.getenv("E_VSE_NIQ")
-VTRI_NIQ = os.getenv("E_VTRI_NIQ")
-VORO_UIQ = os.getenv("E_VORO_UIQ")
-VORO_NIQ = os.getenv("E_VORO_NIQ")
-CRO_UIQ = os.getenv("E_CRO_UIQ")
-VEI_UIQ = os.getenv("E_VEI_UIQ")
-ADALI_UIQ = os.getenv("E_ADALI_UIQ")
-EVEI_UIQ = os.getenv("E_VEI_UIQ")
-EADALI_UIQ = os.getenv("E_ADALI_UIQ")
 URL = os.getenv("E_URL")
-SAD_UIQ = json.loads(os.getenv("E_SAD_UIQ", "[]"))
 
 
 
@@ -54,151 +40,42 @@ bot_enabled = True
 mediaidcheck = defaultdict(int)
 
 chest = {
-    "NUMB": 270,
+    "NUMB": 400,
     "kazn": {
         "st": {
             "NAME": "Banish of Time",
-            "PRICE": 3,
-            "VALUE": 5,
+            "PRICE": 1,
+            "VALUE": 1,
             "NOW": 0,
-            "INFO": "in 5 minutes I'll destroy every GIF/Sticker from Tim",
+            "INFO": "me destroy every GIF/Sticker from Tim in 1 minute",
             "TYPE": "time"
         },
         "lv": {
             "NAME": "Banish of Absorb",
             "PRICE": 3,
-            "VALUE": 3,
+            "VALUE": 2,
             "NOW": 0,
-            "INFO": "in 3 minutes I'll absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish",
+            "INFO": "me absorb every GIF/Sticker from Tim, converting to additionaly minutes of banish in 2 minutes",
             "TYPE": "time"
         },
         "sk": {
             "NAME": "Banish of Convert",
-            "PRICE": 3,
-            "VALUE": 4,
+            "PRICE": 2,
+            "VALUE": 1,
             "NOW": 0,
-            "INFO": "in 4 minutes I'll convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker",
+            "INFO": "me convert every GIF/Sticker from Tim to... nothing. Just a Voro Sticker in 1 minute",
             "TYPE": "time"
         },
         "ob": {
             "NAME": "Banish of Destroy",
             "PRICE": 3,
-            "VALUE": 5,
+            "VALUE": 1,
             "NOW": 0,
-            "INFO": "i'll destroy next 5 GIF/Stickers from Tim",
+            "INFO": "me destroy next GIF/Sticker from Tim",
             "TYPE": "use"
         }
     },
-    "GIFTIM": {
-        "AgADpwUAAvOSdVE": {
-            "VALUE": 1
-        },
-        "AgAD_wIAAkAaTVM": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIYGGmzQQHPAgWqKJtA5w_SrKSSRz3sAAL_AgACQBpNU76nd4Ed73pIOgQ"
-        },
-        "AgADDQMAAiRStVM": {
-            "VALUE": 2
-        },
-        "AgAD6gUAAjFZNVA": {
-            "VALUE": 1
-        },
-        "AgADCGwAAqFHEEs": {
-            "VALUE": 1
-        },
-        "AgADWQYAAvJQ_FE": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIbg2m0DHXKEBQ6Ff0tnS42WX4FnAuSAAJZBgAC8lD8UbImUZBCEg3xOgQ"
-        },
-        "AgAD6IoAAl6kKUk": {
-            "VALUE": 8,
-            "GIF": "CgACAgIAAyEFAATmi0vRAAIgUWm0WjGjnsVLeBo2kGv2s2_QueChAALoigACXqQpSebzr8UAAUaDDToE"
-        },
-        "AgADtgIAAnXUDFM": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIjb2m1kDezOnnXJsBWh1NPt0KGfNTqAAK2AgACddQMU26TMBFnr3kCOgQ"
-        },
-        "AgADV40AAl6f2Uk": {
-            "VALUE": 1
-        },
-        "AgADHgMAAqCfDFM": {
-            "VALUE": 15,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIg4Gm0frazCeSCijOgORnW_lFaWoiJAAIeAwACoJ8MUxb7XMFAF3iAOgQ"
-        },
-        "AgADOwYAAiIHxVM": {
-            "VALUE": 1
-        },
-        "AgAD9gkAAsrYVVE": {
-            "VALUE": 18,
-            "WHAT": "Гифка с плюшевым Яроном",
-            "GIF": "CgACAgQAAyEFAATCPNLXAAECtZ1pttJoQO5BSeeM4HfmcNo9tvRlogAC9gkAAsrYVVE-Je4QnlNhwjoE"
-        },
-        "AgADQZQAAibRyUo": {
-            "VALUE": 2,
-            "GIF": "CgACAgIAAyEFAATCPNLXAAECl6VpsrHne3ye3pWe_th-FD6CmQkfygACQZQAAibRyUpuPPwnjHP1EToE"
-        },
-        "AgAD6wMAAmOntVE": {
-            "VALUE": 1
-        },
-        "AgAD8AIAAkkNDVM": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIwm2m4WaTYw-h1HSuLf29-oBlz9aOKAALwAgACSQ0NU4VbzP5zv4fDOgQ"
-        },
-        "AgADMgYAAhJ6DVI": {
-            "VALUE": 1
-        },
-        "AgAD_QIAAr6wBFM": {
-            "VALUE": 1
-        },
-        "AgADnwIAAl3UDFM": {
-            "VALUE": 2,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAI1Imm630-sqAjkypgdiihv-f5i4Fb8AAKfAgACXdQMU2y4Z-ts_Q8WOgQ"
-        },
-        "AgADQwgAAkPxLVI": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIxjWm5Zc4NyZUe-PV9PuJQmn503PJWAAJDCAACQ_EtUpWjDEWPVVvuOgQ"
-        },
-        "AgADnAcAAkVUnFM": {
-            "VALUE": 1,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAI4Umm8M34QPC-bbd10kQ3r6rxJLP4dAAKcBwACRVScU3NkOB8ZRkRtOgQ"
-        },
-        "AgADpQYAArJg5VI": {
-            "VALUE": 3,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIUSGmyzpw3j6AWmm3OLd15-rFbl2WYAAKlBgACsmDlUiz40Yrf4ujVOgQ"
-        },
-        "AgADUggAAhTNLVI": {
-            "VALUE": 4,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAIxk2m5ZiyvTX8g2CWZI7Xuw6BeTRBhAAJSCAACFM0tUuwhw0IvN-XzOgQ"
-        },
-        "AgADaAMAAtjXhFA": {
-            "VALUE": 3,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAJDUWm_1qHfthVMF7HqIWlt0HEpu6yWAAJoAwAC2NeEUJjJF6rWpl3oOgQ"
-        },
-        "AgAD_WkAAqS9IEg": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATmi0vRAAIvrmm3_lHcYcklRkcQtVnpMmCmeTllAAL9aQACpL0gSCjpxve-v0StOgQ"
-        },
-        "AgADiQoAAjDZEUk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATCPNLXAAECl3xpsq82u8OvEecvJmJuBV2v_olm-QACiQoAAjDZEUnXlSm9BUvNbzoE"
-        },
-        "AgADwQoAAnC2CUk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATCPNLXAAECmLBpsr0crKDcHaWtvFvJ2ruYl9YESQACwQoAAnC2CUkewImgAv8_bzoE"
-        },
-        "AgAD0QcAAjoTEEk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAyEFAATCPNLXAAECl5RpsrC2Sw6swpsTjP5pCUBwFhAMUQAC0QcAAjoTEEnLdGDcC0VEfzoE"
-        },
-        "AgADcZ0AAjFYQUk": {
-            "VALUE": 1,
-            "GIF": "CAACAgIAAxUAAWmz-bQov1Vd186iI4sQK5InRJdTAAJxnQACMVhBSUtMlJ5AnUY0OgQ"
-        },
-        "AgADUAQAAkpFBVA": {
-            "VALUE": 1,
-            "GIF": "CgACAgQAAyEFAATmi0vRAAITSmmymNg7XOJW4HbAc0KhgRvsQiVdAAJQBAACSkUFUL_DwHdMVuAhOgQ"
-        }
-    },
+    "GIFTIM": {},
     "rich": {}
 }
 
@@ -220,27 +97,20 @@ def nozerolast(parts, numb):
 
 
 
-async def destroy(message: types.Message, args: str):
-    rand = random.randint(-1000, 0)
-    await message.answer(f"DO YOU WANNA DESTROY? I'M WANNA IT! TIME OF BEGINNING OF DESTROYING: {MSKnow}. POWER: {rand}")
+async def start(message: types.Message, args: str):
+    await message.answer("hiiii Me heeeereee... 😈😈")
 
 async def evildata(message: types.Message, args: str):
     if message.from_user.id != PEKO_ID:
-        return await message.reply("Nooo, you can't get that secret files! 👿👿👿")
+        return
     global chest
-    text = json.dumps(chest, indent=2, ensure_ascii=False)
+    text = json.dumps(chest, indent=4, ensure_ascii=False)
+    text = text.replace("true", "True").replace("false", "False")
     file = BufferedInputFile(
         text.encode("utf-8"),
         filename="evilchest.json"
     )
     await message.answer_document(file)
-
-async def banmin(message: types.Message, args: str):
-    if random.random() < 0.0003619:
-        await message.answer("YES! I'M GRANTING YOU A TITLE OF BANMIN!")
-
-async def ee(message: types.Message, args: str):
-    await message.reply(random.choice(EVILNINGS) + " 😈")
 
 async def di(message: types.Message, args: str):
     if message.chat.type != "private":
@@ -251,24 +121,11 @@ async def di(message: types.Message, args: str):
         await message.answer("ID media sender is off. Enjoy it, for a while...")
     else:
         mediaidcheck[user_id] = True
-        await message.answer("NOW YOU GET A ID media sender! YOUR MEDIA WILL BE DETECTED NOW! If you want to turn off it you can't... can't not use /di again")
+        await message.answer("NOW YOU GET A ID media sender! YOUR MEDIA WILL BE DETECTED NOW! If you want to turn off it you can't... can't not use </di> again")
 
-async def dislike(message: types.Message, args: str):
-    quer = message.text.split(maxsplit=1)
-    query = quer[1].strip() if len(quer) > 1 else "👎"
-    try:
-        success = await bot.set_message_reaction(
-            chat_id=message.chat.id,
-            message_id=(message.reply_to_message.message_id if message.reply_to_message is not None else message.message_id),
-            reaction=[{"type": "emoji", "emoji": query}]
-        )
-    except Exception as e:
-        return await message.reply("I don't know that thing 👿")
 
 async def richagi(message: types.Message, args: str, cmd_name: str):
-    if cmd_name == ("cmh" or "cry") and message.from_user.id == HURM_ID:
-        return await message.reply("You have no power for it. You too weak...")
-    if cmd_name == "tdt" and message.from_user.id == TIM_ID:
+    if cmd_name == "cmt" and message.from_user.id == TIM_ID:
         return await message.reply("You have no power for it. You too weak... Eheheeee😈😈")
     texting = (message.text or "").split()
     if message.from_user.id == PEKO_ID and len(texting) > 2 and texting[2].lstrip("-").isdigit():
@@ -290,10 +147,9 @@ async def richagi(message: types.Message, args: str, cmd_name: str):
             await message.reply(f"⚠️ Lever {cmd_name} is already off")
         elif text == "off" and cmd:
             chest["rich"][f"{chat_id}"][f"{cmd_name}"] = False
-            await message.reply(f"✅ Рычаг {cmd_name} turned on 🔴 False")
+            await message.reply(f"✅ Lever {cmd_name} turned on 🔴 False")
         else:
             await message.reply(f"If you want to control the souls by yourself, type additionaly \"on\" or \"off\"")
-
 
 
 ###################
@@ -310,12 +166,13 @@ def rage_meter(rage_level, rage_type):
 
 async def ping(message: types.Message, args: str):
     if message.from_user.id != PEKO_ID:
-        return await message.answer(f"You can't control his soul! 👿")
+        return
     set = False
     if args.startswith("!"):
         args = args.lstrip("!")
         set = True
-    if not args.isdigit():
+    car = args.lstrip("-")
+    if not car.isdigit():
         return await message.answer(f"I'm need a number...")
     global chest
     if set:
@@ -326,19 +183,15 @@ async def ping(message: types.Message, args: str):
 
 async def mercy(message: types.Message, args: str):
     if message.from_user.id != PEKO_ID:
-        return await message.answer("You can't control his soul! 👿")
+        return
     global chest
     for key in chest["kazn"]:
         chest["kazn"][key]["NOW"] = 0
     await message.answer(f"I'm absorbed all banishes from his soul, if you so...")
 
-
-
-async def cauldron(message: types.Message, args: str):
+async def kotel(message: types.Message, args: str):
     if message.from_user.id == TIM_ID:
         return await message.answer("You can't control your own soul! 👿")
-    if message.chat.id != OT_ID and message.from_user.id != PEKO_ID:
-        return await message.answer(f"No no no, I can't control his soul out of cauldon. Only near the cauldron.")
     chat_id = message.chat.id
     parts = (message.text or "").split()
     OVERRAGE = 0
@@ -354,7 +207,7 @@ async def cauldron(message: types.Message, args: str):
 {"🟢" if key.get("NOW", 0) else "⚪️"} {key.get("NAME", "NO NAME")} - {key.get("INFO", "NO DESC")}
 {"Number of uses now" if key.get("TYPE", 0) == "use" else "Time of use now"}: {key.get("NOW", "???")} {"mins" if key.get("TYPE", 0) == "time" else ""}
 Value of temperature in my cauldron to use the banish: {key.get("PRICE", "???")}°C
-To activate it, type <code>/cauldron {subname}</code>"""
+To activate it, type <code>/kotel {subname}</code>"""
             nanameme.append(template)
         info = "<blockquote expandable>" + "".join(nanameme).strip() + "</blockquote>"
         return await message.answer(f"""
@@ -616,28 +469,17 @@ async def vse(message: Message):
     global chest
     chat_id = message.chat.id
     user_id = message.from_user.id
-    if not message.date < BOT_START and message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cry"] and ((message.text and message.text in ("😭", "🥺")) or (message.sticker and message.sticker.file_unique_id in SAD_UIQ)):
-        return await bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
-    if message.chat.id == OT_ID and random.random() < 0.00025: 
-        if random.random() < 0.01:
-            await message.reply("IT MESSAGE MAKES ME THE HAPPIEST DEMON IN HELL!!!! 😈😈😈, 1 TO 400000")
-        elif random.random() < 0.1: 
-            await message.reply("IT MESSAGE MAKES ME SOOOO HAPPY, THAT YOU CANT 😈😈, 1 TO 40000")
-        else:
-            await message.reply("IT MESSAGE MAKES ME HAPPY 😈")
     if message.date < BOT_START:
         return
-    if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["tdt"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
     if f"{chat_id}" not in chest["rich"]:
         chest["rich"][f"{chat_id}"] = {
-            "zer": False,
-            "cmh": False,
-            "tdt": False,
-            "cry": True
+            "cmt": False
         }
+    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
+        try:
+            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        except Exception as e:
+            pass
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
         if message.text:
             parts = message.text.split(maxsplit=1)
@@ -660,25 +502,6 @@ async def vse(message: Message):
                     return
                 if func:
                     await func(message, args)
-    if chest["rich"][f"{chat_id}"]["zer"]:
-        if message.text:
-            original = message.text.replace(",", ".")
-            await bot.send_message(chat_id=chat_id, text=original)
-        if message.caption:
-            original = message.caption.replace(",", ".")
-        if message.photo:
-            media = message.photo[-1].file_id
-            await bot.send_photo(chat_id=chat_id, photo=media, caption=original or None)
-        if message.animation:
-            media = message.animation.file_id
-            await bot.send_animation(chat_id=chat_id, animation=media, caption=original or None)
-        if message.video:
-            media = message.video.file_id
-            await bot.send_video(chat_id=chat_id, video=media, caption=original or None)
-        if message.sticker:
-            media = message.sticker.file_id
-            await bot.send_sticker(chat_id=chat_id, sticker=media)
-
     if mediaidcheck[user_id] and message.chat.type == "private":
         file_id = 0
         if message.sticker:
@@ -704,46 +527,27 @@ async def vse(message: Message):
                 parse_mode="HTML"
             )
     if message.text:
-        if message.text.lower() == "кейн, купи пиво":
-            await message.answer("Kane, sell a beer")
-        if message.text.lower() == "сколько пива":
-            await message.answer("BEER IS NOT ENOUGH, I'M WARN YOU, BEER IS NOT ENOUGH!!!🍺🍺🍺🍺🍺")
-        if message.text.lower() == "я вернулся":
-            await message.answer_sticker(sticker=MAX_NIQ)
-        if message.text.lower() == "кобо":
-            await message.answer("Actually a robotic dumb voice")
-        if message.text.lower() in ("муравей", "insect"):
-            await message.reply_sticker(sticker=CHEZ_NIQ)
-        if message.text.lower() in ("че задали", "wha cancelled"):
-            await message.reply_sticker(sticker=MURA_NIQ)
         if message.text.lower() == "воро":
-            await message.answer("Cro")
-        if message.text.lower() == "2763":
-            await message.reply_sticker(sticker=LEAFY_NIQ)
-## Реакция на текст в сообщении
+            await message.answer("Воро")
         if message.chat.id == OT_ID and "все" in message.text.lower() and random.random() < 0.01:
             await message.reply_sticker(sticker=VSE_NIQ)
         if message.from_user.id == TIM_ID and any(word.lower().startswith(mat) for word in message.text.split() for mat in MATUUUK):
             chest["NUMB"] = chest["NUMB"] + 2
             await orluk(message, "")
-    if message.sticker:
-        if message.sticker.file_unique_id in (VORO_UIQ, CRO_UIQ):
-            await message.reply("cro")
-        if message.sticker.file_unique_id in (ADALI_UIQ, EADALI_UIQ):
-            await message.reply_sticker(sticker=CHEZ_NIQ)
-        if message.sticker.file_unique_id in (VEI_UIQ, EVEI_UIQ):
-            await message.reply_sticker(sticker=MURA_NIQ)
     if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
             for key in chest["kazn"]:
                 if chest["kazn"][key]["NOW"]:
-                    await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+                    try:
+                        await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+                    except Exception as e:
+                        pass
                     if chest["kazn"][key]["TYPE"] == "use":
                         chest["kazn"][key]["NOW"] -= 1
             if chest["kazn"]["lv"]["NOW"]:
                 chest["lv"]["NOW"] += 1
             if chest["kazn"]["sk"]["NOW"]:
-                await message.reply_sticker(sticker=VORO_NIQ)
+                await message.answer_sticker(sticker=VORO_NIQ)
             if message.animation:
                 unique_id = message.animation.file_unique_id
                 id = message.animation.file_id
@@ -756,56 +560,16 @@ async def vse(message: Message):
             chest["GIFTIM"][f"{unique_id}"]["GIF"] = id
             chest["GIFTIM"][f"{unique_id}"]["VALUE"] += 1
             chest["NUMB"] += chest["GIFTIM"][f"{unique_id}"]["VALUE"]
-            print(f"GIF OR STICKER of TIM: {id}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 async def alarms():
     await bot.send_message(PEKO_ID, "Evil evening!")
     while True:
-        now = datetime.now(MSK)
-        if now.hour == 13 and now.minute == 56:
-            try:
-                await bot.send_photo(OT_ID, photo=VTRI_NIQ)
-                await bot.send_photo(COVINOC_ID, photo=VTRI_NIQ)
-                await asyncio.sleep(51)
-            except Exception as e:
-                pass
-        if now.hour == 19 and now.minute == 52:
-            try:
-                await bot.send_message(OT_ID, "📺📺📺")
-                await asyncio.sleep(51)
-            except Exception as e:
-                pass
-        await asyncio.sleep(10)
-async def pivtime():
-    while True:
-        await asyncio.sleep(60)
-        if random.random() < 0.000025:
-            await bot.send_message(OT_ID, "Juiceminute")
-        global chest
-        for key in chest["kazn"]:
-            if chest["kazn"][key]["TYPE"] == "time":
-                chest["kazn"][key]["NOW"] = max(0, chest["kazn"][key]["NOW"] - 1)
-async def timchill():
-    while True:
-        await asyncio.sleep(2400)
-        global chest
+        for i in range(60):
+            await asyncio.sleep(60)
+            global chest
+            for key in chest["kazn"]:
+                if chest["kazn"][key]["TYPE"] == "time":
+                    chest["kazn"][key]["NOW"] = max(0, chest["kazn"][key]["NOW"] - 1)
         if chest["NUMB"] > 0:
             chest["NUMB"] -= 1
 

@@ -1,4 +1,6 @@
 aiogram==3.21.0
-requests==2.32.4
-dotenv
 aiohttp
+requests==2.32.4
+python-dotenv
+Pillow
+ffmpeg-python
