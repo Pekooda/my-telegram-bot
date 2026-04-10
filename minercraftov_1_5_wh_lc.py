@@ -96,8 +96,8 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 BAD_UIQ = ["AgADoAcAApXm4UY", "AgADQxQAAuzDuUg", "AgADXRYAAg7iQUg", "AgADKxgAAogoSUg", "AgAD6REAAvONSEg", "AgADxhcAAimBQUg", "AgADbBYAAnyieEs", "AgADcRcAAvixeUs", "AgADYBMAAphCeUs", "AgADnxMAArCJeUs", "AgADHhMAAgxeeUs", "AgADLhYAAlmNeEs", "AgADkhYAAnIfeUs", "AgADJwAD-5IlBg", "AgAD6DwAApI1wEg", "AgAD0DsAAvFJwEg", "AgADB0EAAmdQwEg", "AgADBkQAAgdiwEg", "AgADhDwAAjKPyEg", "AgADRjoAAsrnwEg", "AgADhD0AAqWtwEg", "AgADVToAAiF8wUg", "AgADkTgAAmqcwEg", "AgADRzkAAoQ1wUg", "AgADHT4AAg-ewEg", "AgADXj0AAmtJwUg", "AgADdEEAAr52wUg", "AgADfkkAAiJgwEo", "AgAD20QAAnjkwEo", "AgADwTcAAjE7IEk", "AgADkxQAAkFlsEs", "AgADBhYAAkZLqEs", "AgADFBYAAlmFwEo", "AgAD-SMAAr0g2Eg", "AgAD5x4AAkA22Eg", "AgADiB4AAmdISEg", "AgAD0iMAAsNkSEg", "AgADhR0AAs5DSEg", "AgAD2yIAAneRSUg", "AgAD3R4AAstPSUg", "AgADYCUAAtVgwUs", "AgADCRcAAqmfyUs", "AgADSB0AAoUvwEs", "AgADcBsAAu_wwEs", "AgADKx4AAoFjWEs", "AgADohwAA1NYSw", "AgADohkAAqEsUUs", "AgAD0h8AAvesOEs", "AgADrRsAAi_n-Eo", "AgADgBkAAiZaeEo", "AgADLB0AAnOkwEk", "AgADQxoAAj5UyUk", "AgADZRYAArUvAAFK", "AgADsV0AAstqyUs", "AgADFlwAAqp5-Eg", "AgADimkAAoSdIEg", "AgADMWEAApisSUo", "AgAD9mwAAvUYYEo", "AgADOmQAAnp98Eg", "AgADmGwAAhy6IUk", "AgADE1oAAql8OUs", "AgAD_G8AAtNrmUo", "AgADfwEAAokqwFU", "AgADH00AAlXhwUk", "AgADT1QAAtMgyUk", "AgADpmUAAgUf6Us", "AgAD9WAAAneYwUs", "AgADRlwAAhhAyUs", "AgADngADvo8yGA", "AgADhgADvo8yGA", "AgADywADvo8yGA", "AgADfwADvo8yGA", "AgADhAADvo8yGA", "AgADsgADvo8yGA", "AgADrXkAAlO3kUg", "AgADvSgAAlE9wUo", "AgADVisAArYSwEo", "AgADOCoAAqSOwEo", "AgADPyIAAtxtyEo", "AgADwSEAAoo5yUo", "AgADbSQAAqYiwUo", "AgADkCwAAj34wUo", "AgADA1sAAs__0Es", "AgADFB4AApl6mEs", "AgAD6SAAAnX7oUs", "AgADEh4AAtYkoUs", "AgADEiIAArb5oEs", "AgADSiEAAnzeoUs", "AgADJSIAAm91mEs", "AgADuR4AAhhCmEs", "AgADpBsAAqm8oEs", "AgADHCAAAq8NmEs", "AgAD9x8AAuwRmEs", "AgADFiIAAvfsmEs", "AgAD9yAAAkDpmUs", "AgAD2CIAAor5oUs", "AgADcR8AApb6mUs", "AgADdiEAAuRfoEs", "AgADaCMAAhQLmUs", "AgADpR4AAqujmUs", "AgADqyEAAjdymEs", "AgADeR8AApACmEs", "AgADJh4AAgvnmEs", "AgADvyIAAtglmEs", "AgADwSAAAr-qoUs", "AgADCSIAAvKpmUs", "AgADUiEAAmyZoEs", "AgADsCoAAiyImUs", "AgADmCIAAq83mEs", "AgADRiUAAoHAmEs", "AgADTRsAAnFfmEs", "AgADlCAAAoQrmUs", "AgADAR8AAnOhoUs", "AgADqx8AAgrjmEs", "AgADkyAAAtgDmUs", "AgADuiEAAqFMmEs", "AgADvxwAAsdqoEs", "AgADzCAAAkO_oUs", "AgADuyUAAjn0oEs", "AgADJSIAAho_mUs", "AgADUh8AAniwoEs", "AgADESAAAmkHmEs", "AgADGi0AAoi5oUs", "AgADJCIAAiQvoUs", "AgADWCIAAqzRoEs", "AgAD-BoAArbdmEs", "AgADcCAAAqbBmUs", "AgADbB4AAqEvoEs", "AgADdCIAAmEMoUs", "AgADjiIAAgP6oUs", "AgADESIAAu-FoUs", "AgADxR8AAkobmUs", "AgADLB8AAuR3oEs", "AgADvh8AAhKooEs", "AgADCR4AAgejqUs", "AgADgh8AAjjTmUs", "AgADSx4AArP-oEs", "AgADBD8AAtO9GEg", "AgAD-i0AAmtqwUo", "AgADvBgAAl6ISUk", "AgADdmwAAkyASUo", "AgADpWIAAhMEyEs", "AgADmTQAAiBHwEk", "AgAD0iwAAgQu2Uk", "AgADDysAAnbrAUg", "AgAD0WcAAtAtSEo", "AgADomUAAn2pGUs", "AgADq3QAAtu9GUs", "AgADw3AAAsr0OEs", "AgADpXEAAvsimUs", "AgADMmkAAgWZOUo", "AgADuWIAAggEOUo", "AgADdmwAAkyASUo", "AgADgzoAAtOJAUg", "AgADSzkAAv3tAUg", "AgAD0igAApFL4Eg", "AgADCSkAAs_O4Ug", "AgAD9SkAAghD4Ug", "AgADciUAApi44Eg", "AgADRD0AArTgaUo", "AgADMUAAAxloSg", "AgADcUIAAgtnyUs", "AgADL3QAApQ7qUs", "AgADcnkAAtsSsUs", "AgAD8BoAApVeoUk", "AgAD3hsAAqLkmEk", "AgAD1nUAAuA3eEk", "AgADRUkAAoCZ6Uk", "AgADJUYAAjIF6Ek", "AgADvkEAAibb8Uk", "AgADtkIAApAQMUo", "AgADVUEAAuZfMUo", "AgADzUEAAntHMUo", "AgADBwUAAggtGUQ", "AgADqgYAAtN0OEc", "AgADpj0AAi--QUo", "AgADmBIAAmc1iEk", "AgADV1QAAi7fGEg", "AgAD0B4AApLNeEk", "AgADMRoAAusAAYFJ", "AgAD1RwAAhsceUk", "AgADghkAAgineUk", "AgAD9CkAAlO2iEs", "AgADmBsAAo5YiUs", "AgADOBsAAmcJ2Uo", "AgADZhcAAjRh4Uo", "AgADBgQAAkLtJRY", "AgADoIEAAtaUiUg", "AgADzk4AAt3N2Uk", "AgADK1MAAu_52Uk", "AgADsHIAAvipkUg", "AgADJFkAAtDhAUk", "AgADnk0AAhpsCEk", "AgADTFAAArzPeEk", "AgAD31EAAqiASUk", "AgADNlAAAk3iKUo", "AgADYBcAAjGXyEo", "AgADCBsAAjS6yUo", "AgADqRwAAtNY0Uo", "AgADYyIAAupZyUo", "AgAD8xYAAidlyEo", "AgADrhcAAihoyUo", "AgADvxgAAm7SyUo", "AgADXR8AAmzCyUo", "AgADPhwAAvxpyUo", "AgADdRgAArvO0Eo", "AgADNxkAAn2hyEo", "AgADpBsAAuygyUo", "AgADCBQAAqvL8Us", "AgAD6REAAg6M8Us", "AgADchMAAgYc8Us", "AgADPxgAAo95-Us", "AgADEBcAAos2SUg", "AgADvREAAncBsVA", "AgADFBAAAq5tsVA", "AgADNxgAAvP0sVA", "AgADCg4AAkmzsVA", "AgADEBIAAvRJsFA", "AgAD6g8AApdmsVA", "AgADLQ8AAiYYsFA", "AgADWQ0AAto2sFA", "AgADQiMAAlwLkUk", "AgADzx8AApTxkUk", "AgADshYAAr04kUk", "AgAD-xkAAj8qkEk", "AgAD3D8AApuPwEg", "AgAD0D0AAiDiwEg", "AgAD5DQAAtFQwUg", "AgADrjYAAjDHyEg", "AgADID4AAkxFwUg", "AgADezkAAuOpwUg", "AgADkzcAAqGhwUg", "AgADsDcAApYxwEg", "AgAD5T0AArBZwUg"]
 
 URL = os.getenv("E_URL_KEY")
-ffmpeg = "./ffmpeg"
-ffprobe = "./ffprobe"
+ffmpeg = "ffmpeg"
+ffprobe = "ffprobe"
 
 ### ПЕРЕМЕННЫЕ
 bot = Bot(token=TOKEN_KEY)
@@ -678,7 +678,7 @@ def noaipls(hits):
             klu.append(keyk)
         if any(bt in str(klu).lower() for bt in bad_tokens):
             continue
-        print(str(klu).lower())
+#        print(str(klu).lower())
         filtered.append(h)
     return filtered
 
@@ -777,8 +777,8 @@ async def rp(message: types.Message, quer: str):
     pool = filtered or hits
     choice = random.choice(pool)
     img_url = choice.get("webformatURL") or choice["src"]["large"]
-    print(len(hits))
-    print(len(filtered))
+#    print(len(hits))
+#    print(len(filtered))
     if RP:
         await message.answer_photo(img_url)
     else:
@@ -813,8 +813,8 @@ async def rv(message: types.Message, quer: str):
     pool = filtered or hits
     choice = random.choice(pool)
     video_data = choice.get("videos", {})
-    print(len(hits))
-    print(len(filtered))
+#    print(len(hits))
+#    print(len(filtered))
     url = video_data.get("tiny", {}).get("url", "") or choice["video_files"][0]["link"]
     if url:
         video_url = url.replace("http://", "https://")
