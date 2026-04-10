@@ -59,8 +59,8 @@ outout = tuple(json.loads(os.getenv("E_outout")))
 MY_CHEST = os.getenv("E_MY_CHEST")
 
 URL = os.getenv("E_URL_KEY")
-ffmpeg = "./ffmpeg"
-ffprobe = "./ffprobe"
+ffmpeg = "ffmpeg"
+ffprobe = "ffprobe"
 
 ### ПЕРЕМЕННЫЕ
 bot = Bot(token=TOKEN_KEY)
