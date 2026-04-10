@@ -36,8 +36,6 @@ OTOLD_ID = int(os.getenv("E_OTOLD_ID"), 0)
 COVINOC_ID = int(os.getenv("E_COVINOC_ID"), 0)
 HURM_ID = int(os.getenv("E_HURM_ID"), 0)
 TIM_ID = int(os.getenv("E_TIM_ID"), 0)
-RANDSTICK = json.loads(os.getenv("E_RANDSTICK", "{}"))
-GREETINGS = json.loads(os.getenv("E_GREETINGS", "[]"))
 MURA_NIQ = os.getenv("E_MURA_NIQ")
 CHEZ_NIQ = os.getenv("E_CHEZ_NIQ")
 MAX_NIQ = os.getenv("E_MAX_NIQ")
@@ -49,14 +47,53 @@ CRO_UIQ = os.getenv("E_CRO_UIQ")
 VEI_UIQ = os.getenv("E_VEI_UIQ")
 ADALI_UIQ = os.getenv("E_ADALI_UIQ")
 SAD_UIQ = json.loads(os.getenv("E_SAD_UIQ", "[]"))
-BAD_UIQ = json.loads(os.getenv("E_BAD_UIQ", "[]"))
 MC_NAME = json.loads(os.getenv("E_MC_NAME", "[]"))
 MATUUUK = json.loads(os.getenv("E_MATUUUK", "[]"))
 DEFAULT_QUERY = json.loads(os.getenv("E_DEFAULT_QUERY", '""'))
-MC_RAGE = json.loads(os.getenv("E_MC_RAGE", '""'))
-MC_OVERRAGE = json.loads(os.getenv("E_MC_OVERRAGE", '""'))
 outout = tuple(json.loads(os.getenv("E_outout")))
-MY_CHEST = os.getenv("E_MY_CHEST")
+
+MC_RAGE = '{
+    "-9999//29": "😄 Я сейчас очень мирная! =D",
+    "30//59": "😊 В целом, я спокойная =)",
+    "60//89": "🙂 Ну... Я ещё терплю. Но... кто зна",
+    "90//119": "😕 Лучше лишний раз меня не злить...",
+    "120//209": "😠 Вы начинаете меня бесить )=<",
+    "210//9999": "😡 Я сейчас очень злая!! D=<"
+}'
+MC_OVERRAGE = '{
+    "-9999//0": "",
+    "1//20": "\nХочется что-то уничтожить...",
+    "21//60": "\nЯ всё разрушу! Не ждите от меня пощады!",
+    "61//9999": "\nЯ ОЧЕНЬ ЗЛАЯ И УНИЧТОЖУ ВСЁ, ЧТО НА ПУТИ!"
+}'
+RANDSTICK = '{
+    "monitor": ["Monitornosti", "monitoringmiku", "monitoringdeco"],
+    "v": ["VGoddessDronDronV_by_fStikBot", "vsoocute_by_SozdaiStickeriBot", "v_md_by_fStikBot", "v_murderdrones_by_fStikBot", "V_Murder_Drones_by_fStikBot", "vmurderdrones", "v_murder_drones"],
+    "fox": ["foxanulis_by_TgEmodziBot", "Foxeshere_by_fStikBot", "foxfox", "foxfoxfox", "foxfoxfoxfoxfox", "foxes_by_fStikBot", "fox_core_by_fStikBot", "Ilovefoxes", "i_love_foxes", "i_love_fox", "ilovefoxes_by_fStikBot", "ilovefox_by_TgEmodziBot"],
+    "voro": ["ArmiyaVorony", "Voronuuuuuuuu_by_fStikBot", "crowcrow_by_fStikBot"],
+    "pivo": ["ukrainianbeer_by_fStikBot", "XenophobicTanSilkworm_by_fStikBot", "pivopivopivopivo228", "o3ZtvWu_by_sticker2004Bot", "MedovoePivO_by_fStikBot", "Ipman2", "PivoUltimate"],
+    "leafy": ["LEAFYBFBstatic", "leafy_bfb_bfdi2_by_fStikBot", "LEAFY_CUTE_XD", "t6211125a_fd71_4b84_92d2_6c2688a84053_by_emopix_stickerz_bot", "Peko_Lifi_Lifi", "Peko_Lifi", "leafy_bfb_bfdi_by_fStikBot", "leafybfb", "leafybfb_by_fStikBot", "leafy_bfb"],
+    "firey": ["Spotless_Beige_Guan_by_fStikBot", "FireyBlueberrySticker_by_fStikBot", "fireybfdi", "FIREYBFDI_by_fStikBot", "firey_bfb_by_fStikBot"],
+    "two": ["TwoBfdi_Tpot", "twotpot"],
+    "barmen": ["Barmen_40"],
+    "cyberfoxy": ["CyberFoxy_by_TgEmodziBot"],
+    "dandy": ["bc517e3b_a078_4f59_92ba_8e0a9df026a1_by_sticat_bot", "BobettCore", "veestickersdandysworld_by_fStikBot", "bobettedandyworld", "bobettedandyworld_by_fStikBot", "gourdy", "GourdyDandyWorld", "gourdy_by_fStikBot"],
+    "pvz": ["pvz_2_m", "winter_melon"],
+    "teto": ["Tetocore", "tetotetotetoteto", "teto_core", "iloveteto", "tetotetoteto_by_fStikBot", "tetotetotetoteto_by_fStikBot", "tetotetotetotetoteto_by_fStikBot", "iloveteto_by_fStikBot", "teto_by_TgEmodziBot", "TetoTetoTeto_by_TgEmodziBot", "tetotetotetotetotetoteto_by_TgEmodziBot"],
+    "scampton": ["Sjkabwisnhwkwbdspamton", "SpriteV2UndertaleDeltaruneStickers_by_fStikBot", "Skamti_by_fStikBot", "scamptonthegreat", "scampton_by_fStikBot", "scampton_by_TgEmodziBot", "scampton_the_great"],
+    "45": ["Sigma1454", "OtvechatelskijRazum"],
+    "bear": ["GlamrockFreddy_Dad_by_fStikBot", "GlamrockFreddyEarth928B"],
+    "bobr": ["beaver1952_by_TgEmodziBot", "Naideno_v_Yandeks_Kartinkakh_po_zaprosu_bobyor_iz_kr_by_fStikBot", "BobrBobr_by_TgEmodziBot"],
+    "jimo": ["AdeptusMechahanicus"],
+    "pon": ["AIEIVYASNT_by_stikeri_stikeri_bot", "monkeypon", "monkepon", "monkeypon_by_fStikBot", "monkey_pon_by_fStikBot", "monkepon_by_fStikBot", "monkepon_by_TgEmodziBot"],
+    "skelet": ["skeletopack_by_fStikBot", "DevelopedStoat_by_fStikBot", "krytueskelet_by_fStikBot", "Manyskeletons_by_fStikBot", "GENCANAYOO", "iloveskeletons", "skeletonskeleton", "iloveskeleton_by_fStikBot"],
+    "lomat": ["EduardoLaloSalamanca", "lalosalamanca", "nachovarga_by_fStikBot", "lalo_salamanca", "tucosalamanca", "tuco_salamanca", "lalonachogay_by_fStikBot", "breabad_by_fStikBot", "BBBCSECLanaDemova_by_fStikBot", "Saul_goodman", "Saul_by_fStikBot"],
+    "jevil": ["JevilV2UndertaleDeltaruneStickers_by_fStikBot", "jevil_sticksundertale", "Jevil23", "PoS_Jevil", "Jevil199", "JevilTheJester_by_fStikBot", "Dzhevil14", "pk_2325279_by_Ctikerubot"],
+    "mtt": ["hard_drive_2_by_fStikBot", "Mettaton_HardDrive", "mettatton"],
+    "cow": ["kolxozkoriva_by_fStikBot", "ilovecows", "cows_by_fStikBot"]
+}'
+GREETINGS = ["Всем доброго утра!", "Доброе утро, друзья!", "Добрейшего утра!", "рыба", "Боброго утра!", "Бобрео!", "Доброго ранку!", "Good morning!", "Всем привет!", "Всем приветики!", "Всем приветулечки!", "صباح الخير!", "Приветствую всех!", "Всем привет, друзья!", "Доброго утречка всем!", "Доброго привета всем!", "ОгэПоМониторингу Утра!", "Понятного утра!", "Беспалевного утра!", "Ботпуутра!", "Майнер Крафтового утра!", "ПРАЗДНИЧНОГО ЛИСЬГО УТРЕЧКА", "Интернетного утра!", "Яишницоого утра!", "Борисового утра!", "Выключательного утра!", "Брутального утра!","Водного утра!", "Утренного добреца!", "Киношного утра!", "Диско утра!", "Порхающего утра!", "Липтонового утра!", "Творческого утра!", "Доброе утро блин", "Кошачьего утра!", "Шашлыкового утра!", "Лопухного утра!", "Модераторного утра!", "Админовского утра!", "Мониторного утра!", "Юбилейного утра!", "Наушникового утра!", "Шуточного утра!", "Конфетного утра!", "Стаканного утра!", "Пировогово утра!", "Воро утра!", "Лучшего утра!", "Важного утра!", "Пенопластового утра!", "Картофельного утра!", "Доброе утро!", "Саламандрового утра!", "Утреного добра!", "Бобреро!", "Добрейшего утра!", "Крафтового утра!"]
+BAD_UIQ = ["AgADoAcAApXm4UY", "AgADQxQAAuzDuUg", "AgADXRYAAg7iQUg", "AgADKxgAAogoSUg", "AgAD6REAAvONSEg", "AgADxhcAAimBQUg", "AgADbBYAAnyieEs", "AgADcRcAAvixeUs", "AgADYBMAAphCeUs", "AgADnxMAArCJeUs", "AgADHhMAAgxeeUs", "AgADLhYAAlmNeEs", "AgADkhYAAnIfeUs", "AgADJwAD-5IlBg", "AgAD6DwAApI1wEg", "AgAD0DsAAvFJwEg", "AgADB0EAAmdQwEg", "AgADBkQAAgdiwEg", "AgADhDwAAjKPyEg", "AgADRjoAAsrnwEg", "AgADhD0AAqWtwEg", "AgADVToAAiF8wUg", "AgADkTgAAmqcwEg", "AgADRzkAAoQ1wUg", "AgADHT4AAg-ewEg", "AgADXj0AAmtJwUg", "AgADdEEAAr52wUg", "AgADfkkAAiJgwEo", "AgAD20QAAnjkwEo", "AgADwTcAAjE7IEk", "AgADkxQAAkFlsEs", "AgADBhYAAkZLqEs", "AgADFBYAAlmFwEo", "AgAD-SMAAr0g2Eg", "AgAD5x4AAkA22Eg", "AgADiB4AAmdISEg", "AgAD0iMAAsNkSEg", "AgADhR0AAs5DSEg", "AgAD2yIAAneRSUg", "AgAD3R4AAstPSUg", "AgADYCUAAtVgwUs", "AgADCRcAAqmfyUs", "AgADSB0AAoUvwEs", "AgADcBsAAu_wwEs", "AgADKx4AAoFjWEs", "AgADohwAA1NYSw", "AgADohkAAqEsUUs", "AgAD0h8AAvesOEs", "AgADrRsAAi_n-Eo", "AgADgBkAAiZaeEo", "AgADLB0AAnOkwEk", "AgADQxoAAj5UyUk", "AgADZRYAArUvAAFK", "AgADsV0AAstqyUs", "AgADFlwAAqp5-Eg", "AgADimkAAoSdIEg", "AgADMWEAApisSUo", "AgAD9mwAAvUYYEo", "AgADOmQAAnp98Eg", "AgADmGwAAhy6IUk", "AgADE1oAAql8OUs", "AgAD_G8AAtNrmUo", "AgADfwEAAokqwFU", "AgADH00AAlXhwUk", "AgADT1QAAtMgyUk", "AgADpmUAAgUf6Us", "AgAD9WAAAneYwUs", "AgADRlwAAhhAyUs", "AgADngADvo8yGA", "AgADhgADvo8yGA", "AgADywADvo8yGA", "AgADfwADvo8yGA", "AgADhAADvo8yGA", "AgADsgADvo8yGA", "AgADrXkAAlO3kUg", "AgADvSgAAlE9wUo", "AgADVisAArYSwEo", "AgADOCoAAqSOwEo", "AgADPyIAAtxtyEo", "AgADwSEAAoo5yUo", "AgADbSQAAqYiwUo", "AgADkCwAAj34wUo", "AgADA1sAAs__0Es", "AgADFB4AApl6mEs", "AgAD6SAAAnX7oUs", "AgADEh4AAtYkoUs", "AgADEiIAArb5oEs", "AgADSiEAAnzeoUs", "AgADJSIAAm91mEs", "AgADuR4AAhhCmEs", "AgADpBsAAqm8oEs", "AgADHCAAAq8NmEs", "AgAD9x8AAuwRmEs", "AgADFiIAAvfsmEs", "AgAD9yAAAkDpmUs", "AgAD2CIAAor5oUs", "AgADcR8AApb6mUs", "AgADdiEAAuRfoEs", "AgADaCMAAhQLmUs", "AgADpR4AAqujmUs", "AgADqyEAAjdymEs", "AgADeR8AApACmEs", "AgADJh4AAgvnmEs", "AgADvyIAAtglmEs", "AgADwSAAAr-qoUs", "AgADCSIAAvKpmUs", "AgADUiEAAmyZoEs", "AgADsCoAAiyImUs", "AgADmCIAAq83mEs", "AgADRiUAAoHAmEs", "AgADTRsAAnFfmEs", "AgADlCAAAoQrmUs", "AgADAR8AAnOhoUs", "AgADqx8AAgrjmEs", "AgADkyAAAtgDmUs", "AgADuiEAAqFMmEs", "AgADvxwAAsdqoEs", "AgADzCAAAkO_oUs", "AgADuyUAAjn0oEs", "AgADJSIAAho_mUs", "AgADUh8AAniwoEs", "AgADESAAAmkHmEs", "AgADGi0AAoi5oUs", "AgADJCIAAiQvoUs", "AgADWCIAAqzRoEs", "AgAD-BoAArbdmEs", "AgADcCAAAqbBmUs", "AgADbB4AAqEvoEs", "AgADdCIAAmEMoUs", "AgADjiIAAgP6oUs", "AgADESIAAu-FoUs", "AgADxR8AAkobmUs", "AgADLB8AAuR3oEs", "AgADvh8AAhKooEs", "AgADCR4AAgejqUs", "AgADgh8AAjjTmUs", "AgADSx4AArP-oEs", "AgADBD8AAtO9GEg", "AgAD-i0AAmtqwUo", "AgADvBgAAl6ISUk", "AgADdmwAAkyASUo", "AgADpWIAAhMEyEs", "AgADmTQAAiBHwEk", "AgAD0iwAAgQu2Uk", "AgADDysAAnbrAUg", "AgAD0WcAAtAtSEo", "AgADomUAAn2pGUs", "AgADq3QAAtu9GUs", "AgADw3AAAsr0OEs", "AgADpXEAAvsimUs", "AgADMmkAAgWZOUo", "AgADuWIAAggEOUo", "AgADdmwAAkyASUo", "AgADgzoAAtOJAUg", "AgADSzkAAv3tAUg", "AgAD0igAApFL4Eg", "AgADCSkAAs_O4Ug", "AgAD9SkAAghD4Ug", "AgADciUAApi44Eg", "AgADRD0AArTgaUo", "AgADMUAAAxloSg", "AgADcUIAAgtnyUs", "AgADL3QAApQ7qUs", "AgADcnkAAtsSsUs", "AgAD8BoAApVeoUk", "AgAD3hsAAqLkmEk", "AgAD1nUAAuA3eEk", "AgADRUkAAoCZ6Uk", "AgADJUYAAjIF6Ek", "AgADvkEAAibb8Uk", "AgADtkIAApAQMUo", "AgADVUEAAuZfMUo", "AgADzUEAAntHMUo", "AgADBwUAAggtGUQ", "AgADqgYAAtN0OEc", "AgADpj0AAi--QUo", "AgADmBIAAmc1iEk", "AgADV1QAAi7fGEg", "AgAD0B4AApLNeEk", "AgADMRoAAusAAYFJ", "AgAD1RwAAhsceUk", "AgADghkAAgineUk", "AgAD9CkAAlO2iEs", "AgADmBsAAo5YiUs", "AgADOBsAAmcJ2Uo", "AgADZhcAAjRh4Uo", "AgADBgQAAkLtJRY", "AgADoIEAAtaUiUg", "AgADzk4AAt3N2Uk", "AgADK1MAAu_52Uk", "AgADsHIAAvipkUg", "AgADJFkAAtDhAUk", "AgADnk0AAhpsCEk", "AgADTFAAArzPeEk", "AgAD31EAAqiASUk", "AgADNlAAAk3iKUo", "AgADYBcAAjGXyEo", "AgADCBsAAjS6yUo", "AgADqRwAAtNY0Uo", "AgADYyIAAupZyUo", "AgAD8xYAAidlyEo", "AgADrhcAAihoyUo", "AgADvxgAAm7SyUo", "AgADXR8AAmzCyUo", "AgADPhwAAvxpyUo", "AgADdRgAArvO0Eo", "AgADNxkAAn2hyEo", "AgADpBsAAuygyUo", "AgADCBQAAqvL8Us", "AgAD6REAAg6M8Us", "AgADchMAAgYc8Us", "AgADPxgAAo95-Us", "AgADEBcAAos2SUg", "AgADvREAAncBsVA", "AgADFBAAAq5tsVA", "AgADNxgAAvP0sVA", "AgADCg4AAkmzsVA", "AgADEBIAAvRJsFA", "AgAD6g8AApdmsVA", "AgADLQ8AAiYYsFA", "AgADWQ0AAto2sFA", "AgADQiMAAlwLkUk", "AgADzx8AApTxkUk", "AgADshYAAr04kUk", "AgAD-xkAAj8qkEk", "AgAD3D8AApuPwEg", "AgAD0D0AAiDiwEg", "AgAD5DQAAtFQwUg", "AgADrjYAAjDHyEg", "AgADID4AAkxFwUg", "AgADezkAAuOpwUg", "AgADkzcAAqGhwUg", "AgADsDcAApYxwEg", "AgAD5T0AArBZwUg"]
 
 URL = os.getenv("E_URL_KEY")
 ffmpeg = "./ffmpeg"
