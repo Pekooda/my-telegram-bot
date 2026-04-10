@@ -1438,6 +1438,8 @@ async def lifespan(app: FastAPI):
             await bot.set_webhook(URL + "webhook")
         except Exception:
             logging.exception("set_webhook failed")
+    if getattr(app.state, "started", False):
+        return
     await bot.send_message(PEKO_ID, random.choice(GREETINGS))
     app.state.tasks = [
         asyncio.create_task(alarms()),
@@ -1455,11 +1457,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 @app.post("/webhook")
 async def webhook(request: Request):
-    try:
-        data = await request.json()
-        await dp.feed_raw_update(bot, data)
-    except Exception as e:
-        logging.error(f"ОШИБКА ВЕБХУКА: {e}")
+    data = await request.json()
+    asyncio.create_task(dp.feed_raw_update(bot, data))
     return {"ok": True}
 @app.get("/")
 @app.get("/kaithhealthcheck")
