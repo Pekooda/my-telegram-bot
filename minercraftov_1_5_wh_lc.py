@@ -1424,31 +1424,45 @@ async def pivtime():
 
 
 from fastapi import FastAPI, Request
-
+from contextlib import asynccontextmanager
 logging.basicConfig(level=logging.INFO)
 app = FastAPI()
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    info = await bot.get_webhook_info()
+    if info.url != (URL + "webhook"):
+        try:
+            await bot.delete_webhook(drop_pending_updates=True)
+            await bot.set_webhook(URL + "webhook")
+        except Exception:
+            logging.exception("set_webhook failed")
+    await bot.send_message(PEKO_ID, random.choice(GREETINGS))
+    app.state.tasks = [
+        asyncio.create_task(alarms()),
+        asyncio.create_task(pivtime()),
+    ]
+    yield
+    for task in app.state.tasks:
+        task.cancel()
+    for task in app.state.tasks:
+        try:
+            await task
+        except asyncio.CancelledError:
+            pass
+    await bot.session.close()
+app = FastAPI(lifespan=lifespan)
 @app.post("/webhook")
 async def webhook(request: Request):
     try:
         data = await request.json()
         await dp.feed_raw_update(bot, data)
     except Exception as e:
-        logging.error(f"Webhook error: {e}")
+        logging.error(f"ОШИБКА ВЕБХУКА: {e}")
     return {"ok": True}
-
-@app.on_event("startup")
-async def on_startup():
-    logging.debug("=== STARTED ===")
-    await bot.set_webhook(URL + "webhook")
-    await bot.send_message(PEKO_ID, random.choice(GREETINGS))
-    asyncio.create_task(alarms())
-    asyncio.create_task(pivtime())
-
-@app.on_event("shutdown")
-async def on_shutdown():
-    await bot.session.close()
-
 @app.get("/")
-async def root():
+@app.get("/kaithhealthcheck")
+@app.get("/kaithheathcheck")
+async def health():
     return {"status": "ok"}
