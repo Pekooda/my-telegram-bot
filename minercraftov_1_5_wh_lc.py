@@ -1426,6 +1426,7 @@ async def pivtime():
 from fastapi import FastAPI, Request
 
 logging.basicConfig(level=logging.INFO)
+app = FastAPI()
 
 async def on_startup(app):
     logging.debug("=== STARTED ===")
@@ -1450,7 +1451,6 @@ async def webhook(request: Request):
     await dp.feed_raw_update(bot, data)
     return {"ok": True}
 
-app = FastAPI()
 app.router.add_post("/webhook", handle)
 app.on_startup.append(on_startup)
 app.on_cleanup.append(on_cleanup)
