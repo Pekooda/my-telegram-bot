@@ -21,6 +21,8 @@ from collections import defaultdict, Counter
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 
+from aiohttp import web
+
 ### КЛЮЧИКИ АЙДИШКИ (СЕКРЕТНО!)
 load_dotenv()
 TOKEN_KEY = os.getenv("E_TOKEN_KEY")
