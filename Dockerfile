@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "minercraftov_1_4_wh.py"]
+CMD ["python", "minercraftov_1_5_wh.py"]
