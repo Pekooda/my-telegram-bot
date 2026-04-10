@@ -1,5 +1,6 @@
 aiogram==3.21.0
-aiohttp
+uvicorn
+fastapi
 requests==2.32.4
 python-dotenv
 Pillow
