@@ -1428,32 +1428,27 @@ from fastapi import FastAPI, Request
 logging.basicConfig(level=logging.INFO)
 app = FastAPI()
 
-async def on_startup(app):
+@app.post("/webhook")
+async def webhook(request: Request):
+    try:
+        data = await request.json()
+        await dp.feed_raw_update(bot, data)
+    except Exception as e:
+        logging.error(f"Webhook error: {e}")
+    return {"ok": True}
+
+@app.on_event("startup")
+async def on_startup():
     logging.debug("=== STARTED ===")
     await bot.set_webhook(URL + "webhook")
     await bot.send_message(PEKO_ID, random.choice(GREETINGS))
-    app["tasks"] = [
-        asyncio.create_task(alarms()),
-        asyncio.create_task(pivtime())
-    ]
-async def on_cleanup(app):
-    task = app.get("tasks")
-    if task:
-        task.cancel()
-        try:
-            await task
-        except:
-            pass
+    asyncio.create_task(alarms())
+    asyncio.create_task(pivtime())
 
-@app.post("/webhook")
-async def webhook(request: Request):
-    data = await request.json()
-    await dp.feed_raw_update(bot, data)
-    return {"ok": True}
+@app.on_event("shutdown")
+async def on_shutdown():
+    await bot.session.close()
 
-app.router.add_post("/webhook", handle)
-app.on_startup.append(on_startup)
-app.on_cleanup.append(on_cleanup)
-
-if __name__ == "__main__":
-    web.run_app(app, host="0.0.0.0", port=int(os.getenv("PORT", 8080)))
+@app.get("/")
+async def root():
+    return {"status": "ok"}
