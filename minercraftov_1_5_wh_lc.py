@@ -1431,16 +1431,16 @@ app = FastAPI()
 async def pingser():
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(URL, timeout=5) as resp:
+            async with session.get(URL, timeout=20) as resp:
                 if resp.status == 429:
                     logging.debug("RATE LIMIT! sleeping longer...")
-                    await asyncio.sleep(300)
+                    await asyncio.sleep(100)
                 else:
                     logging.debug(f"ping NICE: {resp.status}")
     except Exception as e:
         logging.debug(f'ping RERORERO: {e}')
     asyncio.get_event_loop().call_later(
-        300,
+        100,
         lambda: asyncio.create_task(pingser())
     )
 
