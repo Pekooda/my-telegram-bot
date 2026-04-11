@@ -1431,16 +1431,16 @@ app = FastAPI()
 async def pingser():
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(URL, timeout=10) as resp:
+            async with session.get(URL, timeout=20) as resp:
                 if resp.status == 429:
                     logging.debug("RATE LIMIT! sleeping longer...")
-                    await asyncio.sleep(60)
+                    await asyncio.sleep(100)
                 else:
                     logging.debug(f"ping NICE: {resp.status}")
     except Exception as e:
         logging.debug(f'ping RERORERO: {e}')
     asyncio.get_event_loop().call_later(
-        60,
+        100,
         lambda: asyncio.create_task(pingser())
     )
 
@@ -1473,7 +1473,7 @@ app = FastAPI(lifespan=lifespan)
 @app.post("/webhook")
 async def webhook(request: Request):
     data = await request.json()
-    asyncio.create_task(dp.feed_raw_update(bot, data))
+    await dp.feed_raw_update(bot, data)
     return {"ok": True}
 @app.get("/")
 @app.get("/kaithhealthcheck")
