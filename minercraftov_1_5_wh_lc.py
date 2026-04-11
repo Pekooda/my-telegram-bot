@@ -1428,6 +1428,22 @@ from contextlib import asynccontextmanager
 logging.basicConfig(level=logging.INFO)
 app = FastAPI()
 
+async def pingser():
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(URL, timeout=5) as resp:
+                if resp.status == 429:
+                    logging.debug("RATE LIMIT! sleeping longer...")
+                    await asyncio.sleep(300)
+                else:
+                    logging.debug(f"ping NICE: {resp.status}")
+    except Exception as e:
+        logging.debug(f'ping RERORERO: {e}')
+    asyncio.get_event_loop().call_later(
+        300,
+        lambda: asyncio.create_task(pingser())
+    )
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -1442,6 +1458,7 @@ async def lifespan(app: FastAPI):
     app.state.tasks = [
         asyncio.create_task(alarms()),
         asyncio.create_task(pivtime()),
+        asyncio.create_task(pingser())
     ]
     yield
     for task in app.state.tasks:
