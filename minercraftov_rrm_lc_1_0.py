@@ -4,7 +4,7 @@
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
 
-import re, random, requests, json, ffmpeg, subprocess, math, aiohttp, os, base64
+import re, random, requests, json, ffmpeg, subprocess, math, aiohttp, os, base64, logging
 from PIL import ImageFont
 from fastapi import FastAPI, UploadFile, Form
 from dotenv import load_dotenv
@@ -13,7 +13,7 @@ load_dotenv()
 PIXABAY_KEY = os.getenv("E_PIXABAY_KEY")
 PEXELS_KEY = os.getenv("E_PEXELS_KEY")
 DEFAULT_QUERY = json.loads(os.getenv("E_DEFAULT_QUERY", '""'))
-
+logging.basicConfig(level=logging.DEBUG)
 
 app = FastAPI()
 
@@ -198,13 +198,16 @@ def textstab(x, y, text, maxlet, maxwid, maxsize, font, minsize):
 @app.post("/process")
 async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvideo: str = Form(), x: str = Form(), y: str = Form()):
     isvideo = isvideo == "True"
+    logging.debug(f"T1: {y}")
     x = int(x)
     y = int(y)
+    logging.debug(f"T2: {y}")
     args = args.removeprefix("-v").strip()
     if not args:
         args = random.choice(DEFAULT_QUERY)
     texting = args.split()
     if not type:
+        logging.debug(f"T3: {y}")
         if len(texting) > 0 and texting[0] == "-v":
             ran = rv
             type = "mp4"
@@ -235,6 +238,7 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
         x = info["streams"][0]["width"]
         y = info["streams"][0]["height"]
     else:
+        logging.debug(f"T4: {y}")
         infile = f"/tmp/in.{type}"
         outfile = f"/tmp/out.{type}"
         data = await pic.read()
@@ -258,6 +262,7 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
         )
         infile = f"/tmp/in.{type}"
         outfile = f"/tmp/out.{type}"
+    logging.debug(f"T5: {y}")
     font = "Lobster.ttf"
     size = min(x, y)/10
     mlt = 80*(x/y)
