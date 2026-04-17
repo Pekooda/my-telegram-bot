@@ -6,3 +6,4 @@ requests==2.32.4
 python-dotenv
 Pillow
 ffmpeg-python
+python-multipart

@@ -6,6 +6,7 @@
 # 1.4 - подготовка к деплою, стабилизация /rp /rv /ttm
 # 1.5 - вру, сейчас
 # 1.5.wh - webhook
+# 1.5.wh.a - связка 
 
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
@@ -784,52 +785,18 @@ async def rv(message: types.Message, quer: str):
         else:
             return query, video_url
 
-    
-
-
-### ПОНТЯНО И ТЕКСТ
-def textstab(x, y, text, maxlet, maxwid, maxsize, font, minsize):
-    maxlet = math.floor(maxlet)
-    n = 0
-    pon = ""
-    everyword = text.split()
-    while n < len(everyword) and len(pon) + len(everyword[n]) + 1 < maxlet:
-        pon += f"{everyword[n]} "
-        n += 1
-    try:
-        if len(pon) <= maxlet*0.5:
-            pon += everyword[n][:(maxlet-len(pon))]
-        if len(pon) + len(everyword[n]) >= maxlet:
-            pon = pon.strip()
-            pon += "..."
-    except Exception as e:
-        pass
-    pon = pon.strip()
-    while maxsize > minsize:
-        width = ImageFont.truetype(font, maxsize).getlength(pon)
-        if width <= maxwid:
-            break
-        maxsize -= 1
-    imfont = ImageFont.truetype(font, maxsize)
-    return pon, imfont, maxsize
-
 
 async def ttm(message: types.Message, args: str):
-    buffer = BytesIO()
     rep = message.reply_to_message or message
     media = rep.photo[-1] if rep.photo else rep.animation or rep.sticker or rep.video
     args = (args if len(args) > 0 else message.reply_to_message.text or args) if message.reply_to_message else args
-    texting = args.split()
-    args = args.removeprefix("-v").strip()
-    htp = ""
-    if not args:
-        args = random.choice(DEFAULT_QUERY)
+    isvideo = False
+    x = 0
+    y = 0
     if media and not (rep.sticker and rep.sticker.is_animated):
         x = media.width
         y = media.height
         pic = await bot.get_file(media.file_id)
-        isvideo = False
-        istgs = False
         if rep.photo:
             forma = "png"
         elif rep.sticker and rep.sticker.is_video:
@@ -839,91 +806,50 @@ async def ttm(message: types.Message, args: str):
         elif rep.animation or rep.video:
             forma = "mp4"
             isvideo = True
-        infile = f"/tmp/aco.{forma}"
-        outfile = f"/tmp/line.{forma}"
-        infilewebp = infile.replace(f"{forma}", "webp")
-        infilemp4 = infile.replace(f"{forma}", "mp4")
-        outfilewebp = outfile.replace(f"{forma}", "webp")
-        outfilemp4 = outfile.replace(f"{forma}", "mp4")
-        await bot.download_file(pic.file_path, infile)
+        infile = f"/tmp/in.{forma}"
+        picpic = await bot.download_file(pic.file_path, infile)
     else:
         if len(texting) > 0 and texting[0] == "-v":
-            ran = rv
             forma = "mp4"
             isvideo = True
         else:
-            ran = rp
             forma = "png"
             isvideo = False
-        infile = f"/tmp/aco.{forma}"
-        outfile = f"/tmp/line.{forma}"
-        pic, htp = await ran(message, args)
-        if not pic:
-            return
-        else:
-            args = pic
-        async with aiohttp.ClientSession() as session:
-            async with session.get(htp) as resp:
-                if resp.status != 200:
-                    return await message.answer("No download ;(")
-                with open(infile, "wb") as f:
-                    f.write(await resp.read())
-        ohno = subprocess.run(
-            ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "json", infile],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+    by = picpic.read()
+    async with aiohttp.ClientSession() as session:
+        data = aiohttp.FormData()
+        data.add_field(
+            "file",
+            by,
+            filename=f"in.{forma}"
+            content_type=f"in/{forma}"
         )
-        info = json.loads(ohno.stdout)
-        x = info["streams"][0]["width"]
-        y = info["streams"][0]["height"]
-    if rep.sticker and rep.sticker.is_video and not texting[0] == "-v":
-        ohno = subprocess.run(
-            ["ffmpeg", "-i", infile, "-vframes", "1", infilewebp],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
+        data.add_field("args", args)
+        data.add_field("type", forma)
+        data.add_field("isvideo", isvideo)
+        data.add_field("x", x)
+        data.add_field("y", y)
+        async with session.post(
+            URL + "process",
+            data=data
+        ) as resp:
+            proc, result = await resp.read()
+    if not proc:
+        return await message.answer(result)
+    outfile = f"/tmp/out.{type}"
+    formo = False
+    if forma == "webm" and not texting[0] == "-v":
         forma = "webp"
-        os.remove(infile)
-        infile = infilewebp
-        outfile = outfilewebp
-    elif rep.sticker and rep.sticker.is_video and texting[0] == "-v":
-        ohno = subprocess.run(
-            ["ffmpeg", "-i", infile, infilemp4],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
+        formo = True
+    elif forma == "webm" and texting[0] == "-v":
         forma = "mp4"
-        os.remove(infile)
-        infile = infilemp4
-        outfile = outfilemp4
-    font = "Lobster.ttf"
-    if isvideo and htp:
-        dec = 2
-    else:
-        dec = 1
-    size = min(x, y)/10
-    mlt = 80*(x/y)/dec
-    mwt = x*0.85/dec
-    mina = x/100/dec
-    outl = x/150/dec
-    textout, fontout, sizeout = textstab(x, y, args.lower(), mlt, mwt, size, font, mina)
-    textout = textout.replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:")
-    comas = ["ffmpeg", "-y", "-i", infile, "-vf", f"fps=24,scale=iw/'{dec}':ih/'{dec}',drawtext=fontfile={font}:text='{textout}':x=(w-text_w)/2:y=(h-text_h)/2+h*0.8/2:fontsize={sizeout}:fontcolor=white:borderw='{outl}':bordercolor=black"]
-    if isvideo:
-        comas += ["-c:v", "libx264", "-preset", "veryfast", "-threads", "2", "-an"]
-    comas += [outfile]
-    ohno = subprocess.run(
-        comas,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
-    )
     try:
         if forma in ["webm", "webp"]:
-            await message.answer_sticker(FSInputFile(outfile))
+            await message.answer_sticker(BufferedInputFile(result, outfile))
         if forma == "mp4":
-            await message.answer_animation(FSInputFile(outfile))
+            await message.answer_animation(BufferedInputFile(result, outfile))
         if forma == "png":
-            await message.answer_photo(FSInputFile(outfile))
+            await message.answer_photo(BufferedInputFile(result, outfile))
     except Exception as e:
         if str(e) == "Telegram server says - Bad Request: file must be non-empty":
             await message.answer(f"Я не всегда могу наносить текст на текст, надо другой стикер :/")
@@ -931,6 +857,8 @@ async def ttm(message: types.Message, args: str):
             await message.answer(f"Probla: {e}")
     os.remove(infile)
     os.remove(outfile)
+    if formo:
+        os.remove(f"/tmp/out.webm")
 
 
 ##########
