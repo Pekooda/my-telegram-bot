@@ -200,10 +200,10 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
     isvideo = isvideo == "True"
     x = int(x)
     y = int(y)
-    texting = args.split()
     args = args.removeprefix("-v").strip()
     if not args:
         args = random.choice(DEFAULT_QUERY)
+    texting = args.split()
     if not type:
         if len(texting) > 0 and texting[0] == "-v":
             ran = rv
@@ -235,11 +235,11 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
         x = info["streams"][0]["width"]
         y = info["streams"][0]["height"]
     else:
+        infile = f"/tmp/in.{type}"
+        outfile = f"/tmp/out.{type}"
         data = await pic.read()
         with open(infile, "wb") as f:
             f.write(data)
-        infile = f"/tmp/in.{type}"
-        outfile = f"/tmp/out.{type}"
     if type == "webm" and not texting[0] == "-v":
         type = "webp"
         ohno = subprocess.run(
