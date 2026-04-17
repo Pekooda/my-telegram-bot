@@ -822,7 +822,7 @@ async def ttm(message: types.Message, args: str):
         data.add_field(
             "file",
             by,
-            filename=f"in.{forma}"
+            filename=f"in.{forma}",
             content_type=f"in/{forma}"
         )
         data.add_field("args", args)
