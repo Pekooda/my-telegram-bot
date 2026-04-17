@@ -60,6 +60,7 @@ outout = tuple(json.loads(os.getenv("E_outout")))
 MY_CHEST = os.getenv("E_MY_CHEST")
 
 URL = os.getenv("E_URL_KEY")
+URL_TWO = os.getenv("E_URL_KEY_TWO")
 
 ### ПЕРЕМЕННЫЕ
 bot = Bot(token=TOKEN_KEY)
@@ -832,7 +833,7 @@ async def ttm(message: types.Message, args: str):
         data.add_field("x", x)
         data.add_field("y", y)
         async with session.post(
-            URL + "process",
+            URL_TWO + "process",
             data=data
         ) as resp:
             proc, result = await resp.read()
