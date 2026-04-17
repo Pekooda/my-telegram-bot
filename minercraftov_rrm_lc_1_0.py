@@ -4,10 +4,9 @@
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
 
-import re, random, requests, json, ffmpeg, subprocess, math, aiohttp, os
+import re, random, requests, json, ffmpeg, subprocess, math, aiohttp, os, base64
 from PIL import ImageFont
 from fastapi import FastAPI, UploadFile, Form
-from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -218,13 +217,13 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
         outfile = f"/tmp/out.{type}"
         arga, htp = ran(message, args)
         if not arga:
-            return False, "я ничо не нашла эх блин"
+            return {"ok": False, "error": "я ничо не нашла эх блин"}
         else:
             args = arga
         async with aiohttp.ClientSession() as session:
             async with session.get(htp) as resp:
                 if resp.status != 200:
-                    return False, "ничо не скачалось эх блин ;("
+                    return {"ok": False, "error": "ничо не скачалось эх блин ;("}
                 with open(infile, "wb") as f:
                     f.write(await resp.read())
         ohno = subprocess.run(
@@ -276,4 +275,10 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
-    return True, FileResponse(outfile)
+    with open(output, "rb") as f:
+        outo = f.read()
+    return {
+        "ok": True,
+        "error": "",
+        "file": base64.b64encode(outo).decode()
+    }
