@@ -280,7 +280,7 @@ async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvid
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
-    with open(output, "rb") as f:
+    with open(outfile, "rb") as f:
         outo = f.read()
     return {
         "ok": True,
