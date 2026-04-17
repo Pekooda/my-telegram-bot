@@ -197,7 +197,8 @@ def textstab(x, y, text, maxlet, maxwid, maxsize, font, minsize):
 
 
 @app.post("/process")
-async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvideo: bool = Form(), x: int = Form(), y: int = Form()):
+async def process(pic: UploadFile, args: str = Form(), type: str = Form(), isvideo: str = Form(), x: int = Form(), y: int = Form()):
+    isvideo = isvideo == "True"
     texting = args.split()
     args = args.removeprefix("-v").strip()
     if not args:

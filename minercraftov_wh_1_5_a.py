@@ -819,6 +819,7 @@ async def ttm(message: types.Message, args: str):
             forma = "png"
             isvideo = False
     by = picpic.read()
+    await message.answer("T1")
     async with aiohttp.ClientSession() as session:
         data = aiohttp.FormData()
         data.add_field(
@@ -838,7 +839,9 @@ async def ttm(message: types.Message, args: str):
         ) as resp:
             proc, result = await resp.read()
     if not proc:
+        await message.answer(f"T2: {result}")
         return await message.answer(result)
+    await message.answer(f"T3: {proc}")
     outfile = f"/tmp/out.{type}"
     formo = False
     if forma == "webm" and not texting[0] == "-v":
