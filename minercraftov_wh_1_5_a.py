@@ -794,6 +794,7 @@ async def ttm(message: types.Message, args: str):
     isvideo = False
     x = 0
     y = 0
+    texting = args.split()
     if media and not (rep.sticker and rep.sticker.is_animated):
         x = media.width
         y = media.height
