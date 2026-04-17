@@ -99,7 +99,7 @@ def queryfilter(message, query):
     return query, page, color, lang, pexel
 
 ## Генератор случайных картинок
-def rp(message: types.Message, quer: str):
+def rp(message: str, quer: str):
     query = quer
     query, page, color, lang, pexel = queryfilter(message, query)
     params = {"key": PIXABAY_KEY, "q": query, "image_type": "all", "safesearch": "true", "per_page": page, "colors": color, "lang": lang, "order": "latest"}
@@ -130,7 +130,7 @@ def rp(message: types.Message, quer: str):
     return query, img_url
 
 ## Генератор случайных видео
-def rv(message: types.Message, quer: str):
+def rv(message: str, quer: str):
     query = quer
     query, page, color, lang, pexel = queryfilter(message, query)
     params = {"key": PIXABAY_KEY, "q": query, "video_type": "all", "per_page": page, "lang": lang, "order": "latest"}
