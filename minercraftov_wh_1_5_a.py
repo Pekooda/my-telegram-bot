@@ -787,6 +787,7 @@ async def rv(message: types.Message, quer: str):
 
 
 async def ttm(message: types.Message, args: str):
+    return await message.reply("команда не работает ибо у Бармена сгорела крыша делать тупой деплой для ffmpeg. Извините")
     rep = message.reply_to_message or message
     media = rep.photo[-1] if rep.photo else rep.animation or rep.sticker or rep.video
     args = (args if len(args) > 0 else message.reply_to_message.text or args) if message.reply_to_message else args
