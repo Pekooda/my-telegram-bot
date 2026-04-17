@@ -1107,7 +1107,7 @@ async def vse(message: Message):
             await message.reply("СЛУЖЕБНОЕ СООБЩЕНИЕ")
 ### КОНСОЛЬ
     print(f"[{message.chat.title or message.from_user.full_name}]\n{message.from_user.full_name}: {getattr(message.sticker, "emoji", None) + ' ' if getattr(message.sticker, "emoji", None) else ''}{'[' + message.content_type.removeprefix("ContentType.") + '] ' if not message.text else ''}{message.caption or message.text if message.caption or message.text else ''}")
-    if message.left_chat_member.id == HURM_ID:
+    if message.left_chat_member and message.left_chat_member.id == HURM_ID:
         await bot.send_message(PEKO_ID, "ХУРМО ЛИВНУЛО")
 ### ВСЁ, ЧТО НИЖЕ - НЕ ОТПРАВИТСЯ ПРИ ЗАПУСКЕ
     if message.date < BOT_START:
