@@ -1258,22 +1258,33 @@ async def vse(message: Message):
                 chest["NUMB"] = (chest["NUMB"]+1)*2
             else:
                 await message.reply("не зли меня, бяка >=(")
+
         if message.reply_to_message and message.text == "+" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
-            if chest["hurma"]["hurmcd"]:
+
+            if message.from_user.id == HURM_ID:
+                await message.answer(f"Нет, ты не можешь сам себе балл сменить, лопух :Р")
+            elif chest["hurma"]["hurmcd"]:
                 await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
-            else:
+            elif not chest["hurma"]["hurmcd"]:
                 chest["hurma"]["hurmball"] += 1
                 await message.answer(f"Хурме начислен балл! Текущее кол-во баллов Хурмы: {chest["hurma"]["hurmball"]}")
                 chest["hurma"]["hurmcd"] = True
+
         if message.reply_to_message and message.text == "-" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
-            if chest["hurma"]["hurmcd"]:
+            if message.from_user.id == HURM_ID:
+                await message.answer(f"Нет, ты не можешь сам себе балл сменить, лопух :Р")
+            elif chest["hurma"]["hurmcd"]:
                 await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
-            else:
+            elif not chest["hurma"]["hurmcd"]:
                 chest["hurma"]["hurmball"] -= 1
                 await message.answer(f"Хурме отчислен балл! Текущее кол-во баллов Хурмы: {chest["hurma"]["hurmball"]}")
                 chest["hurma"]["hurmcd"] = True
+
         if message.text.lower() == "баллы хурмы" and message.chat.id == COVINOC_ID:
             await message.answer(f"Текущее кол-во баллов Хурмы: {chest["hurma"]["hurmball"]}")
+        if message.text.lower() == "мои баллы" and message.chat.id == COVINOC_ID and message.from_user.id == HURM_ID:
+            await message.answer(f"Текущее ваше кол-во баллов: {chest["hurma"]["hurmball"]}")
+
     if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
             if message.animation:
