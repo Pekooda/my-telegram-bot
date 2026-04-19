@@ -357,7 +357,10 @@ chest = {
     },
     "timtim": "тим тим тим ",
     "timrep": {},
-    "hurmball": 10
+    "hurma": {
+        "hurmball": 10,
+        "hurmcd": False
+    }
 }
 timeout = 59
 maxgif = 1
