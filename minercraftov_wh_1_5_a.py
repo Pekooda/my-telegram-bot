@@ -400,7 +400,7 @@ def nozerolast(parts, numb):
 
 
 
-
+timtim = ""
 
 #### КОМАНДЫ БОТА
 ### Начало жизни
@@ -413,14 +413,15 @@ async def guide(message: types.Message, args: str):
     await message.reply(f"""
 КНИЖКА (Book📗📘) для использования бота:
 🟪 - может работать с ответом на сообщение
+❌ - команда не работает/временно не работает
 <code>/start</code> - Проверка работы бота и когда запущен
 <code>/guide</code> - КНИЖКА (Book📗📘) для использования бота
 <code>/admin</code> - С шансом 1 к 2763 возможно выдаст админку
 <code>/gm</code> - Желает доброго утра
-<code>/id</code> - Выдаёт айди и уникальный айди медиа. Работает лишь в ЛС
+<code>/id</code> - ❌ Выдаёт айди и уникальный айди медиа. Работает лишь в ЛС
 <code>/like 'emoji'</code> - 🟪 Поставить реакцию сообщению ботом<blockquote expandable>    'emoji' - Эмоция, которая поддерживается в стандартном наборе реакций Telegram. Без параметра по умолчанию выдаёт 👍</blockquote>
 <code>/nolike</code> - 🟪 Отобрать реакцию бота с ответа на сообщение
-<code>/mathi</code> - Решить задачку по математике за 10 секунд
+<code>/mathi</code> - ❌ Решить задачку по математике за 10 секунд
 <code>/wts</code> - Выдать список доступных команд рандомных стикеров
 <code>/rs</code> - Случайный стикер из списка <code>/wts</code>
 <code>/orluk</code> - Случайное видео/фото орла
@@ -437,7 +438,7 @@ async def guide(message: types.Message, args: str):
     По умолчанию выставлены все цвета.
     'quote' - Запрос:
     По умолчанию выбирается запрос из текста ответа на сообщение. Если сообщение без текста - выбирается запрос из сообщения с командой. По умолчанию - Пиво</blockquote>
-<code>/ttm 'format' 'quote'</code> - 🟪 Нанесение текста на нижнюю часть медиа<blockquote expandable>    Для команды требуется медиа в виде ответа либо в виде сообщения с описанием, в ином случае медиа будет подобрано из <code>/rp</code> либо <code>/rv</code>. 
+<code>/ttm 'format' 'quote'</code> - 🟪 ❌ Нанесение текста на нижнюю часть медиа<blockquote expandable>    Для команды требуется медиа в виде ответа либо в виде сообщения с описанием, в ином случае медиа будет подобрано из <code>/rp</code> либо <code>/rv</code>. 
     'format' - если выставлено -v, видео-стикеры будут отображаться в виде GIF, а подбор медиа будет осуществлено с помощью <code>/rv</code>. Если формат отсутсвует, видео-стикеры будут отображать лишь первый кадр, а подбор медиа будет осуществлено с помощью <code>/rp</code>.
     'quote' - текст, который будет нанесён на медиа. Эмоции будут отображены как невидимые символы. При отправке запроса на <code>/rp</code> или <code>/rv</code>, параметры для них учитываются.</blockquote>
 """, parse_mode="HTML")
@@ -469,6 +470,7 @@ async def gm(message: types.Message, args: str):
 
 ### Детектор АЙДИ
 async def id(message: types.Message, args: str):
+    return await message.reply("команда времени не работает из-за проблем з асинком")
     if message.chat.type != "private":
         return await message.reply(f"Эту команду можно использовать лишь в ЛС")
     user_id = message.from_user.id
@@ -543,6 +545,7 @@ async def answeris(message: Message):
     else:
         await message.reply("Неверно.")
 async def mathi(message: types.Message, args: str):
+    return await message.reply("команда времени не работает из-за проблем з асинком")
     user_id = message.from_user.id
     await mathgame(message)
 
@@ -1238,7 +1241,9 @@ async def vse(message: Message):
                 await message.reply("не зли меня, бяка >=(")
     if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
-            await message.answer("тим")
+            global timtim
+            timtim += "тим "
+            await message.answer(timtim)
             for key in chest["kazn"]:
                 if chest["kazn"][key]["NOW"]:
                     try:
@@ -1248,7 +1253,7 @@ async def vse(message: Message):
                     if chest["kazn"][key]["TYPE"] == "use":
                         chest["kazn"][key]["NOW"] -= 1
             if chest["kazn"]["lv"]["NOW"]:
-                chest["lv"]["NOW"] += 1
+                chest["kazn"]["lv"]["NOW"] += 1
             if chest["kazn"]["sk"]["NOW"]:
                 await rs(message, "")
             if message.animation:
