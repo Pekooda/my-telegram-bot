@@ -1238,6 +1238,7 @@ async def vse(message: Message):
                 await message.reply("не зли меня, бяка >=(")
     if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
+            await message.answer("тим")
             for key in chest["kazn"]:
                 if chest["kazn"][key]["NOW"]:
                     try:
