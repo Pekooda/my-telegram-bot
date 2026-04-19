@@ -1266,6 +1266,7 @@ async def vse(message: Message):
                 name = message.animation.emoji + " Sticker"
             if f"{unique_id}" not in chest["timrep"]:
                 chest["timrep"][f"{unique_id}"] = {}
+                chest["timrep"][f"{unique_id}"]["VALUE"] = 0
             chest["timrep"][f"{unique_id}"]["ID"] = id
             chest["timrep"][f"{unique_id}"]["NAME"] = name
             chest["timrep"][f"{unique_id}"]["TIME"] = timeout
