@@ -362,6 +362,7 @@ chest = {
         "hurmcd": False
     }
 }
+
 timeout = 59
 maxgif = 1
 
