@@ -420,7 +420,7 @@ async def makaka(message: types.Message, args: str):
             text = f"""{chest["timrep"][key]["NAME"]} - использовано в промежутке {timeout} м.: {chest["timrep"][key]["VALUE"]}, до следующего понижения: {chest["timrep"][key]["TIME"]} м., 
 """
             texti.append(text)
-    await message.answer(texti)
+    await message.answer(texti or "Гифок нету, стикеров нету ;(")
 
 
 
