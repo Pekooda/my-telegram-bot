@@ -1264,7 +1264,7 @@ async def vse(message: Message):
             if chest["hurma"]["hurmcd"]:
                  await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
             chest["hurma"]["hurmball"] -= 1
-            await message.answer(f"Хурме отчислен балл! Текущее кол-во баллов у Хурмы: {chest["hurmball"]")
+            await message.answer(f"Хурме отчислен балл! Текущее кол-во баллов у Хурмы: {chest["hurmball"]}")
             chest["hurma"]["hurmcd"] = True
     if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
