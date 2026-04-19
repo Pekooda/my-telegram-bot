@@ -1254,13 +1254,13 @@ async def vse(message: Message):
                 chest["NUMB"] = (chest["NUMB"]+1)*2
             else:
                 await message.reply("не зли меня, бяка >=(")
-        if message.reply_to_message and message.text.lower() == "+" and message.reply_to_message.user.id == HURM_ID and message.chat.id == COVINOC_ID:
+        if message.reply_to_message and message.text.lower() == "+" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
             if chest["hurma"]["hurmcd"]:
                  await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
             chest["hurma"]["hurmball"] += 1
             await message.answer(f"Хурме начислен балл! Текущее кол-во баллов у Хурмы: {chest["hurmball"]}")
             chest["hurma"]["hurmcd"] = True
-        if message.reply_to_message and message.text.lower() == "-" and message.reply_to_message.user.id == HURM_ID and message.chat.id == COVINOC_ID:
+        if message.reply_to_message and message.text.lower() == "-" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
             if chest["hurma"]["hurmcd"]:
                  await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
             chest["hurma"]["hurmball"] -= 1
