@@ -78,7 +78,7 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 chest = {
     "hurma": {
         "hurmball": 10,
-        "hurmcd": false
+        "hurmcd": False
     },
     "stick": {
         "monitor": [
@@ -499,24 +499,24 @@ chest = {
     ],
     "rich": {
         "5513644023": {
-            "lab": false,
-            "cmh": false,
-            "cmt": false
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         },
         "-1003258766039": {
-            "lab": false,
-            "cmh": false,
-            "cmt": false
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         },
         "-1003867888593": {
-            "lab": false,
-            "cmh": false,
-            "cmt": false
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         },
         "-1002699937978": {
-            "lab": false,
-            "cmh": false,
-            "cmt": false
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
