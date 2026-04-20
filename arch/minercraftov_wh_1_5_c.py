@@ -1260,7 +1260,6 @@ async def vse(message: Message):
                 await message.reply("не зли меня, бяка >=(")
 
         if message.reply_to_message and message.text == "+" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
-
             if message.from_user.id == HURM_ID:
                 await message.answer(f"Нет, ты не можешь сам себе балл сменить, лопух :Р")
             elif chest["hurma"]["hurmcd"]:
