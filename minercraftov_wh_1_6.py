@@ -77,7 +77,7 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 
 chest = {
     "hurma": {
-        "hurmball": 10,
+        "hurmball": 11,
         "hurmcd": False
     },
     "stick": {
@@ -505,7 +505,7 @@ chest = {
         },
         "-1003258766039": {
             "lab": False,
-            "cmh": False,
+            "cmh": True,
             "cmt": False
         },
         "-1003867888593": {
@@ -517,24 +517,53 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "5566808793": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
-        "timtext": 1954,
-        "timeout": 2763,
-        "maxgif": 0,
+        "timtext": 49,
+        "timeout": 1492,
+        "maxgif": 1,
         "timrep": {
-            "AgADUggAAhTNLVI": {
+            "AgADxGEAAkvMKEg": {
                 "VALUE": 1,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKKdWneCZPQ_d90lbkLiT7ImCcmm2ARAAJSCAACFM0tUuwhw0IvN-XzOwQ",
-                "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 2735
+                "ID": "CAACAgIAAyEFAATmi0vRAAKalmnkqqmVgguXn-ZHyje0Vl8Q2KMhAALEYQACS8woSHUXDzAWTvSKOwQ",
+                "NAME": "Sticker ❌",
+                "TIME": 842
+            },
+            "AgADtgIAAnXUDFM": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKj1mnnVQImQLMIx5XkPlfnnyDS40cBAAK2AgACddQMU26TMBFnr3kCOwQ",
+                "NAME": "vot-eto-povorot-omg.mp4",
+                "TIME": 908
+            },
+            "AgADUAQAAkpFBVA": {
+                "VALUE": 5,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKmJWnnsFOZbHPd-OCNGBbtupJPpu_5AAJQBAACSkUFUL_DwHdMVuAhOwQ",
+                "NAME": "howard-hamlin.mp4",
+                "TIME": 108
+            },
+            "AgADpwcAAqCq1FA": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKjuGnnRVkK9AOJwIpgENOLIDoR5J1WAAKnBwACoKrUUJqA8Z7dkub9OwQ",
+                "NAME": "vocaloid-monitoring.mp4",
+                "TIME": 1482
             },
             "AgADQZQAAibRyUo": {
                 "VALUE": 1,
                 "ID": "CgACAgIAAyEFAATmi0vRAAKYMmnjWob53zYhDxuE86OqTTOPYfZwAAJBlAACJtHJSm48_CeMc_UROwQ",
                 "NAME": "bo-sinn-smeshariki.mp4",
-                "TIME": 2742
+                "TIME": 1483
+            },
+            "AgADUggAAhTNLVI": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKKdWneCZPQ_d90lbkLiT7ImCcmm2ARAAJSCAACFM0tUuwhw0IvN-XzOwQ",
+                "NAME": "deltarune-deltarune-chapter-3.mp4",
+                "TIME": 1487
             }
         }
     }
@@ -1115,6 +1144,8 @@ async def makaka(message: types.Message, args: str):
                     return await message.answer("Пожалуйста, укажите правильное айди гифки. Если вы не Бармен, спросите у него")
         else:
             return await message.answer("Неверно указано ;(")
+        if message.from_user.id == TIM_ID:
+            return await message.reply("Неа.")
     else:
         texti = []
         for key in chest["timtim"]["timrep"]:
