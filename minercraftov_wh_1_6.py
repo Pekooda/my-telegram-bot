@@ -1552,7 +1552,7 @@ async def vse(message: Message):
             areyousure = testube.replace(" ", "")
             print(testube or "No text ;(")
             if any(word.lower().startswith(mat) for word in testube.split() for mat in MATUUUK) or any(matu in areyousure for matu in FUL_MATUUUK):
-            await orluk(message, "ты не думай, что я не вижу матюки в картинках, тим")
+                await orluk(message, "ты не думай, что я не вижу матюки в картинках, тим")
         except Exception as e:
             pass
     closechest(chest)
