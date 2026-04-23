@@ -1537,21 +1537,24 @@ async def vse(message: Message):
             if chest["timtim"]["timrep"][f"{unique_id}"]["VALUE"] > chest["timtim"]["maxgif"]:
                 await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
     if message.photo and message.from_user.id == TIM_ID:
-        buffer = BytesIO()
-        aku = await bot.get_file(message.photo[-1].file_id)
-        await bot.download_file(aku.file_path, buffer)
-        buffer.seek(0)
-        response = requests.post(
-            "https://api.ocr.space/parse/image",
-            files={"file": ("image.png", buffer, "image/png")},
-            data={"apikey": "helloworld", "language": "rus", "OCREngine": 2}
-        )
-        result = response.json()
-        testube = result["ParsedResults"][0]["ParsedText"].lower()
-        areyousure = testube.replace(" ", "")
-        print(testube or "No text ;(")
-        if any(word.lower().startswith(mat) for word in testube.split() for mat in MATUUUK) or any(matu in areyousure for matu in FUL_MATUUUK):
+        try:
+            buffer = BytesIO()
+            aku = await bot.get_file(message.photo[-1].file_id)
+            await bot.download_file(aku.file_path, buffer)
+            buffer.seek(0)
+            response = requests.post(
+                "https://api.ocr.space/parse/image",
+                files={"file": ("image.png", buffer, "image/png")},
+                data={"apikey": "helloworld", "language": "rus", "OCREngine": 2}
+            )
+            result = response.json()
+            testube = result["ParsedResults"][0]["ParsedText"].lower()
+            areyousure = testube.replace(" ", "")
+            print(testube or "No text ;(")
+            if any(word.lower().startswith(mat) for word in testube.split() for mat in MATUUUK) or any(matu in areyousure for matu in FUL_MATUUUK):
             await orluk(message, "ты не думай, что я не вижу матюки в картинках, тим")
+        except Exception as e:
+            pass
     closechest(chest)
 
 
