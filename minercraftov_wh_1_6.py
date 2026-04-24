@@ -77,7 +77,7 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 
 chest = {
     "hurma": {
-        "hurmball": 11,
+        "hurmball": 19,
         "hurmcd": False
     },
     "stick": {
@@ -259,6 +259,12 @@ chest = {
         "figli": [
             "prequel_memes",
             "swpre2"
+        ],
+        "tim": [
+            "otvechatelskayatroica",
+            "blablalablala40_by_minercraftov_bot",
+            "timmakakaslampochkoi_by_tgemodzibot",
+            "otvechalovo_tim"
         ]
     },
     "badstick": [
@@ -505,7 +511,7 @@ chest = {
         },
         "-1003258766039": {
             "lab": False,
-            "cmh": True,
+            "cmh": False,
             "cmt": False
         },
         "-1003867888593": {
@@ -522,48 +528,101 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "6121849328": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
-        "timtext": 49,
-        "timeout": 1492,
-        "maxgif": 1,
+        "timtext": 70,
+        "timeout": 1020,
+        "maxgif": 2,
         "timrep": {
             "AgADxGEAAkvMKEg": {
-                "VALUE": 1,
+                "VALUE": 0,
                 "ID": "CAACAgIAAyEFAATmi0vRAAKalmnkqqmVgguXn-ZHyje0Vl8Q2KMhAALEYQACS8woSHUXDzAWTvSKOwQ",
                 "NAME": "Sticker ❌",
-                "TIME": 842
+                "TIME": 543
             },
             "AgADtgIAAnXUDFM": {
-                "VALUE": 1,
+                "VALUE": 0,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKj1mnnVQImQLMIx5XkPlfnnyDS40cBAAK2AgACddQMU26TMBFnr3kCOwQ",
                 "NAME": "vot-eto-povorot-omg.mp4",
-                "TIME": 908
+                "TIME": 609
             },
             "AgADUAQAAkpFBVA": {
-                "VALUE": 5,
+                "VALUE": 8,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKmJWnnsFOZbHPd-OCNGBbtupJPpu_5AAJQBAACSkUFUL_DwHdMVuAhOwQ",
                 "NAME": "howard-hamlin.mp4",
-                "TIME": 108
+                "TIME": 55
             },
             "AgADpwcAAqCq1FA": {
-                "VALUE": 1,
+                "VALUE": 4,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKjuGnnRVkK9AOJwIpgENOLIDoR5J1WAAKnBwACoKrUUJqA8Z7dkub9OwQ",
                 "NAME": "vocaloid-monitoring.mp4",
-                "TIME": 1482
+                "TIME": 97
             },
             "AgADQZQAAibRyUo": {
-                "VALUE": 1,
+                "VALUE": 5,
                 "ID": "CgACAgIAAyEFAATmi0vRAAKYMmnjWob53zYhDxuE86OqTTOPYfZwAAJBlAACJtHJSm48_CeMc_UROwQ",
                 "NAME": "bo-sinn-smeshariki.mp4",
-                "TIME": 1483
+                "TIME": 936
             },
             "AgADUggAAhTNLVI": {
-                "VALUE": 1,
+                "VALUE": 3,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKKdWneCZPQ_d90lbkLiT7ImCcmm2ARAAJSCAACFM0tUuwhw0IvN-XzOwQ",
                 "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 1487
+                "TIME": 45
+            },
+            "AgADpQYAArJg5VI": {
+                "VALUE": 0,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKLCWneDlM3eqviP9s-4Q-L9vUoWci_AAKlBgACsmDlUiz40Yrf4ujVOwQ",
+                "NAME": "чай.mp4",
+                "TIME": 1215
+            },
+            "AgAD5YgAAkT4AUg": {
+                "VALUE": 1,
+                "ID": "CAACAgIAAyEFAATmi0vRAAKXnGnidGtGivX9piIyWYvfKC2ekJrtAALliAACRPgBSMbTj3ObU3SCOwQ",
+                "NAME": "Sticker 🤩",
+                "TIME": 62
+            },
+            "AgAD10oAAuc6IUs": {
+                "VALUE": 1,
+                "ID": "CAACAgIAAyEFAATmi0vRAAKM-GneXMsE-RROxGrwls9lZ-L-k12JAALXSgAC5zohS-uEFUT0vJ5COwQ",
+                "NAME": "Sticker ✅",
+                "TIME": 62
+            },
+            "AgADiQoAAjDZEUk": {
+                "VALUE": 1,
+                "ID": "CAACAgIAAyEFAATmi0vRAAK26Wnqbh9OMCZHG4X0JmTTWTv9C6rYAAKJCgACMNkRSdeVKb0FS81vOwQ",
+                "NAME": "Sticker 🥵",
+                "TIME": 68
+            },
+            "AgAD6wMAAmOntVE": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKLDWneDnMz4OtAgnHYQQ0e0qT05VlkAALrAwACY6e1UdV8UaoRbLAsOwQ",
+                "NAME": "снаступающимновымгодом2023_снаступающимновымгодом.mp4",
+                "TIME": 101
+            },
+            "AgAD8AIAAkkNDVM": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKOVmnf0FLZ2Sf64NZwqj_Cfj4NAV6ZAALwAgACSQ0NU4VbzP5zv4fDOwQ",
+                "NAME": "like.mp4",
+                "TIME": 106
+            },
+            "AgADQwgAAkPxLVI": {
+                "VALUE": 2,
+                "ID": "CgACAgQAAyEFAATmi0vRAAKKm2neCtDFMb_PK6VUrlXcYge-ByM7AAJDCAACQ_EtUpWjDEWPVVvuOwQ",
+                "NAME": "deltarune-deltarune-chapter-3.mp4",
+                "TIME": 1404
+            },
+            "AgAD6IoAAl6kKUk": {
+                "VALUE": 1,
+                "ID": "CgACAgIAAyEFAATmi0vRAAKOFWnfzrzN6IoeDBxOZeVsTMCJU7l2AALoigACXqQpSebzr8UAAUaDDTsE",
+                "NAME": "0001-0229.mp4",
+                "TIME": 733
             }
         }
     }
@@ -1527,6 +1586,10 @@ async def vse(message: Message):
                 unique_id = message.sticker.file_unique_id
                 id = message.sticker.file_id
                 name = "Sticker " + message.sticker.emoji
+            if message.photo:
+                unique_id = message.photo[-1].file_unique_id
+                id = message.photo[-1].file_id
+                name = message.photo[-1].file_name or "Photo"
             if f"{unique_id}" not in chest["timtim"]["timrep"]:
                 chest["timtim"]["timrep"][f"{unique_id}"] = {}
                 chest["timtim"]["timrep"][f"{unique_id}"]["VALUE"] = 0
