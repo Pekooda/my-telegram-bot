@@ -1512,7 +1512,7 @@ async def vse(message: Message):
         if message.text.lower() == "мои баллы" and message.chat.id == COVINOC_ID and message.from_user.id == HURM_ID:
             await message.answer(f"Текущее ваше кол-во баллов: {chest["hurma"]["hurmball"]}")
 
-    if message.animation or message.sticker:
+    if message.animation or message.sticker or message.photo:
         if message.from_user.id == TIM_ID:
             chest["timtim"]["timtext"] += 1
             if chest["timtim"]["timtext"] > 400:
