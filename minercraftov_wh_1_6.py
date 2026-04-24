@@ -1589,7 +1589,7 @@ async def vse(message: Message):
             if message.photo:
                 unique_id = message.photo[-1].file_unique_id
                 id = message.photo[-1].file_id
-                name = message.photo[-1].file_name or "Photo"
+                name = "Photo"
             if f"{unique_id}" not in chest["timtim"]["timrep"]:
                 chest["timtim"]["timrep"][f"{unique_id}"] = {}
                 chest["timtim"]["timrep"][f"{unique_id}"]["VALUE"] = 0
