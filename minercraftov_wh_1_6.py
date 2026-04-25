@@ -511,7 +511,7 @@ chest = {
         },
         "-1003258766039": {
             "lab": False,
-            "cmh": True,
+            "cmh": False,
             "cmt": False
         },
         "-1003867888593": {
@@ -541,112 +541,40 @@ chest = {
         "maxgif": 1,
         "timrep": {
             "AgADUAQAAkpFBVA": {
-                "VALUE": 7,
+                "VALUE": 6,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKmJWnnsFOZbHPd-OCNGBbtupJPpu_5AAJQBAACSkUFUL_DwHdMVuAhOwQ",
                 "NAME": "howard-hamlin.mp4",
-                "TIME": 83
+                "TIME": 786
             },
             "AgADpwcAAqCq1FA": {
-                "VALUE": 3,
+                "VALUE": 2,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKjuGnnRVkK9AOJwIpgENOLIDoR5J1WAAKnBwACoKrUUJqA8Z7dkub9OwQ",
                 "NAME": "vocaloid-monitoring.mp4",
-                "TIME": 125
+                "TIME": 828
             },
             "AgADQZQAAibRyUo": {
                 "VALUE": 7,
                 "ID": "CgACAgIAAyEFAATmi0vRAAKYMmnjWob53zYhDxuE86OqTTOPYfZwAAJBlAACJtHJSm48_CeMc_UROwQ",
                 "NAME": "bo-sinn-smeshariki.mp4",
-                "TIME": 885
+                "TIME": 568
             },
             "AgADUggAAhTNLVI": {
-                "VALUE": 2,
+                "VALUE": 1,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKKdWneCZPQ_d90lbkLiT7ImCcmm2ARAAJSCAACFM0tUuwhw0IvN-XzOwQ",
                 "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 73
-            },
-            "AgADpQYAArJg5VI": {
-                "VALUE": 0,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKLCWneDlM3eqviP9s-4Q-L9vUoWci_AAKlBgACsmDlUiz40Yrf4ujVOwQ",
-                "NAME": "чай.mp4",
-                "TIME": 223
-            },
-            "AgAD5YgAAkT4AUg": {
-                "VALUE": 0,
-                "ID": "CAACAgIAAyEFAATmi0vRAAKXnGnidGtGivX9piIyWYvfKC2ekJrtAALliAACRPgBSMbTj3ObU3SCOwQ",
-                "NAME": "Sticker 🤩",
-                "TIME": 90
-            },
-            "AgAD10oAAuc6IUs": {
-                "VALUE": 0,
-                "ID": "CAACAgIAAyEFAATmi0vRAAKM-GneXMsE-RROxGrwls9lZ-L-k12JAALXSgAC5zohS-uEFUT0vJ5COwQ",
-                "NAME": "Sticker ✅",
-                "TIME": 90
-            },
-            "AgADiQoAAjDZEUk": {
-                "VALUE": 0,
-                "ID": "CAACAgIAAyEFAATmi0vRAAK26Wnqbh9OMCZHG4X0JmTTWTv9C6rYAAKJCgACMNkRSdeVKb0FS81vOwQ",
-                "NAME": "Sticker 🥵",
-                "TIME": 96
-            },
-            "AgAD6wMAAmOntVE": {
-                "VALUE": 0,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKLDWneDnMz4OtAgnHYQQ0e0qT05VlkAALrAwACY6e1UdV8UaoRbLAsOwQ",
-                "NAME": "снаступающимновымгодом2023_снаступающимновымгодом.mp4",
-                "TIME": 129
-            },
-            "AgAD8AIAAkkNDVM": {
-                "VALUE": 0,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKOVmnf0FLZ2Sf64NZwqj_Cfj4NAV6ZAALwAgACSQ0NU4VbzP5zv4fDOwQ",
-                "NAME": "like.mp4",
-                "TIME": 134
+                "TIME": 776
             },
             "AgADQwgAAkPxLVI": {
                 "VALUE": 6,
                 "ID": "CgACAgQAAyEFAATmi0vRAAKKm2neCtDFMb_PK6VUrlXcYge-ByM7AAJDCAACQ_EtUpWjDEWPVVvuOwQ",
                 "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 926
-            },
-            "AgAD6IoAAl6kKUk": {
-                "VALUE": 0,
-                "ID": "CgACAgIAAyEFAATmi0vRAAKOFWnfzrzN6IoeDBxOZeVsTMCJU7l2AALoigACXqQpSebzr8UAAUaDDTsE",
-                "NAME": "0001-0229.mp4",
-                "TIME": 761
-            },
-            "AQAD9hFrG0FhYUt-": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK-GWnrwUxpoytqS7DJLzD_6Sq7JZXEAAL2EWsbQWFhS0VmqBBtPtv1AQADAgADeQADOwQ",
-                "NAME": "Photo",
-                "TIME": 38
-            },
-            "AQADJRdrGxFnYEt-": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK-Q2nryI18QKrlNGtT3-IEpGUkg0XzAAIlF2sbEWdgS8fK6AJdypNkAQADAgADeQADOwQ",
-                "NAME": "Photo",
-                "TIME": 69
-            },
-            "AQADJhdrGxFnYEt-": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK-S2nryQkT-_ZDL56Us86ZwKnyCOJ0AAImF2sbEWdgS-83viGrYHLVAQADAgADeQADOwQ",
-                "NAME": "Photo",
-                "TIME": 71
-            },
-            "AQADQRdrGxFnYEt9": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK-cWnrzmxLq9qLS9rgp4vd-BoO8hC_AAJBF2sbEWdgS13r7bDrGGV9AQADAgADeAADOwQ",
-                "NAME": "Photo",
-                "TIME": 94
-            },
-            "AQADRhdrGxFnYEty": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK-dmnrzyxbcptQ3JSjDnE-ZhjgkXLdAAJGF2sbEWdgSzhkLI6RWhBoAQADAgADbQADOwQ",
-                "NAME": "Photo",
-                "TIME": 97
+                "TIME": 609
             },
             "AQADYxNrGxFnaEty": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAAK-wmnsiTNnS31FELGK6V9GC6G89wuWAAJjE2sbEWdoS3p02Si5_jfCAQADAgADbQADOwQ",
                 "NAME": "Photo",
-                "TIME": 891
+                "TIME": 574
             }
         }
     }
@@ -1440,8 +1368,6 @@ async def vse(message: Message):
         args = ""
         if YES in EMER:
             await richagi(message, args, YES)
-        if YES == "mercy":
-            await mercy(message, args)
         chest = openchest()
 ### Проверка на работу бота, открыть датабазу
     if not bot_enabled:
@@ -1464,13 +1390,6 @@ async def vse(message: Message):
 ### ВСЁ, ЧТО НИЖЕ - НЕ ОТПРАВИТСЯ ПРИ ЗАПУСКЕ
     if message.date < BOT_START:
         return
-### Мгновенная реакция
-    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-    if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-
-
 ### ЗАПИСЬ ЧАТА В ДЖСОН
     if f"{chat_id}" not in chest["rich"]:
         chest["rich"][f"{chat_id}"] = {
@@ -1479,6 +1398,14 @@ async def vse(message: Message):
             "cmt": False
         }
         closechest(chest)
+### Мгновенная реакция
+    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
+        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+    if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
+        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+
+
+
 
 ### РАБОТА КОМАНД
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
