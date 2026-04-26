@@ -541,7 +541,7 @@ chest = {
         }
     },
     "timtim": {
-        "timtext": 104,
+        "timtext": 108,
         "timeout": 1020,
         "maxgif": 1,
         "timrep": {
@@ -549,91 +549,73 @@ chest = {
                 "VALUE": 9,
                 "ID": "CgACAgQAAyEFAATmi0vRAALALWntvWTzNUWmDkqoenUSDOD3THUmAAJQBAACSkUFUL_DwHdMVuAhOwQ",
                 "NAME": "howard-hamlin.mp4",
-                "TIME": 853
+                "TIME": 711
             },
             "AgADpwcAAqCq1FA": {
-                "VALUE": 2,
+                "VALUE": -100,
                 "ID": "CgACAgQAAyEFAATmi0vRAALBA2nt43JhvL3Z1S658tpyj_MSQ-_2AAKnBwACoKrUUJqA8Z7dkub9OwQ",
                 "NAME": "vocaloid-monitoring.mp4",
-                "TIME": 1015
+                "TIME": 873
             },
             "AgADQZQAAibRyUo": {
                 "VALUE": 6,
                 "ID": "CgACAgIAAyEFAATmi0vRAAKYMmnjWob53zYhDxuE86OqTTOPYfZwAAJBlAACJtHJSm48_CeMc_UROwQ",
                 "NAME": "bo-sinn-smeshariki.mp4",
-                "TIME": 563
+                "TIME": 421
             },
             "AgADQwgAAkPxLVI": {
                 "VALUE": 10,
                 "ID": "CgACAgQAAyEFAATmi0vRAALAJmntvTJ7QJluT2VrZtvNwmTpqFj0AAJDCAACQ_EtUpWjDEWPVVvuOwQ",
                 "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 852
-            },
-            "AQADlBZrGxFnaEty": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK_OGns-JpcX3UvOYGiMatTfTS_jAo3AAKUFmsbEWdoSxhCuavgdnPnAQADAgADbQADOwQ",
-                "NAME": "Photo",
-                "TIME": 13
-            },
-            "AQADohZrGxFnaEt9": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK_RWns-aCj9hlcpVUi-9zcR4UxI8K4AAKiFmsbEWdoSx58YC9iT1m8AQADAgADeAADOwQ",
-                "NAME": "Photo",
-                "TIME": 18
-            },
-            "AQADuRZrGxFnaEty": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK_V2ntAt4gTf_KBJTHVpNVYZT3ycISAAK5FmsbEWdoS2MgsrQhLi1cAQADAgADbQADOwQ",
-                "NAME": "Photo",
-                "TIME": 57
-            },
-            "AQADwxZrGxFnaEt9": {
-                "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK_eGntBab2LumbISU3F2HKqVPnPtU0AALDFmsbEWdoS1SqLKZzZTqdAQADAgADeAADOwQ",
-                "NAME": "Photo",
-                "TIME": 69
+                "TIME": 710
             },
             "AgAD6gUAAjFZNVA": {
                 "VALUE": 3,
                 "ID": "CgACAgQAAyEFAATmi0vRAALAUmnt0CA5QLV8P9SuKCaHP3RtIN8YAALqBQACMVk1UJICjh6hEx8UOwQ",
                 "NAME": "freedom-america.mp4",
-                "TIME": 933
-            },
-            "AgAD6IoAAl6kKUk": {
-                "VALUE": 1,
-                "ID": "CgACAgIAAyEFAATmi0vRAAKOFWnfzrzN6IoeDBxOZeVsTMCJU7l2AALoigACXqQpSebzr8UAAUaDDTsE",
-                "NAME": "0001-0229.mp4",
-                "TIME": 80
+                "TIME": 791
             },
             "AgAD6wMAAmOntVE": {
                 "VALUE": 2,
                 "ID": "CgACAgQAAyEFAATmi0vRAALAFWntpYRQlI_Jdz9RcarpzO__UlSaAALrAwACY6e1UdV8UaoRbLAsOwQ",
                 "NAME": "снаступающимновымгодом2023_снаступающимновымгодом.mp4",
-                "TIME": 751
+                "TIME": 609
             },
             "AQADKhZrGxBGaUt-": {
-                "VALUE": 1,
+                "VALUE": 3,
                 "ID": "AgACAgIAAyEFAATmi0vRAALARmntz2t6Fqj0c9YHd6Aa8JTcxwl7AAIqFmsbEEZpS8OdqXxofmi0AQADAgADeQADOwQ",
                 "NAME": "Photo",
-                "TIME": 930
+                "TIME": 1016
             },
             "AQADNw5rG_JirFB9": {
                 "VALUE": 1,
                 "ID": "AgACAgQAAyEFAATmi0vRAALATmntz81ajRhdWRUl4-6GD3nQOyysAAI3Dmsb8mKsUBUCY68h5820AQADAgADeAADOwQ",
                 "NAME": "Photo",
-                "TIME": 931
+                "TIME": 789
             },
             "AQADPBZrGxBGaUt-": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAALAZ2nt0g97Pdx4_Ej0Oya0NOJ1UDReAAI8FmsbEEZpSzjC4nIyBhoHAQADAgADeQADOwQ",
                 "NAME": "Photo",
-                "TIME": 941
+                "TIME": 799
             },
             "AQADWhZrGxBGaUt9": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAALA2Gnt2VpDxx1hzdyON88BjdMO4U5gAAJaFmsbEEZpS11R4bYmtsBDAQADAgADeAADOwQ",
                 "NAME": "Photo",
-                "TIME": 972
+                "TIME": 830
+            },
+            "AQAD6RRrG018cEt-": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAALCBmnuG9eQjtAPwsIof3-BzsKb1OPaAALpFGsbTXxwS3YWgYmWj0pQAQADAgADeQADOwQ",
+                "NAME": "Photo",
+                "TIME": 1016
+            },
+            "AQAD3xRrGxBGcUt-": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAALCK2nuHLfX_cdUlV6nfnbrzUoBiP1sAALfFGsbEEZxS0neQGWyKp3wAQADAgADeQADOwQ",
+                "NAME": "Photo",
+                "TIME": 1020
             }
         }
     }
@@ -1596,7 +1578,7 @@ async def vse(message: Message):
         if message.text.lower() == "мои баллы" and message.chat.id == COVINOC_ID and message.from_user.id == HURM_ID:
             await message.answer(f"Текущее ваше кол-во баллов: {chest["hurma"]["hurmball"]}")
 
-    if message.animation or message.sticker or message.photo:
+    if message.animation or message.sticker:
         if message.from_user.id == TIM_ID:
             chest["timtim"]["timtext"] += 1
             if chest["timtim"]["timtext"] > 400:
