@@ -38,6 +38,7 @@ OTOLD_ID = int(os.getenv("E_OTOLD_ID"), 0)
 COVINOC_ID = int(os.getenv("E_COVINOC_ID"), 0)
 HURM_ID = int(os.getenv("E_HURM_ID"), 0)
 TIM_ID = int(os.getenv("E_TIM_ID"), 0)
+ISCRA_ID = int(os.getenv("E_ISCRA_ID"), 0)
 MATUUUK = json.loads(os.getenv("E_MATUUUK", "[]"))
 FUL_MATUUUK = json.loads(os.getenv("E_FUL_MATUUUK", "[]"))
 
@@ -55,7 +56,7 @@ answera = defaultdict(int)
 
 
 ### ХЛАМ
-comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "hmer", "slivki", "neslivki"]
+comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "hmer", "hkazn"]
 MC_NAME = ["майнер крафтов", "мк"]
 DEFAULT_QUERY = ["пиво", "пиво"]
 MURA_NIQ = "CAACAgIAAxkBAAIkI2jqorXAlw9LHSiFH0RuuXOBrOmpAAIaAAPy6LAmfmdy1pU2dIY2BA"
@@ -1219,24 +1220,28 @@ async def makaka(message: types.Message, args: str):
     closechest(chest)
 
 
-async def neslivki(message: types.Message, args: str):
-    if message.from_user.id == HURM_ID:
-        return await message.reply("Неа.")
+async def hmer(message: types.Message, args: str):
+    chat_id = message.chat.id
+    if chat_id != COVINOC_ID:
+        return
+    if message.from_user.id not in [PEKO_ID, ISCRA_ID, HURM_ID]:
+        return await message.reply("Слишком опасно доверять эту кнопку всем. Обратитесь к Бармену.")
     try:
-        chat_id = message.chat.id
         await bot.unban_chat_member(chat_id, HURM_ID)
-        return await message.answer(f"Сливок больше нету")
+        return await message.reply(f"Хурма теперь есть.")
     except Exception as e:
         return await message.answer(f"Рошибка: {e}")
 
 
-async def slivki(message: types.Message, args: str):
-    if message.from_user.id == HURM_ID:
-        return await message.reply("Неа.")
+async def hkazn(message: types.Message, args: str):
+    chat_id = message.chat.id
+    if chat_id != COVINOC_ID:
+        return
+    if message.from_user.id not in [PEKO_ID, ISCRA_ID, HURM_ID]:
+        return await message.reply("Слишком опасно доверять эту кнопку всем. Обратитесь к Бармену.")
     try:
-        chat_id = message.chat.id
         await bot.ban_chat_member(chat_id, HURM_ID)
-        return await message.answer(f"СЛИВКИ В ЧАТЕ!!!")
+        return await message.reply(f"Хурмы больше нету.")
     except Exception as e:
         return await message.answer(f"Рошибка: {e}")
 
@@ -1464,6 +1469,7 @@ async def vse(message: Message):
     if message.left_chat_member and message.left_chat_member.id == HURM_ID:
         try:
             await bot.ban_chat_member(chat_id, user_id)
+            await message.answer(f"Эх блин, Хурма ливнула! Очень жаль, что он не сможет вернуться ;(")
         except Exception as e:
             await message.answer(f"Рошибка: {e}")
         await bot.send_message(PEKO_ID, "ХУРМО ЛИВНУЛО")
