@@ -1238,7 +1238,7 @@ async def makaka(message: types.Message, args: str):
 
 
 async def hmer(message: types.Message, args: str):
-    if message.from_user.id != HURM_ID:
+    if message.from_user.id == HURM_ID:
         return await message.reply("Неа.")
     try:
         await bot.unban_chat_member(chat_id, HURM_ID)
