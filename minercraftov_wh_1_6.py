@@ -55,7 +55,7 @@ answera = defaultdict(int)
 
 
 ### ХЛАМ
-comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40"]
+comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "hmer"]
 MC_NAME = ["майнер крафтов", "мк"]
 DEFAULT_QUERY = ["пиво", "пиво"]
 MURA_NIQ = "CAACAgIAAxkBAAIkI2jqorXAlw9LHSiFH0RuuXOBrOmpAAIaAAPy6LAmfmdy1pU2dIY2BA"
@@ -533,48 +533,107 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "5134703218": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
-        "timtext": 82,
+        "timtext": 104,
         "timeout": 1020,
         "maxgif": 1,
         "timrep": {
             "AgADUAQAAkpFBVA": {
-                "VALUE": 6,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKmJWnnsFOZbHPd-OCNGBbtupJPpu_5AAJQBAACSkUFUL_DwHdMVuAhOwQ",
+                "VALUE": 9,
+                "ID": "CgACAgQAAyEFAATmi0vRAALALWntvWTzNUWmDkqoenUSDOD3THUmAAJQBAACSkUFUL_DwHdMVuAhOwQ",
                 "NAME": "howard-hamlin.mp4",
-                "TIME": 786
+                "TIME": 853
             },
             "AgADpwcAAqCq1FA": {
                 "VALUE": 2,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKjuGnnRVkK9AOJwIpgENOLIDoR5J1WAAKnBwACoKrUUJqA8Z7dkub9OwQ",
+                "ID": "CgACAgQAAyEFAATmi0vRAALBA2nt43JhvL3Z1S658tpyj_MSQ-_2AAKnBwACoKrUUJqA8Z7dkub9OwQ",
                 "NAME": "vocaloid-monitoring.mp4",
-                "TIME": 828
+                "TIME": 1015
             },
             "AgADQZQAAibRyUo": {
-                "VALUE": 7,
+                "VALUE": 6,
                 "ID": "CgACAgIAAyEFAATmi0vRAAKYMmnjWob53zYhDxuE86OqTTOPYfZwAAJBlAACJtHJSm48_CeMc_UROwQ",
                 "NAME": "bo-sinn-smeshariki.mp4",
-                "TIME": 568
-            },
-            "AgADUggAAhTNLVI": {
-                "VALUE": 1,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKKdWneCZPQ_d90lbkLiT7ImCcmm2ARAAJSCAACFM0tUuwhw0IvN-XzOwQ",
-                "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 776
+                "TIME": 563
             },
             "AgADQwgAAkPxLVI": {
-                "VALUE": 6,
-                "ID": "CgACAgQAAyEFAATmi0vRAAKKm2neCtDFMb_PK6VUrlXcYge-ByM7AAJDCAACQ_EtUpWjDEWPVVvuOwQ",
+                "VALUE": 10,
+                "ID": "CgACAgQAAyEFAATmi0vRAALAJmntvTJ7QJluT2VrZtvNwmTpqFj0AAJDCAACQ_EtUpWjDEWPVVvuOwQ",
                 "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 609
+                "TIME": 852
             },
-            "AQADYxNrGxFnaEty": {
+            "AQADlBZrGxFnaEty": {
                 "VALUE": 1,
-                "ID": "AgACAgIAAyEFAATmi0vRAAK-wmnsiTNnS31FELGK6V9GC6G89wuWAAJjE2sbEWdoS3p02Si5_jfCAQADAgADbQADOwQ",
+                "ID": "AgACAgIAAyEFAATmi0vRAAK_OGns-JpcX3UvOYGiMatTfTS_jAo3AAKUFmsbEWdoSxhCuavgdnPnAQADAgADbQADOwQ",
                 "NAME": "Photo",
-                "TIME": 574
+                "TIME": 13
+            },
+            "AQADohZrGxFnaEt9": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAAK_RWns-aCj9hlcpVUi-9zcR4UxI8K4AAKiFmsbEWdoSx58YC9iT1m8AQADAgADeAADOwQ",
+                "NAME": "Photo",
+                "TIME": 18
+            },
+            "AQADuRZrGxFnaEty": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAAK_V2ntAt4gTf_KBJTHVpNVYZT3ycISAAK5FmsbEWdoS2MgsrQhLi1cAQADAgADbQADOwQ",
+                "NAME": "Photo",
+                "TIME": 57
+            },
+            "AQADwxZrGxFnaEt9": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAAK_eGntBab2LumbISU3F2HKqVPnPtU0AALDFmsbEWdoS1SqLKZzZTqdAQADAgADeAADOwQ",
+                "NAME": "Photo",
+                "TIME": 69
+            },
+            "AgAD6gUAAjFZNVA": {
+                "VALUE": 3,
+                "ID": "CgACAgQAAyEFAATmi0vRAALAUmnt0CA5QLV8P9SuKCaHP3RtIN8YAALqBQACMVk1UJICjh6hEx8UOwQ",
+                "NAME": "freedom-america.mp4",
+                "TIME": 933
+            },
+            "AgAD6IoAAl6kKUk": {
+                "VALUE": 1,
+                "ID": "CgACAgIAAyEFAATmi0vRAAKOFWnfzrzN6IoeDBxOZeVsTMCJU7l2AALoigACXqQpSebzr8UAAUaDDTsE",
+                "NAME": "0001-0229.mp4",
+                "TIME": 80
+            },
+            "AgAD6wMAAmOntVE": {
+                "VALUE": 2,
+                "ID": "CgACAgQAAyEFAATmi0vRAALAFWntpYRQlI_Jdz9RcarpzO__UlSaAALrAwACY6e1UdV8UaoRbLAsOwQ",
+                "NAME": "снаступающимновымгодом2023_снаступающимновымгодом.mp4",
+                "TIME": 751
+            },
+            "AQADKhZrGxBGaUt-": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAALARmntz2t6Fqj0c9YHd6Aa8JTcxwl7AAIqFmsbEEZpS8OdqXxofmi0AQADAgADeQADOwQ",
+                "NAME": "Photo",
+                "TIME": 930
+            },
+            "AQADNw5rG_JirFB9": {
+                "VALUE": 1,
+                "ID": "AgACAgQAAyEFAATmi0vRAALATmntz81ajRhdWRUl4-6GD3nQOyysAAI3Dmsb8mKsUBUCY68h5820AQADAgADeAADOwQ",
+                "NAME": "Photo",
+                "TIME": 931
+            },
+            "AQADPBZrGxBGaUt-": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAALAZ2nt0g97Pdx4_Ej0Oya0NOJ1UDReAAI8FmsbEEZpSzjC4nIyBhoHAQADAgADeQADOwQ",
+                "NAME": "Photo",
+                "TIME": 941
+            },
+            "AQADWhZrGxBGaUt9": {
+                "VALUE": 1,
+                "ID": "AgACAgIAAyEFAATmi0vRAALA2Gnt2VpDxx1hzdyON88BjdMO4U5gAAJaFmsbEEZpS11R4bYmtsBDAQADAgADeAADOwQ",
+                "NAME": "Photo",
+                "TIME": 972
             }
         }
     }
@@ -1122,19 +1181,19 @@ async def makaka(message: types.Message, args: str):
     text = ""
     if len(parts) >= 2:
         bar = parts[0]
-        if parts[1].isdigit():
+        if parts[1].lstrip(-).isdigit():
             men = int(parts[1])
         else:
             return await message.answer("Нужна ЦИФРА")
         if len(parts) >= 3:
             sho = parts[2]
-        if bar == "-t":
+        if bar == "-t" and parts[1].isdigit():
             text = "Время таймаута гифки/стикера"
             chest["timtim"]["timeout"] = men
-        elif bar == "-m":
+        elif bar == "-m" and parts[1].isdigit():
             text = "Максимальный лимит гифок/стикеров за таймаут"
             chest["timtim"]["maxgif"] = men
-        elif bar == "-tt":
+        elif bar == "-tt" and parts[1].isdigit():
             text = 'Количество "тим" при отправке гифки/стикера'
             chest["timtim"]["timtext"] = men
         elif bar == "-v":
@@ -1176,6 +1235,16 @@ async def makaka(message: types.Message, args: str):
 """, parse_mode="HTML")
     await message.answer(f"Изменено:\n{text}: {men}")
     closechest(chest)
+
+
+async def hmer(message: types.Message, args: str):
+    if message.from_user.id != HURM_ID:
+        return await message.reply("Неа.")
+    try:
+        await bot.unban_chat_member(chat_id, HURM_ID)
+    except Exception as e:
+        return await message.answer(f"Рошибка: {e}")
+
 
 
 ### КНИИИИИИИИИИГА
@@ -1385,8 +1454,6 @@ async def vse(message: Message):
             await message.reply("СЛУЖЕБНОЕ СООБЩЕНИЕ")
 ### КОНСОЛЬ
     print(f"[{message.chat.title or message.from_user.full_name}]\n{message.from_user.full_name}: {getattr(message.sticker, "emoji", None) + ' ' if getattr(message.sticker, "emoji", None) else ''}{'[' + message.content_type.removeprefix("ContentType.") + '] ' if not message.text else ''}{message.caption or message.text if message.caption or message.text else ''}")
-    if message.left_chat_member and message.left_chat_member.id == HURM_ID:
-        await bot.send_message(PEKO_ID, "ХУРМО ЛИВНУЛО")
 ### ВСЁ, ЧТО НИЖЕ - НЕ ОТПРАВИТСЯ ПРИ ЗАПУСКЕ
     if message.date < BOT_START:
         return
@@ -1398,6 +1465,13 @@ async def vse(message: Message):
             "cmt": False
         }
         closechest(chest)
+
+    if message.left_chat_member and message.left_chat_member.id == HURM_ID:
+        try:
+            await bot.ban_chat_member(chat_id, user_id)
+        except Exception as e:
+            await message.answer(f"Рошибка: {e}")
+        await bot.send_message(PEKO_ID, "ХУРМО ЛИВНУЛО")
 ### Мгновенная реакция
     if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
         return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
@@ -1617,9 +1691,10 @@ async def pivtime():
                 if chest["timtim"]["timrep"][key]["TIME"] > 0:
                     chest["timtim"]["timrep"][key]["TIME"] -= 1
                 if chest["timtim"]["timrep"][key]["TIME"] == 0:
-                    chest["timtim"]["timrep"][key]["VALUE"] -= 1
+                    if chest["timtim"]["timrep"][key]["VALUE"] > 0:
+                        chest["timtim"]["timrep"][key]["VALUE"] -= 1
                     chest["timtim"]["timrep"][key]["TIME"] = chest["timtim"]["timeout"]
-            chest["timtim"]["timrep"] = {k: v for k, v in chest["timtim"]["timrep"].items() if v["VALUE"] > 0}
+            chest["timtim"]["timrep"] = {k: v for k, v in chest["timtim"]["timrep"].items() if not v["VALUE"] == 0}
             closechest(chest)
 
         
