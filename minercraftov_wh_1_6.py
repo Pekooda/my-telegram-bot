@@ -1181,7 +1181,7 @@ async def makaka(message: types.Message, args: str):
     text = ""
     if len(parts) >= 2:
         bar = parts[0]
-        if parts[1].lstrip(-).isdigit():
+        if parts[1].lstrip("-").isdigit():
             men = int(parts[1])
         else:
             return await message.answer("Нужна ЦИФРА")
