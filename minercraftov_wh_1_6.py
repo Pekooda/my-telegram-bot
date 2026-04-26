@@ -1219,11 +1219,24 @@ async def makaka(message: types.Message, args: str):
     closechest(chest)
 
 
-async def hmer(message: types.Message, args: str):
+async def neslivki(message: types.Message, args: str):
     if message.from_user.id == HURM_ID:
         return await message.reply("Неа.")
     try:
+        chat_id = message.chat.id
         await bot.unban_chat_member(chat_id, HURM_ID)
+        return await message.answer(f"Сливок больше нету")
+    except Exception as e:
+        return await message.answer(f"Рошибка: {e}")
+
+
+async def slivki(message: types.Message, args: str):
+    if message.from_user.id == HURM_ID:
+        return await message.reply("Неа.")
+    try:
+        chat_id = message.chat.id
+        await bot.ban_chat_member(chat_id, HURM_ID)
+        return await message.answer(f"СЛИВКИ В ЧАТЕ!!!")
     except Exception as e:
         return await message.answer(f"Рошибка: {e}")
 
