@@ -539,84 +539,136 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "8535933456": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "8067578447": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
-        "timtext": 108,
-        "timeout": 1020,
-        "maxgif": 1,
+        "timtext": 0,
+        "timeout": 1,
+        "maxgif": 100,
         "timrep": {
             "AgADUAQAAkpFBVA": {
-                "VALUE": 9,
+                "VALUE": 13,
                 "ID": "CgACAgQAAyEFAATmi0vRAALALWntvWTzNUWmDkqoenUSDOD3THUmAAJQBAACSkUFUL_DwHdMVuAhOwQ",
                 "NAME": "howard-hamlin.mp4",
-                "TIME": 711
+                "TIME": 1001
             },
             "AgADpwcAAqCq1FA": {
-                "VALUE": -100,
+                "VALUE": -98,
                 "ID": "CgACAgQAAyEFAATmi0vRAALBA2nt43JhvL3Z1S658tpyj_MSQ-_2AAKnBwACoKrUUJqA8Z7dkub9OwQ",
                 "NAME": "vocaloid-monitoring.mp4",
-                "TIME": 873
+                "TIME": 734
             },
             "AgADQZQAAibRyUo": {
                 "VALUE": 6,
                 "ID": "CgACAgIAAyEFAATmi0vRAAKYMmnjWob53zYhDxuE86OqTTOPYfZwAAJBlAACJtHJSm48_CeMc_UROwQ",
                 "NAME": "bo-sinn-smeshariki.mp4",
-                "TIME": 421
+                "TIME": 26
             },
             "AgADQwgAAkPxLVI": {
                 "VALUE": 10,
                 "ID": "CgACAgQAAyEFAATmi0vRAALAJmntvTJ7QJluT2VrZtvNwmTpqFj0AAJDCAACQ_EtUpWjDEWPVVvuOwQ",
                 "NAME": "deltarune-deltarune-chapter-3.mp4",
-                "TIME": 710
+                "TIME": 315
             },
             "AgAD6gUAAjFZNVA": {
-                "VALUE": 3,
+                "VALUE": 4,
                 "ID": "CgACAgQAAyEFAATmi0vRAALAUmnt0CA5QLV8P9SuKCaHP3RtIN8YAALqBQACMVk1UJICjh6hEx8UOwQ",
                 "NAME": "freedom-america.mp4",
-                "TIME": 791
+                "TIME": 790
             },
             "AgAD6wMAAmOntVE": {
-                "VALUE": 2,
+                "VALUE": 5,
                 "ID": "CgACAgQAAyEFAATmi0vRAALAFWntpYRQlI_Jdz9RcarpzO__UlSaAALrAwACY6e1UdV8UaoRbLAsOwQ",
                 "NAME": "снаступающимновымгодом2023_снаступающимновымгодом.mp4",
-                "TIME": 609
+                "TIME": 1004
             },
             "AQADKhZrGxBGaUt-": {
                 "VALUE": 3,
                 "ID": "AgACAgIAAyEFAATmi0vRAALARmntz2t6Fqj0c9YHd6Aa8JTcxwl7AAIqFmsbEEZpS8OdqXxofmi0AQADAgADeQADOwQ",
                 "NAME": "Photo",
-                "TIME": 1016
+                "TIME": 621
             },
             "AQADNw5rG_JirFB9": {
                 "VALUE": 1,
                 "ID": "AgACAgQAAyEFAATmi0vRAALATmntz81ajRhdWRUl4-6GD3nQOyysAAI3Dmsb8mKsUBUCY68h5820AQADAgADeAADOwQ",
                 "NAME": "Photo",
-                "TIME": 789
+                "TIME": 394
             },
             "AQADPBZrGxBGaUt-": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAALAZ2nt0g97Pdx4_Ej0Oya0NOJ1UDReAAI8FmsbEEZpSzjC4nIyBhoHAQADAgADeQADOwQ",
                 "NAME": "Photo",
-                "TIME": 799
+                "TIME": 404
             },
             "AQADWhZrGxBGaUt9": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAALA2Gnt2VpDxx1hzdyON88BjdMO4U5gAAJaFmsbEEZpS11R4bYmtsBDAQADAgADeAADOwQ",
                 "NAME": "Photo",
-                "TIME": 830
+                "TIME": 435
             },
             "AQAD6RRrG018cEt-": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAALCBmnuG9eQjtAPwsIof3-BzsKb1OPaAALpFGsbTXxwS3YWgYmWj0pQAQADAgADeQADOwQ",
                 "NAME": "Photo",
-                "TIME": 1016
+                "TIME": 621
             },
             "AQAD3xRrGxBGcUt-": {
                 "VALUE": 1,
                 "ID": "AgACAgIAAyEFAATmi0vRAALCK2nuHLfX_cdUlV6nfnbrzUoBiP1sAALfFGsbEEZxS0neQGWyKp3wAQADAgADeQADOwQ",
                 "NAME": "Photo",
-                "TIME": 1020
+                "TIME": 625
+            },
+            "AgADWAcAAqf_tVI": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAALDuWnuN83nHhdfrbAMlwJk4a0YY7O9AAJYBwACp_-1UqWHa-X_GPGEOwQ",
+                "NAME": "dandy-world-yatta.mp4",
+                "TIME": 723
+            },
+            "AgADN2IAAgPG8Uk": {
+                "VALUE": 2,
+                "ID": "CgACAgIAAyEFAATmi0vRAALDu2nuN9LTYl11owenY_uwVfdIddU5AAI3YgACA8bxSYah8vuE6zDQOwQ",
+                "NAME": "хелоуин.gif.mp4",
+                "TIME": 973
+            },
+            "AgAD6lsAApY0WUs": {
+                "VALUE": 1,
+                "ID": "CgACAgIAAyEFAATmi0vRAALEVGnuRQ0y4zJjv_FpAZrIwyCRDXgAA-pbAAKWNFlL6lOyjBY8irY7BA",
+                "NAME": "GIF",
+                "TIME": 779
+            },
+            "AgADUggAAhTNLVI": {
+                "VALUE": 2,
+                "ID": "CgACAgQAAyEFAATmi0vRAALF32nuT4cWxi_5lg_WCvYlfPQmNbPxAAJSCAACFM0tUuwhw0IvN-XzOwQ",
+                "NAME": "deltarune-deltarune-chapter-3.mp4",
+                "TIME": 950
+            },
+            "AgADpWIAAhMEyEs": {
+                "VALUE": 1,
+                "ID": "CAACAgIAAyEFAATmi0vRAALHImnub6js02gxm9nnMBYTCKYpK3gqAAKlYgACEwTISx33CYrbAfjIOwQ",
+                "NAME": "Sticker 📦",
+                "TIME": 961
+            },
+            "AgADIgYAAuNuOhk": {
+                "VALUE": 1,
+                "ID": "CAACAgIAAyEFAATmi0vRAALIp2nufAqnHyqEWqj1TQOomrEuNQ5EAAIiBgAC4246GfHxsr2ck0etOwQ",
+                "NAME": "Sticker 😐",
+                "TIME": 1014
+            },
+            "AgAD8AIAAkkNDVM": {
+                "VALUE": 1,
+                "ID": "CgACAgQAAyEFAATmi0vRAALItWnufNbOZam25DsJrSiDtjh8zRS4AALwAgACSQ0NU4VbzP5zv4fDOwQ",
+                "NAME": "like.mp4",
+                "TIME": 1017
             }
         }
     }
@@ -1601,9 +1653,9 @@ async def vse(message: Message):
         if message.from_user.id == TIM_ID:
             chest["timtim"]["timtext"] += 1
             if chest["timtim"]["timtext"] > 400:
-                await message.answer(f"тимов настолько много, что они не вмещаются в один текст, поэтому скажу число: {chest["timtim"]["timtext"]}")
+                await message.answer(f"🎉🎊ов настолько много, что они не вмещаются в один текст, поэтому скажу число: {chest["timtim"]["timtext"]}")
             else:
-                await message.answer("тим " * chest["timtim"]["timtext"])
+                await message.answer("🎉🎊 " * chest["timtim"]["timtext"])
             if message.animation:
                 unique_id = message.animation.file_unique_id
                 id = message.animation.file_id
