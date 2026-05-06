@@ -78,7 +78,7 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 
 chest = {
     "hurma": {
-        "hurmball": 20,
+        "hurmball": 16,
         "hurmcd": False
     },
     "stick": {
@@ -557,7 +557,7 @@ chest = {
         }
     },
     "timtim": {
-        "timtext": 8,
+        "timtext": 17,
         "timeout": 1,
         "maxgif": 100,
         "timrep": {
@@ -1392,6 +1392,10 @@ async def vse(message: Message):
     chest = openchest()
     chat_id = message.chat.id
     user_id = message.from_user.id
+    user_name = message.from_user.full_name
+    if message.reply_to_message:
+        reply_user_id = message.reply_to_message.from_user.id
+        reply_user_name = message.reply_to_message.from_user.full_name
 ### ШАНСЫ
     if message.chat.id == OT_ID and random.random() < 0.0003619: 
         if random.random() < 0.01:
@@ -1496,6 +1500,14 @@ async def vse(message: Message):
 ### Реакция на текст
 ## Реакция на полный текст
     if message.text:
+### Нафиг этого бота, как его. забыл. альцгеймер
+        if message.reply_to_message:
+            if message.text.lower().startswith("погладить"):
+                await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
+            if message.text.lower().startswith("поцеловать"):
+                await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
+            if message.text.lower().startswith("обнять"):
+                await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
         if message.text.lower() == "кейн, купи пиво":
             await message.answer("Кейн, купи пиво")
         if message.text.lower() == "сколько пива":
