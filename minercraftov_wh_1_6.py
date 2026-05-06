@@ -1503,11 +1503,31 @@ async def vse(message: Message):
 ### Нафиг этого бота, как его. забыл. альцгеймер
         if message.reply_to_message:
             if message.text.lower().startswith("погладить"):
-                await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
+                if user_id == reply_user_id and user_id == HURM_ID:
+                    await message.answer(f"{user_name} погладил(а) самого себя. Ок.")
+                elif user_id == reply_user_id:
+                    await message.answer(f"{user_name} погладил(а) самого себя. Может Вы хотите, чтобы вас кто-нибудь погладил? 🥺")
+                else:
+                    await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
             if message.text.lower().startswith("поцеловать"):
-                await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
+                if user_id == reply_user_id and user_id == HURM_ID:
+                    await message.answer(f"{user_name} поцеловал(а) самого себя. Ок.")
+                elif user_id == reply_user_id:
+                    await message.answer(f"{user_name} поцеловал(а) самого себя в руку. Поцелуйте кто-нибудь его/её уже 😔")
+                else:
+                    await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
             if message.text.lower().startswith("обнять"):
-                await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
+                if user_id == reply_user_id and user_id == HURM_ID:
+                    await message.answer(f"{user_name} обнял(а) самого себя. Ок.")
+                elif user_id == reply_user_id:
+                    await message.answer(f"{user_name} обнял самого себя. Грустно... 😢")
+                else:
+                    await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
+            if message.text.lower().startswith("пнуть"):
+                if reply_user_id != HURM_ID:
+                    await message.answer(f"Вы не можете пнуть святого человека.")
+                else:
+                    await message.answer(f"🥾 {user_name} пнул(а) {reply_user_name}")
         if message.text.lower() == "кейн, купи пиво":
             await message.answer("Кейн, купи пиво")
         if message.text.lower() == "сколько пива":
