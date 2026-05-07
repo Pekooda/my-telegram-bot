@@ -56,7 +56,7 @@ answera = defaultdict(int)
 
 
 ### ХЛАМ
-comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "hmer", "hkazn"]
+comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "hmer", "hkazn", "hlast"]
 MC_NAME = ["майнер крафтов", "мк"]
 DEFAULT_QUERY = ["пиво", "пиво"]
 MURA_NIQ = "CAACAgIAAxkBAAIkI2jqorXAlw9LHSiFH0RuuXOBrOmpAAIaAAPy6LAmfmdy1pU2dIY2BA"
@@ -78,7 +78,7 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 
 chest = {
     "hurma": {
-        "hurmball": 16,
+        "hurmball": 17,
         "hurmcd": False
     },
     "stick": {
@@ -512,7 +512,7 @@ chest = {
         },
         "-1003258766039": {
             "lab": False,
-            "cmh": False,
+            "cmh": True,
             "cmt": False
         },
         "-1003867888593": {
@@ -554,10 +554,25 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "7151256274": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "6886300076": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "6008918878": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
-        "timtext": 17,
+        "timtext": 29,
         "timeout": 1,
         "maxgif": 100,
         "timrep": {
@@ -568,7 +583,8 @@ chest = {
                 "TIME": 1
             }
         }
-    }
+    },
+    "hlast": {}
 }
 
 
@@ -1194,6 +1210,13 @@ async def hkazn(message: types.Message, args: str):
         return await message.answer(f"Рошибка: {e}")
 
 
+async def hlm(message: types.Message, args: str):
+    chest = openchest()
+    chat_id = message.chat.id
+    if chest["hlast"][chat_id]:
+        await message.answer(f"Последнее удалённое сообщение Хурмы: {chest["hlast"][chat_id]}")
+    closechest(chest)
+
 
 ### КНИИИИИИИИИИГА
 async def guide(message: types.Message, args: str):
@@ -1428,12 +1451,11 @@ async def vse(message: Message):
 ### Мгновенная реакция
     if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
         return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-    if message.from_user.id == HURM_ID and chest["rich"][f"{chat_id}"]["cmh"]:
-        return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-
-
-
-
+    if message.from_user.id == HURM_ID:
+        chest["hlast"][chat_id] = message.text or message.caption
+        closechest(chest)
+        if chest["rich"][f"{chat_id}"]["cmh"]:
+            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
 ### РАБОТА КОМАНД
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
         capor = message.text or message.caption
