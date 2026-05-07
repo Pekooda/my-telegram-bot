@@ -1451,15 +1451,17 @@ async def vse(message: Message):
 ### Мгновенная реакция
     if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
         try:
-            await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-        return
+            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+        except Exception as e:
+            return
     if message.from_user.id == HURM_ID:
         chest["hlast"][chat_id] = message.text or message.caption
         closechest(chest)
         if chest["rich"][f"{chat_id}"]["cmh"]:
             try:
-                await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-            return
+                return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
+            except Exception as e:
+                return
 ### РАБОТА КОМАНД
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
         capor = message.text or message.caption
