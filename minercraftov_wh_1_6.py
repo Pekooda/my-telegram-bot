@@ -1455,8 +1455,9 @@ async def vse(message: Message):
         except Exception as e:
             return
     if message.from_user.id == HURM_ID:
-        chest["hlast"][chat_id] = message.text or message.caption
-        closechest(chest)
+        if message.text or message.caption:
+            chest["hlast"][chat_id] = message.text or message.caption
+            closechest(chest)
         if chest["rich"][f"{chat_id}"]["cmh"]:
             try:
                 return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
