@@ -78,7 +78,7 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 
 chest = {
     "hurma": {
-        "hurmball": 17,
+        "hurmball": 12,
         "hurmcd": False
     },
     "stick": {
@@ -512,7 +512,7 @@ chest = {
         },
         "-1003258766039": {
             "lab": False,
-            "cmh": True,
+            "cmh": False,
             "cmt": False
         },
         "-1003867888593": {
@@ -569,10 +569,30 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "7565289779": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "-1002385589532": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "8234017006": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "8889694249": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     },
     "timtim": {
-        "timtext": 29,
+        "timtext": 67,
         "timeout": 1,
         "maxgif": 100,
         "timrep": {
@@ -584,7 +604,10 @@ chest = {
             }
         }
     },
-    "hlast": {}
+    "hlast": {
+        "-1003258766039": "Я кстати вышел из метро.",
+        "-1003243553237": "Почему ты покинула группу?"
+    }
 }
 
 
@@ -1532,26 +1555,15 @@ async def vse(message: Message):
 ### Нафиг этого бота, как его. забыл. альцгеймер
         if message.reply_to_message:
             if message.text.lower().startswith("погладить"):
-                if user_id == reply_user_id and user_id == HURM_ID:
-                    await message.answer(f"{user_name} погладил(а) самого себя. Ок.")
-                elif user_id == reply_user_id:
-                    await message.answer(f"{user_name} погладил(а) самого себя. Может Вы хотите, чтобы вас кто-нибудь погладил? 🥺")
-                else:
-                    await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
+                await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
             if message.text.lower().startswith("поцеловать"):
-                if user_id == reply_user_id and user_id == HURM_ID:
-                    await message.answer(f"{user_name} поцеловал(а) самого себя. Ок.")
-                elif user_id == reply_user_id:
-                    await message.answer(f"{user_name} поцеловал(а) самого себя в руку. Поцелуйте кто-нибудь его/её уже 😔")
-                else:
-                    await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
+                await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
             if message.text.lower().startswith("обнять"):
-                if user_id == reply_user_id and user_id == HURM_ID:
-                    await message.answer(f"{user_name} обнял(а) самого себя. Ок.")
-                elif user_id == reply_user_id:
-                    await message.answer(f"{user_name} обнял самого себя. Грустно... 😢")
-                else:
-                    await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
+                await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
+            if message.text.lower().startswith("согреть"):
+                await message.answer(f"🥰 {user_name} согрел(а) {reply_user_name}")
+            if message.text.lower().startswith("лизнуть"):
+                await message.answer(f"😝 {user_name} лизнул(а) {reply_user_name}")
             if message.text.lower().startswith("пнуть"):
                 if reply_user_id != HURM_ID:
                     await message.answer(f"Вы не можете пнуть святого человека.")
