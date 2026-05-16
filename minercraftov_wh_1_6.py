@@ -1554,17 +1554,17 @@ async def vse(message: Message):
     if message.text:
 ### Нафиг этого бота, как его. забыл. альцгеймер
         if message.reply_to_message:
-            if message.text.lower().startswith("погладить"):
+            if message.text.lower().startswith(("погладить", "приласкать", "гладить")):
                 await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
-            if message.text.lower().startswith("поцеловать"):
+            if message.text.lower().startswith(("поцеловать", "чмокнуть", "расцеловать", "целовать")):
                 await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
-            if message.text.lower().startswith("обнять"):
+            if message.text.lower().startswith(("обнять", "облапить", "объять")):
                 await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
-            if message.text.lower().startswith("согреть"):
+            if message.text.lower().startswith(("согреть", "отогреть", "обогреть", "пригреть")):
                 await message.answer(f"🥰 {user_name} согрел(а) {reply_user_name}")
-            if message.text.lower().startswith("лизнуть"):
+            if message.text.lower().startswith(("лизнуть", "облизать", "лизь")):
                 await message.answer(f"😝 {user_name} лизнул(а) {reply_user_name}")
-            if message.text.lower().startswith("пнуть"):
+            if message.text.lower().startswith(("пнуть", "долбануть", "стукнуть")):
                 if reply_user_id != HURM_ID:
                     await message.answer(f"Вы не можете пнуть святого человека.")
                 else:
