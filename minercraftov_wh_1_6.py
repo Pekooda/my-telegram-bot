@@ -512,7 +512,7 @@ chest = {
         },
         "-1003258766039": {
             "lab": False,
-            "cmh": False,
+            "cmh": True,
             "cmt": False
         },
         "-1003867888593": {
@@ -606,7 +606,9 @@ chest = {
     },
     "hlast": {
         "-1003258766039": "Я кстати вышел из метро.",
-        "-1003243553237": "Почему ты покинула группу?"
+        "-1003243553237": "Почему ты покинула группу?",
+        "-1003258766039": "Да, согласен. Хоть можно и подумать, что там просто обнимашки, чтобы зимой не мëрзнуть.",
+        "-1003243553237": "@kdlaid"
     }
 }
 
@@ -1556,15 +1558,13 @@ async def vse(message: Message):
         if message.reply_to_message:
             if message.text.lower().startswith(("погладить", "приласкать", "гладить")):
                 await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
-            if message.text.lower().startswith(("поцеловать", "чмокнуть", "расцеловать", "целовать")):
+            elif message.text.lower().startswith(("поцеловать", "чмокнуть", "расцеловать", "целовать")):
                 await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
-            if message.text.lower().startswith(("обнять", "облапить", "объять")):
+            elif message.text.lower().startswith(("обнять", "облапить", "объять")):
                 await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
-            if message.text.lower().startswith(("согреть", "отогреть", "обогреть", "пригреть")):
-                await message.answer(f"🥰 {user_name} согрел(а) {reply_user_name}")
-            if message.text.lower().startswith(("лизнуть", "облизать", "лизь")):
+            elif message.text.lower().startswith(("лизнуть", "облизать", "лизь")):
                 await message.answer(f"😝 {user_name} лизнул(а) {reply_user_name}")
-            if message.text.lower().startswith(("пнуть", "долбануть", "стукнуть")):
+            elif message.text.lower().startswith(("пнуть", "долбануть", "стукнуть")):
                 if reply_user_id != HURM_ID:
                     await message.answer(f"Вы не можете пнуть святого человека.")
                 else:
