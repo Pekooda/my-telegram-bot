@@ -77,10 +77,6 @@ GREETINGS = ["Всем доброго утра!", "Доброе утро, дру
 
 
 chest = {
-    "hurma": {
-        "hurmball": 11,
-        "hurmcd": False
-    },
     "stick": {
         "monitor": [
             "Monitornosti",
@@ -509,117 +505,8 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
-        },
-        "-1003258766039": {
-            "lab": False,
-            "cmh": True,
-            "cmt": False
-        },
-        "-1003867888593": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "-1002699937978": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "5566808793": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "6121849328": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "5134703218": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "8535933456": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "8067578447": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "-1003243553237": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "7151256274": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "6886300076": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "6008918878": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "7565289779": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "-1002385589532": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "8234017006": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "8889694249": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "8264998543": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "8518817305": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "7313905505": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
         }
-    },
-    "timtim": {
-        "timtext": 584,
-        "timeout": 1,
-        "maxgif": 100,
-        "timrep": {
-            "AgADpwcAAqCq1FA": {
-                "VALUE": -98,
-                "ID": "CgACAgQAAyEFAATmi0vRAALBA2nt43JhvL3Z1S658tpyj_MSQ-_2AAKnBwACoKrUUJqA8Z7dkub9OwQ",
-                "NAME": "vocaloid-monitoring.mp4",
-                "TIME": 1
-            }
-        }
-    },
-    "hlast": {}
+    }
 }
 
 
@@ -1157,102 +1044,6 @@ async def ttm(message: types.Message, args: str):
         os.remove(f"/tmp/out.webm")
 
 
-async def makaka(message: types.Message, args: str):
-    chest = openchest()
-    parts = (args or "").split()
-    text = ""
-    if len(parts) >= 2:
-        bar = parts[0]
-        if parts[1].lstrip("-").isdigit():
-            men = int(parts[1])
-        else:
-            return await message.answer("Нужна ЦИФРА")
-        if len(parts) >= 3:
-            sho = parts[2]
-        if bar == "-t" and parts[1].isdigit():
-            text = "Время таймаута гифки/стикера"
-            chest["timtim"]["timeout"] = men
-        elif bar == "-m" and parts[1].isdigit():
-            text = "Максимальный лимит гифок/стикеров за таймаут"
-            chest["timtim"]["maxgif"] = men
-        elif bar == "-tt" and parts[1].isdigit():
-            text = 'Количество "тим" при отправке гифки/стикера'
-            chest["timtim"]["timtext"] = men
-        elif bar == "-v":
-            if not len(parts) >= 3:
-                return await message.answer("Пожалуйста, укажите айди гифки. Если вы не Бармен, спросите у него")
-            if sho == "-all":
-                text = 'Количество отправленных ВСЕХ гифок/стикеров, отправленные за последнее время'
-                for key in chest["timtim"]["timrep"]:
-                    if chest["timtim"]["timrep"][key]["VALUE"] > 0:
-                        chest["timtim"]["timrep"][key]["VALUE"] = men
-            else:
-                for key in chest["timtim"]["timrep"]:
-                    if sho == key:
-                        text = f'Количество отправленной гифки/стикера "{chest["timtim"]["timrep"][key]["NAME"]}"'
-                        chest["timtim"]["timrep"][key]["VALUE"] = men
-                        break
-                if not text:
-                    return await message.answer("Пожалуйста, укажите правильное айди гифки. Если вы не Бармен, спросите у него")
-        else:
-            return await message.answer("Неверно указано ;(")
-        if message.from_user.id == TIM_ID:
-            return await message.reply("Неа.")
-    else:
-        texti = []
-        for key in chest["timtim"]["timrep"]:
-            text = f"""{chest["timtim"]["timrep"][key]["NAME"]}
-📚Использовано за последнее время: {chest["timtim"]["timrep"][key]["VALUE"]} ед.
-➡️До следующего понижения: {chest["timtim"]["timrep"][key]["TIME"]} м.
-"""
-            texti.append(text)
-        jojo = "<blockquote expandable>" + ("".join(texti).strip() or "Гифок нету стикеров нету ;(") + "</blockquote>"
-        return await message.answer(f"""
-Параметры такие:
-Таймаут гифок/стикеров [-t]: {chest["timtim"]["timeout"]} м.
-Максимальный лимит гифок/стикеров за таймаут [-m]: {chest["timtim"]["maxgif"]} ед.
-Количество "тим" [-tt]: {chest["timtim"]["timtext"]} ед.
-Гифки/стикеры в целом [-v]:
-{jojo}
-""", parse_mode="HTML")
-    await message.answer(f"Изменено:\n{text}: {men}")
-    closechest(chest)
-
-
-async def hmer(message: types.Message, args: str):
-    chat_id = message.chat.id
-    if chat_id != COVINOC_ID:
-        return
-    if message.from_user.id not in [PEKO_ID, ISCRA_ID, HURM_ID]:
-        return await message.reply("Слишком опасно доверять эту кнопку всем. Обратитесь к Бармену.")
-    try:
-        await bot.unban_chat_member(chat_id, HURM_ID, only_if_banned=True)
-        return await message.reply(f"Хурма теперь есть.")
-    except Exception as e:
-        return await message.answer(f"Рошибка: {e}")
-
-
-async def hkazn(message: types.Message, args: str):
-    chat_id = message.chat.id
-    if chat_id != COVINOC_ID:
-        return
-    if message.from_user.id not in [PEKO_ID, ISCRA_ID, HURM_ID]:
-        return await message.reply("Слишком опасно доверять эту кнопку всем. Обратитесь к Бармену.")
-    try:
-        await bot.ban_chat_member(chat_id, HURM_ID)
-        return await message.reply(f"Хурмы больше нету.")
-    except Exception as e:
-        return await message.answer(f"Рошибка: {e}")
-
-
-async def hlm(message: types.Message, args: str):
-    chest = openchest()
-    chat_id = message.chat.id
-    if chest["hlast"][chat_id]:
-        await message.answer(f"Последнее удалённое сообщение Хурмы: {chest["hlast"][chat_id]}")
-    closechest(chest)
-
-
 ### КНИИИИИИИИИИГА
 async def guide(message: types.Message, args: str):
     await message.reply(f"""
@@ -1475,29 +1266,6 @@ async def vse(message: Message):
             "cmt": False
         }
         closechest(chest)
-
-    if message.left_chat_member and message.left_chat_member.id == HURM_ID:
-        try:
-            await bot.ban_chat_member(chat_id, user_id)
-            await message.answer(f"Эх блин, Хурма ливнула! Очень жаль, что он не сможет вернуться ;(")
-        except Exception as e:
-            await message.answer(f"Рошибка: {e}")
-        return await bot.send_message(PEKO_ID, "ХУРМО ЛИВНУЛО")
-### Мгновенная реакция
-    if message.from_user.id == TIM_ID and chest["rich"][f"{chat_id}"]["cmt"]:
-        try:
-            return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-        except Exception as e:
-            return
-    if message.from_user.id == HURM_ID:
-        if message.text or message.caption:
-            chest["hlast"][chat_id] = message.text or message.caption
-            closechest(chest)
-        if chest["rich"][f"{chat_id}"]["cmh"]:
-            try:
-                return await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
-            except Exception as e:
-                return
 ### РАБОТА КОМАНД
     if (message.text and message.text.startswith("/")) or (message.caption and message.caption.startswith("/")):
         capor = message.text or message.caption
@@ -1564,21 +1332,6 @@ async def vse(message: Message):
 ### Реакция на текст
 ## Реакция на полный текст
     if message.text:
-### Нафиг этого бота, как его. забыл. альцгеймер
-#        if message.reply_to_message:
-#            if message.text.lower().startswith(("погладить", "приласкать", "гладить")):
-#                await message.answer(f"🖐 {user_name} погладил(а) {reply_user_name}")
-#            elif message.text.lower().startswith(("поцеловать", "чмокнуть", "расцеловать", "целовать")):
-#                await message.answer(f"😘 {user_name} поцеловал(а) {reply_user_name}")
-#            elif message.text.lower().startswith(("обнять", "облапить", "объять")):
-#                await message.answer(f"🫂 {user_name} обнял(а) {reply_user_name}")
-#            elif message.text.lower().startswith(("лизнуть", "облизать", "лизь")):
-#                await message.answer(f"😝 {user_name} лизнул(а) {reply_user_name}")
-#            elif message.text.lower().startswith(("пнуть", "долбануть", "стукнуть")):
-#                if reply_user_id != HURM_ID:
-#                    await message.answer(f"Вы не можете пнуть святого человека.")
-#                else:
-#                    await message.answer(f"🥾 {user_name} пнул(а) {reply_user_name}")
         if message.text.lower() == "кейн, купи пиво":
             await message.answer("Кейн, купи пиво")
         if message.text.lower() == "сколько пива":
@@ -1602,60 +1355,6 @@ async def vse(message: Message):
             await orluk(message, "")
         if "майнера крафтов" in message.text.lower():
             await message.reply("не зли меня, бяка >=(")
-
-        if message.reply_to_message and message.text == "+" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
-            if message.from_user.id == HURM_ID:
-                await message.answer(f"Нет, ты не можешь сам себе балл сменить, лопух :Р")
-            elif chest["hurma"]["hurmcd"]:
-                await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
-            elif not chest["hurma"]["hurmcd"]:
-                chest["hurma"]["hurmball"] += 1
-                await message.answer(f"Хурме начислен балл! Текущее кол-во баллов Хурмы: {chest["hurma"]["hurmball"]}")
-                chest["hurma"]["hurmcd"] = True
-
-        if message.reply_to_message and message.text == "-" and message.reply_to_message.from_user.id == HURM_ID and message.chat.id == COVINOC_ID:
-            if message.from_user.id == HURM_ID:
-                await message.answer(f"Нет, ты не можешь сам себе балл сменить, лопух :Р")
-            elif chest["hurma"]["hurmcd"]:
-                await message.answer(f"КД на смену баллов Хурме, звиняйте, подождите немножечко :Ж")
-            elif not chest["hurma"]["hurmcd"]:
-                chest["hurma"]["hurmball"] -= 1
-                await message.answer(f"Хурме отчислен балл! Текущее кол-во баллов Хурмы: {chest["hurma"]["hurmball"]}")
-                chest["hurma"]["hurmcd"] = True
-
-        if message.text.lower() == "баллы хурмы" and message.chat.id == COVINOC_ID:
-            await message.answer(f"Текущее кол-во баллов Хурмы: {chest["hurma"]["hurmball"]}")
-        if message.text.lower() == "мои баллы" and message.chat.id == COVINOC_ID and message.from_user.id == HURM_ID:
-            await message.answer(f"Текущее ваше кол-во баллов: {chest["hurma"]["hurmball"]}")
-
-    if message.animation or message.sticker:
-        if message.from_user.id == TIM_ID:
-            chest["timtim"]["timtext"] += 1
-            if chest["timtim"]["timtext"] > 400:
-                await message.answer(f"🎉🎊ов настолько много, что они не вмещаются в один текст, поэтому скажу число: {chest["timtim"]["timtext"]}")
-            else:
-                await message.answer("🎉🎊 " * chest["timtim"]["timtext"])
-            if message.animation:
-                unique_id = message.animation.file_unique_id
-                id = message.animation.file_id
-                name = message.animation.file_name or "GIF"
-            if message.sticker:
-                unique_id = message.sticker.file_unique_id
-                id = message.sticker.file_id
-                name = "Sticker " + message.sticker.emoji
-            if message.photo:
-                unique_id = message.photo[-1].file_unique_id
-                id = message.photo[-1].file_id
-                name = "Photo"
-            if f"{unique_id}" not in chest["timtim"]["timrep"]:
-                chest["timtim"]["timrep"][f"{unique_id}"] = {}
-                chest["timtim"]["timrep"][f"{unique_id}"]["VALUE"] = 0
-            chest["timtim"]["timrep"][f"{unique_id}"]["ID"] = id
-            chest["timtim"]["timrep"][f"{unique_id}"]["NAME"] = name
-            chest["timtim"]["timrep"][f"{unique_id}"]["TIME"] = chest["timtim"]["timeout"]
-            chest["timtim"]["timrep"][f"{unique_id}"]["VALUE"] += 1
-            if chest["timtim"]["timrep"][f"{unique_id}"]["VALUE"] > chest["timtim"]["maxgif"]:
-                await bot.delete_message(chat_id=chat_id, message_id=message.message_id)
     if message.photo and message.from_user.id == TIM_ID:
         try:
             buffer = BytesIO()
@@ -1699,7 +1398,6 @@ async def vse(message: Message):
 async def alarms():
 ### Сообщение админу о включении
     await bot.send_message(PEKO_ID, random.choice(GREETINGS))
-    print(f"о я здесь но писать уже нельзя, а то\n")
 ### Сообщение о времени
     while True:
         now = datetime.now(MSK)
@@ -1715,19 +1413,12 @@ async def alarms():
         await asyncio.sleep(10)
 async def pivtime():
     while True:
-        for i in range(60):
-            await asyncio.sleep(60)
-            chest = openchest()
-            chest["hurma"]["hurmcd"] = False
-            for key in chest["timtim"]["timrep"]:
-                if chest["timtim"]["timrep"][key]["TIME"] > 0:
-                    chest["timtim"]["timrep"][key]["TIME"] -= 1
-                if chest["timtim"]["timrep"][key]["TIME"] == 0:
-                    if chest["timtim"]["timrep"][key]["VALUE"] > 0:
-                        chest["timtim"]["timrep"][key]["VALUE"] -= 1
-                    chest["timtim"]["timrep"][key]["TIME"] = chest["timtim"]["timeout"]
-            chest["timtim"]["timrep"] = {k: v for k, v in chest["timtim"]["timrep"].items() if not v["VALUE"] == 0}
-            closechest(chest)
+        await asyncio.sleep(5)
+        for a in chest["rich"]:
+            if chest["rich"][a]["cmh"]:
+                member = await bot.get_chat_member(a, HURM_ID)
+                if member != "kicked":
+                    await bot.ban_chat_member(a, HURM_ID)
 
         
 
