@@ -505,6 +505,16 @@ chest = {
             "lab": False,
             "cmh": False,
             "cmt": False
+        },
+        "-1003258766039": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
+        },
+        "-1003867888593": {
+            "lab": False,
+            "cmh": False,
+            "cmt": False
         }
     }
 }
@@ -1332,6 +1342,12 @@ async def vse(message: Message):
 ### Реакция на текст
 ## Реакция на полный текст
     if message.text:
+        if message.text.lower().startswith(("обнять всех", "обнимаю всех")):
+            await message.answer(f"🫂🫂 {user_name} обнял(а) всех здесь.")
+        if message.text.lower().startswith(("поцеловать всех", "целую всех")):
+            await message.answer(f"😘😘 {user_name} поцеловал(а) всех здесь.")
+        if message.text.lower().startswith(("погладить всех", "глажу всех")):
+            await message.answer(f"😘😘 {user_name} поцеловал(а) всех здесь.")
         if message.text.lower() == "кейн, купи пиво":
             await message.answer("Кейн, купи пиво")
         if message.text.lower() == "сколько пива":
