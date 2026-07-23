@@ -35,10 +35,7 @@ PEKO_ID = int(os.getenv("E_PEKO_ID"), 0)
 JUNK_ID = int(os.getenv("E_JUNK_ID"), 0)
 OT_ID = int(os.getenv("E_OT_ID"), 0)
 OTOLD_ID = int(os.getenv("E_OTOLD_ID"), 0)
-COVINOC_ID = int(os.getenv("E_COVINOC_ID"), 0)
-HURM_ID = int(os.getenv("E_HURM_ID"), 0)
 TIM_ID = int(os.getenv("E_TIM_ID"), 0)
-ISCRA_ID = int(os.getenv("E_ISCRA_ID"), 0)
 MATUUUK = json.loads(os.getenv("E_MATUUUK", "[]"))
 FUL_MATUUUK = json.loads(os.getenv("E_FUL_MATUUUK", "[]"))
 
@@ -503,17 +500,6 @@ chest = {
     "rich": {
         "5513644023": {
             "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "-1003258766039": {
-            "lab": False,
-            "cmh": False,
-            "cmt": False
-        },
-        "-1003867888593": {
-            "lab": False,
-            "cmh": False,
             "cmt": False
         }
     }
@@ -674,7 +660,7 @@ async def mathi(message: types.Message, args: str):
 
 ### Рычаги
 async def richagi(message: types.Message, args: str, cmd_name: str):
-    if (cmd_name == "cmt" and message.from_user.id == TIM_ID) or (cmd_name == "cmh" and message.from_user.id == HURM_ID):
+    if (cmd_name == "cmt" and message.from_user.id == TIM_ID):
         return await message.reply("Неа.")
     texting = (message.text or "").split()
     if message.from_user.id == PEKO_ID and len(texting) > 2 and texting[2].lstrip("-").isdigit():
@@ -1155,7 +1141,6 @@ async def text(message: types.Message, args: str):
     m = str(texting[1])
     val = {
         "-ot": OT_ID, # ОТ
-        "-cov": COVINOC_ID, # КОВИНОК
         "-otold": OTOLD_ID, # ОТ_OLD
         "-peko": PEKO_ID # ПИКУДА
     }
@@ -1272,7 +1257,6 @@ async def vse(message: Message):
     if f"{chat_id}" not in chest["rich"]:
         chest["rich"][f"{chat_id}"] = {
             "lab": False,
-            "cmh": False,
             "cmt": False
         }
         closechest(chest)
@@ -1328,7 +1312,6 @@ async def vse(message: Message):
         if message.sticker:
             media = message.sticker.file_id
             await bot.send_sticker(chat_id=chat_id, sticker=media)
-
     if mediaidcheck[user_id] and message.chat.type == "private":
         media = message.photo[-1] if message.photo else message.animation or message.sticker or message.video or message.voice or message.document
         if media:
@@ -1342,12 +1325,6 @@ async def vse(message: Message):
 ### Реакция на текст
 ## Реакция на полный текст
     if message.text:
-        if message.text.lower().startswith(("обнять всех", "обнимаю всех")):
-            await message.answer(f"🫂🫂 {user_name} обнял(а) всех здесь.")
-        if message.text.lower().startswith(("поцеловать всех", "целую всех")):
-            await message.answer(f"😘😘 {user_name} поцеловал(а) всех здесь.")
-        if message.text.lower().startswith(("погладить всех", "глажу всех")):
-            await message.answer(f"😘😘 {user_name} поцеловал(а) всех здесь.")
         if message.text.lower() == "кейн, купи пиво":
             await message.answer("Кейн, купи пиво")
         if message.text.lower() == "сколько пива":
@@ -1419,22 +1396,19 @@ async def alarms():
         now = datetime.now(MSK)
 ## Сообщение о 13:56
         if now.hour == 13 and now.minute == 56:
-            await bot.send_photo(OT_ID, photo=VTRI_NIQ)
-            await bot.send_photo(COVINOC_ID, photo=VTRI_NIQ)
+            try:
+                await bot.send_photo(OT_ID, photo=VTRI_NIQ)
+            except Exception as e:
+                pass
             await asyncio.sleep(51)
 ## Сообщение о 19:52
         if now.hour == 19 and now.minute == 52:
-            await bot.send_message(OT_ID, "📻📻📻")
+            try:
+                await bot.send_message(OT_ID, "📻📻📻")
+            except Exception as e:
+                pass
             await asyncio.sleep(51)
         await asyncio.sleep(10)
-async def pivtime():
-    while True:
-        await asyncio.sleep(5)
-        for a in chest["rich"]:
-            if chest["rich"][a]["cmh"]:
-                member = await bot.get_chat_member(a, HURM_ID)
-                if member != "kicked":
-                    await bot.ban_chat_member(a, HURM_ID)
 
         
 
@@ -1480,10 +1454,9 @@ async def handle(request):
 async def on_startup(app):
     logging.debug("=== STARTED ===")
     app["task1"] = asyncio.create_task(alarms())
-    app["task2"] = asyncio.create_task(pivtime())
-    app["task3"] = asyncio.create_task(pingser())
+    app["task2"] = asyncio.create_task(pingser())
 async def on_cleanup(app):
-    for name in ["task1", "task2", "task3"]:
+    for name in ["task1", "task2"]:
         task = app.get(name)
         if task:
             task.cancel()
