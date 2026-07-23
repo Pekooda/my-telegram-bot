@@ -546,7 +546,7 @@ def closechest(chest):
 #### КОМАНДЫ БОТА
 ### Начало жизни
 async def start(message: types.Message, args: str):
-    await message.answer(f"Я работаю. Меня запустили в {MSKnow}.")
+    await bot.send_message(message.chat.id, "Пиво <tg-emoji emoji-id='5291814748541725371'>🐵</tg-emoji>", parse_mode=ParseMode.HTML)
 
 
 ### ВОЗМОЖНО выдать админку
