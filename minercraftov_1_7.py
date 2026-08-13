@@ -752,7 +752,7 @@ async def mathi(message: types.Message, args: str):
 
 ### Рычаги
 async def richagi(message: types.Message, args: str, cmd_name: str):
-    if (cmd_name == "cmt" and message.from_user.id == TIM_ID) or (cmd_name == "cmh" and message.from_user.id == HURM_ID):
+    if cmd_name == "cmt" and message.from_user.id == TIM_ID:
         return await message.reply("Неа.")
     texting = (message.text or "").split()
     if message.from_user.id == PEKO_ID and len(texting) > 2 and texting[2].lstrip("-").isdigit():
@@ -787,16 +787,14 @@ async def osc(message: types.Message, args: str):
 ## Список доступных стикерпаков
 async def wts(message: types.Message, args: str):
     chest = openchest()
-    if message.text.split()[0] == "/wts":
+    if message.text.split()[0].startswith("/wts"):
         bank = chest["stick"]
         sou = "Выбери конкретную тему:\n"
         also = "Либо случайную тему: /rs"
-    elif message.text.split()[0] == "/osc":
+    elif message.text.split()[0].startswith("/osc")":
         bank = chest["objecto"]
         sou = "🔥 Эта команда позволяет выдать стикерпаки персонажей из различных ОСЦ либо весь ОШ в случайном порядке. Для выдачи стикерпака выберите из перечисленого ниже:\n💧 This command allows to get stickerpacks of character from sorts of OSC or entire OS in random sequence. To get a stickerpack, choose any from below:\n"
         also = "Либо случайно/Or randomly: /ors\n🍃 При желании вы можете скинуть боту ОСЦ стикер/пак, чтобы его добавили в список стикерпаков!\n(Мы ж хотим ведь делать добро?) =D\n🧊 If you wish you can send bot a OSC sticker/pack for adding him to a stickerpack list!\n(We want to make a nice things, right?) =D"
-    else:
-        return await message.reply(f"You're not supposed to be here.")
     if not args or not message.from_user.id == PEKO_ID:
         lines = [""]
         for cmd in bank.keys():
@@ -817,11 +815,13 @@ async def wts(message: types.Message, args: str):
             cmdcheck = texting[1] in bank.keys()
             stcheck = textong[1] in chest["badstick"]
             if texting[0] == "addcmd":
-                if not cmdcheck:
+                if not cmdcheck and not comasiv:
                     text = "Команда добавлена"
                     bank[texting[1]] = []
-                else:
+                elif cmdcheck:
                     text = "Команда уже существует"
+                elif comasiv:
+                    text = "Команда переплетается с другими командами бота :\"
             elif texting[0] == "delcmd":
                 if cmdcheck:
                     text = "Команда удалена"
@@ -891,9 +891,9 @@ async def ors(message: types.Message, args: str):
 ## Случайный стикер
 async def rs(message: types.Message, args: str):
     chest = openchest()
-    if message.text.split()[0] == "/rs":
+    if message.text.split()[0].startswith("/rs"):
         bank = chest["stick"]
-    elif message.text.split()[0] == "/ors":
+    elif message.text.split()[0].startswith("/ors"):
         bank = chest["objecto"]
     topic = random.choice(list(bank.keys()))
     pack = random.choice(bank[topic])
@@ -1557,6 +1557,7 @@ async def alarms():
 
 
 
+####запись и запуск бота
 async def pingser():
     while True:
         try:
