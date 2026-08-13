@@ -821,7 +821,7 @@ async def wts(message: types.Message, args: str):
                 elif cmdcheck:
                     text = "Команда уже существует"
                 elif comasiv:
-                    text = "Команда переплетается с другими командами бота :\"
+                    text = "Команда переплетается с другими командами бота :/"
             elif texting[0] == "delcmd":
                 if cmdcheck:
                     text = "Команда удалена"
