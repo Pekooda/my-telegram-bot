@@ -337,6 +337,9 @@ chest = {
         ],
         "cfmot": [
             "contestformillionsofthousands"
+        ],
+        "panflute": [
+            "panflute_by_fstikbot"
         ]
     },
     "badstick": [
@@ -812,15 +815,16 @@ async def wts(message: types.Message, args: str):
         if texting[len(texting) - 1] != "confirm":
             pass
         elif len(texting) == 3:
-            cmdcheck = texting[1] in bank.keys()
+            cmdcheck = texting[1] in bank.keys() 
+            outcheck = texting[1] in comasiv 
             stcheck = textong[1] in chest["badstick"]
             if texting[0] == "addcmd":
-                if not cmdcheck and not comasiv:
+                if not cmdcheck and not outcheck:
                     text = "Команда добавлена"
                     bank[texting[1]] = []
                 elif cmdcheck:
                     text = "Команда уже существует"
-                elif comasiv:
+                elif outcheck:
                     text = "Команда переплетается с другими командами бота :/"
             elif texting[0] == "delcmd":
                 if cmdcheck:
@@ -1400,11 +1404,16 @@ async def vse(message: Message):
         if afterdog.lower() == "minercraftov_bot":
             cmd = splitting[0].lower()
             args = parts[1] if len(parts) > 1 else ""
+            print("1")
             if cmd in chest["stick"]:
+                print("2")
                 pack_list = chest["stick"].get(cmd, [])
             if cmd in chest["objecto"]:
+                print("3")
                 pack_list = chest["objecto"].get(cmd, [])
+            print("55")
             if cmd in chest["stick"] or cmd in chest["objecto"]:
+                print("4")
                 if not pack_list:
                     return await message.reply("Бармен не предоставил мне стикерпаков =/")
                 chosen = random.choice(pack_list)
