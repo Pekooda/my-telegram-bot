@@ -6,6 +6,8 @@
 # 1.4 - подготовка к деплою, стабилизация /rp /rv /ttm
 # 1.5 - вру, сейчас
 # 1.6 - что-то то, что не сказано
+# 1.7 - осц стикерпаки
+
 
 #### ПЕРЕМЕННЫЕ БОТА
 ### БИБЛИОТЕКИ
@@ -53,7 +55,7 @@ answera = defaultdict(int)
 
 
 ### ХЛАМ
-comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "hmer", "hkazn", "hlm"]
+comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "orluk", "rp", "rv", "ttm", "pong", "mercy", "gnev", "makaka", "pokapoka", "text", "rr40", "osc", "ors"]
 MC_NAME = ["майнер крафтов", "мк"]
 DEFAULT_QUERY = ["пиво", "пиво"]
 MURA_NIQ = "CAACAgIAAxkBAAIkI2jqorXAlw9LHSiFH0RuuXOBrOmpAAIaAAPy6LAmfmdy1pU2dIY2BA"
@@ -68,7 +70,6 @@ VEI_UIQ = "AgADGgAD8uiwJg"
 ADALI_UIQ = "AgADxQAD8uiwJg"
 colorit = ["grayscale", "transparent", "red", "orange", "yellow", "green", "turquoise", "blue", "lilac", "pink", "white", "gray", "black", "brown", "violet"]
 langa = ["cs", "da", "de", "en", "es", "fr", "id", "it", "hu", "nl", "no", "pl", "pt", "ro", "sk", "fi", "sv", "tr", "vi", "th", "bg", "ru", "el", "ja", "ko", "zh"]
-
 
 GREETINGS = ["Всем доброго утра!", "Доброе утро, друзья!", "Добрейшего утра!", "рыба", "Боброго утра!", "Бобрео!", "Доброго ранку!", "Good morning!", "Всем привет!", "Всем приветики!", "Всем приветулечки!", "صباح الخير!", "Приветствую всех!", "Всем привет, друзья!", "Доброго утречка всем!", "Доброго привета всем!", "ОгэПоМониторингу Утра!", "Понятного утра!", "Беспалевного утра!", "Ботпуутра!", "Майнер Крафтового утра!", "ПРАЗДНИЧНОГО ЛИСЬГО УТРЕЧКА", "Интернетного утра!", "Яишницоого утра!", "Борисового утра!", "Выключательного утра!", "Брутального утра!","Водного утра!", "Утренного добреца!", "Киношного утра!", "Диско утра!", "Порхающего утра!", "Липтонового утра!", "Творческого утра!", "Доброе утро блин", "Кошачьего утра!", "Шашлыкового утра!", "Лопухного утра!", "Модераторного утра!", "Админовского утра!", "Мониторного утра!", "Юбилейного утра!", "Наушникового утра!", "Шуточного утра!", "Конфетного утра!", "Стаканного утра!", "Пировогово утра!", "Воро утра!", "Лучшего утра!", "Важного утра!", "Пенопластового утра!", "Картофельного утра!", "Доброе утро!", "Саламандрового утра!", "Утреного добра!", "Бобреро!", "Добрейшего утра!", "Крафтового утра!", "Нового утра!", "Утра, которого ещё никогда не было!", "Освежающего утра!", "Хеллоуинского утра!", "Страшного утра!", "Вампиршеского утра!", "Существующего утра!", "А ГДЕ утра!", "СКАААААЙПового утра!", "Самого нужного утра!"]
 
@@ -117,34 +118,8 @@ chest = {
             "Ipman2",
             "PivoUltimate"
         ],
-        "leafy": [
-            "LEAFYBFBstatic",
-            "leafy_bfb_bfdi2_by_fStikBot",
-            "LEAFY_CUTE_XD",
-            "t6211125a_fd71_4b84_92d2_6c2688a84053_by_emopix_stickerz_bot",
-            "Peko_Lifi_Lifi",
-            "Peko_Lifi",
-            "leafy_bfb_bfdi_by_fStikBot",
-            "leafybfb",
-            "leafybfb_by_fStikBot",
-            "leafy_bfb"
-        ],
-        "firey": [
-            "Spotless_Beige_Guan_by_fStikBot",
-            "FireyBlueberrySticker_by_fStikBot",
-            "fireybfdi",
-            "FIREYBFDI_by_fStikBot",
-            "firey_bfb_by_fStikBot"
-        ],
-        "two": [
-            "TwoBfdi_Tpot",
-            "twotpot"
-        ],
         "barmen": [
             "Barmen_40"
-        ],
-        "cyberfoxy": [
-            "CyberFoxy_by_TgEmodziBot"
         ],
         "dandy": [
             "bc517e3b_a078_4f59_92ba_8e0a9df026a1_by_sticat_bot",
@@ -245,11 +220,6 @@ chest = {
             "Mettaton_HardDrive",
             "mettatton"
         ],
-        "cow": [
-            "kolxozkoriva_by_fStikBot",
-            "ilovecows",
-            "cows_by_fStikBot"
-        ],
         "figli": [
             "prequel_memes",
             "swpre2"
@@ -259,6 +229,114 @@ chest = {
             "blablalablala40_by_minercraftov_bot",
             "timmakakaslampochkoi_by_tgemodzibot",
             "otvechalovo_tim"
+        ],
+        "cow": [
+            "kolxozkoriva_by_fStikBot",
+            "ilovecows",
+            "cows_by_fStikBot"
+        ]
+    },
+    "objecto": {
+        "leafy": [
+            "LEAFYBFBstatic",
+            "leafy_bfb_bfdi2_by_fStikBot",
+            "LEAFY_CUTE_XD",
+            "t6211125a_fd71_4b84_92d2_6c2688a84053_by_emopix_stickerz_bot",
+            "Peko_Lifi_Lifi",
+            "Peko_Lifi",
+            "leafy_bfb_bfdi_by_fStikBot",
+            "leafybfb",
+            "leafybfb_by_fStikBot",
+            "leafy_bfb"
+        ],
+        "firey": [
+            "Spotless_Beige_Guan_by_fStikBot",
+            "FireyBlueberrySticker_by_fStikBot",
+            "fireybfdi",
+            "FIREYBFDI_by_fStikBot",
+            "firey_bfb_by_fStikBot"
+        ],
+        "two": [
+            "TwoBfdi_Tpot",
+            "twotpot"
+        ],
+        "marker": [
+            "markertpot",
+            "markerbfdi_by_fstikbot",
+            "markertpot_by_fstikbot"
+        ],
+        "polkadot": [
+            "polkadotitft"
+        ],
+        "bowbot": [
+            "bot_ii_by_fstikbot",
+            "bowii_by_fstikbot"
+        ],
+        "book": [
+            "booktpot_by_fstikbot",
+            "book_bfb_by_fstikbot",
+            "book_bfdi"
+        ],
+        "lolipop": [
+            "lolipopbfb_by_tgemodzibot",
+            "lolipopbfb",
+            "lolipoptpot"
+        ],
+        "noway": [
+            "nowayitft"
+        ],
+        "moonobs": [
+            "moonobs"
+        ],
+        "teardrop": [
+            "teardropbfb"
+        ],
+        "pencil": [
+            "penspens_by_fstikbot"
+        ],
+        "money": [
+            "moneybfdie"
+        ],
+        "orangejuice": [
+            "melsosj"
+        ],
+        "lightbulb": [
+            "lightbulbinanimateinsanity",
+            "husksevitegrays_by_fstikbot"
+        ],
+        "lots": [
+            "loveofthesunpack_by_fstikbot"
+        ],
+        "coiny": [
+            "coinybfdibfdiabfbtpot"
+        ],
+        "ruby": [
+            "tmerubypackfullstickers_by_fstikbot"
+        ],
+        "pin": [
+            "pintpot",
+            "pin_bfdi_by_fstikbot"
+        ],
+        "eucerin": [
+            "eucerin_ab_by_tgemodzibot"
+        ],
+        "fan": [
+            "jkmvd"
+        ],
+        "winner": [
+            "winnertpot_by_fstikbot"
+        ],
+        "needle": [
+            "needletpot_by_fstikbot"
+        ],
+        "tacoii": [
+            "tacoinanimateinsanity"
+        ],
+        "testtube": [
+            "testtubeinanimateinsanity"
+        ],
+        "cfmot": [
+            "contestformillionsofthousands"
         ]
     },
     "badstick": [
@@ -495,7 +573,19 @@ chest = {
         "AgADezkAAuOpwUg",
         "AgADkzcAAqGhwUg",
         "AgADsDcAApYxwEg",
-        "AgAD5T0AArBZwUg"
+        "AgAD5T0AArBZwUg",
+        "AgADH1UAAvp9UEo",
+        "AgADPVgAAp7DsEo",
+        "AgADjEsAAj75cEo",
+        "AgADSkoAAn9eMEo",
+        "AgADkEUAArTGOUo",
+        "AgADDEwAAiYjMEo",
+        "AgADP1kAAvx9cEg",
+        "AgADVVIAAp02cUg",
+        "AgADr1QAAjUToEk",
+        "AgAD1xcAArZDQVU",
+        "AgADnkgAAgTamEs",
+        "AgADWjIAAu-0iUo"
     ],
     "rich": {
         "5513644023": {
@@ -546,7 +636,9 @@ def closechest(chest):
 #### КОМАНДЫ БОТА
 ### Начало жизни
 async def start(message: types.Message, args: str):
-    await bot.send_message(message.chat.id, "Пиво <tg-emoji emoji-id='5291814748541725371'>🐵</tg-emoji>", parse_mode=ParseMode.HTML)
+    await message.reply(random.choice(GREETINGS))
+
+
 
 
 ### ВОЗМОЖНО выдать админку
@@ -660,7 +752,7 @@ async def mathi(message: types.Message, args: str):
 
 ### Рычаги
 async def richagi(message: types.Message, args: str, cmd_name: str):
-    if (cmd_name == "cmt" and message.from_user.id == TIM_ID):
+    if (cmd_name == "cmt" and message.from_user.id == TIM_ID) or (cmd_name == "cmh" and message.from_user.id == HURM_ID):
         return await message.reply("Неа.")
     texting = (message.text or "").split()
     if message.from_user.id == PEKO_ID and len(texting) > 2 and texting[2].lstrip("-").isdigit():
@@ -688,38 +780,52 @@ async def richagi(message: types.Message, args: str, cmd_name: str):
     closechest(chest)
 
 
+async def osc(message: types.Message, args: str):
+    await wts(message, args)
+
 ### Рандомные стикерпаки
 ## Список доступных стикерпаков
 async def wts(message: types.Message, args: str):
     chest = openchest()
+    if message.text.split()[0] == "/wts":
+        bank = chest["stick"]
+        sou = "Выбери конкретную тему:\n"
+        also = "Либо случайную тему: /rs"
+    elif message.text.split()[0] == "/osc":
+        bank = chest["objecto"]
+        sou = "🔥 Эта команда позволяет выдать стикерпаки персонажей из различных ОСЦ либо весь ОШ в случайном порядке. Для выдачи стикерпака выберите из перечисленого ниже:\n💧 This command allows to get stickerpacks of character from sorts of OSC or entire OS in random sequence. To get a stickerpack, choose any from below:\n"
+        also = "Либо случайно/Or randomly: /ors\n🍃 При желании вы можете скинуть боту ОСЦ стикер/пак, чтобы его добавили в список стикерпаков!\n(Мы ж хотим ведь делать добро?) =D\n🧊 If you wish you can send bot a OSC sticker/pack for adding him to a stickerpack list!\n(We want to make a nice things, right?) =D"
+    else:
+        return await message.reply(f"You're not supposed to be here.")
     if not args or not message.from_user.id == PEKO_ID:
         lines = [""]
-        for cmd in chest["stick"].keys():
+        for cmd in bank.keys():
             lines.append(f"/{cmd}\n")
         menubody = "<blockquote expandable>" + "".join(lines) + "</blockquote>"
-        await message.reply(f"""
-Выбери конкретную тему:
-{menubody}Либо случайную тему: /rs
+        await message.reply(f"""{sou}{menubody}{also}
+
+❗️ Стикерпаки были найдены в открытых источниках Интернета. Все права на стикерпаки либо на их контент остаются за их владельцами. Бот не несёт за них право.
+❗️ Stickerpacks were found in open sources of Internet. All rights to stickerpacks or their contents belong to their owners. Bot do not have any rights on them.
 """, parse_mode="HTML")
-    else:
+    if args and message.from_user.id == PEKO_ID:
         textong = args.split()
         texting = args.lower().split()
         text = ""
         if texting[len(texting) - 1] != "confirm":
             pass
         elif len(texting) == 3:
-            cmdcheck = texting[1] in chest["stick"].keys()
+            cmdcheck = texting[1] in bank.keys()
             stcheck = textong[1] in chest["badstick"]
             if texting[0] == "addcmd":
                 if not cmdcheck:
                     text = "Команда добавлена"
-                    chest["stick"][texting[1]] = []
+                    bank[texting[1]] = []
                 else:
                     text = "Команда уже существует"
             elif texting[0] == "delcmd":
                 if cmdcheck:
                     text = "Команда удалена"
-                    del chest["stick"][texting[1]]
+                    del bank[texting[1]]
                 else:
                     text = "Команды не существует"
             if texting[0] == "goodst":
@@ -729,18 +835,18 @@ async def wts(message: types.Message, args: str):
                 else:
                     text = "Стикера в списке не существует, как и... ихиххихих... Сургута."
         elif len(texting) == 4:
-            cmdcheck = texting[2] in chest["stick"].keys()
+            cmdcheck = texting[2] in bank.keys()
             stcheck = textong[1] in chest["badstick"]
             if cmdcheck:
-                packcheck = texting[1] in chest["stick"][texting[2]]
+                packcheck = texting[1] in bank[texting[2]]
             if not cmdcheck:
                 text = "Команды для этого стикерпака не существует, как и сам знаешь, кого"
             elif texting[0] == "addpack":
                 if not packcheck:
                     try:
-                        await bot.get_sticker_set(texting[1].lower())
+                        await bot.get_sticker_set(texting[1].lower().removeprefix("https://t.me/addstickers/"))
                         text = "Стикерпак добавлен до команды"
-                        chest["stick"][texting[2]] += [texting[1]]
+                        bank[texting[2]] += [texting[1].removeprefix("https://t.me/addstickers/")]
                     except Exception as e:
                         text = "Стикерпак не добавлен, поскольку его не существует (Привет, Сургут! xD)"
                 else:
@@ -748,7 +854,7 @@ async def wts(message: types.Message, args: str):
             elif texting[0] == "delpack":
                 if packcheck:
                     text = "Стикерпак удалён из команды"
-                    chest["stick"][texting[2]].remove(texting[1].lower())
+                    bank[texting[2]].remove((texting[1].lower().removeprefix("https://t.me/addstickers/")))
                 else:
                     text = "Стикерпака в команде не существует, как и Сургута..."
             if texting[0] == "badst":
@@ -770,7 +876,7 @@ async def wts(message: types.Message, args: str):
 ⭕️ badst [UIQ] [ID] - добавить существующий стикер в список игнорирования
 🟢 goodst [UIQ] - удалить существующий стикер из списка игнорирования
     Для выполнения команд выше требуется написать CONFIRM в конце.
-Команды и стикерпаки в ней:<blockquote expandable>{str(chest["stick"]).replace("{", "🟣").replace("], ", "],\n🟣").replace("}", "")}</blockquote>"""
+Команды и стикерпаки в ней:<blockquote expandable>{str(bank).replace("{", "🟣").replace("], ", "],\n🟣").replace("}", "")}</blockquote>"""
         await message.reply(text, parse_mode="HTML")
         closechest(chest)
         
@@ -779,13 +885,18 @@ async def wts(message: types.Message, args: str):
 
 
 
-
+async def ors(message: types.Message, args: str):
+    await rs(message, args)
 
 ## Случайный стикер
 async def rs(message: types.Message, args: str):
     chest = openchest()
-    topic = random.choice(list(chest["stick"].keys()))
-    pack = random.choice(chest["stick"][topic])
+    if message.text.split()[0] == "/rs":
+        bank = chest["stick"]
+    elif message.text.split()[0] == "/ors":
+        bank = chest["objecto"]
+    topic = random.choice(list(bank.keys()))
+    pack = random.choice(bank[topic])
     try:
         sticker_set = await bot.get_sticker_set(name=pack)
     except Exception as e:
@@ -1040,28 +1151,43 @@ async def ttm(message: types.Message, args: str):
         os.remove(f"/tmp/out.webm")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ### КНИИИИИИИИИИГА
 async def guide(message: types.Message, args: str):
     await message.reply(f"""
 КНИЖКА (Book📗📘) для использования бота:
 🟪 - может работать с ответом на сообщение
 ❌ - команда не работает/временно не работает
-<code>/start</code> - Проверка работы бота и когда запущен
+<blockquote expandable><code>/start</code> - Бес полезная команда
 <code>/guide</code> - КНИЖКА (Book📗📘) для использования бота
 <code>/admin</code> - С шансом 1 к 2763 возможно выдаст админку
 <code>/gm</code> - Желает доброго утра
 <code>/id</code> - Выдаёт айди и уникальный айди медиа. Работает лишь в ЛС
-<code>/like 'emoji'</code> - 🟪 Поставить реакцию сообщению ботом<blockquote expandable>    'emoji' - Эмоция, которая поддерживается в стандартном наборе реакций Telegram. Без параметра по умолчанию выдаёт 👍</blockquote>
+<code>/like 'emoji'</code> - 🟪 Поставить реакцию сообщению ботом
+'emoji' - Эмоция, которая поддерживается в стандартном наборе реакций Telegram. Без параметра по умолчанию выдаёт 👍
 <code>/nolike</code> - 🟪 Отобрать реакцию бота с ответа на сообщение
-<code>/mathi 'diff'</code> - Решить задачку по математике за 10 секунд<blockquote expandable>    'diff' - сложность задачки. По умолчанию - easy:
+<code>/mathi 'diff'</code> - Решить задачку по математике за 10 секунд
+'diff' - сложность задачки. По умолчанию - easy:
     easy - Лёгкая сложность. Два числа от 1 до 100, между ними знак "плюс" либо "минус"
     medium - Средняя сложность. К каждому числу лёгкого режима добавляется число при знаке "умножить" либо "разделить" от 1 до 10
-    hard - Сложная сложность. Три числа от 1 до 100, между ними знак "умножить" либо "разделить"</blockquote>
+    hard - Сложная сложность. Три числа от 1 до 100, между ними знак "умножить" либо "разделить"
 <code>/wts</code> - Выдать список доступных команд рандомных стикеров
-<code>/rs</code> - Случайный стикер из списка <code>/wts</code>
+<code>/osc</code> - Выдать список доступных команд рандомных ОСЦ стикеров
 <code>/orluk</code> - Случайное видео/фото орла
 <code>/rp 'params' 'quote'</code> - 🟪 Поиск случайных фото по запросу
-<code>/rv 'params' 'quote'</code> - 🟪 Поиск случайных видео по запросу<blockquote expandable>    По умолчанию поиск проводится по Pixabay, если не находит - ищет через Pexel.
+<code>/rv 'params' 'quote'</code> - 🟪 Поиск случайных видео по запросу
+По умолчанию поиск проводится по Pixabay, если не находит - ищет через Pexel.
     'params' - Параметры поиска:
     -pexel - Поиск через Pexel без Pixabay
     -n - Вместо n число от 1 до 200. Задаёт количество медиа, которые будут осмотрены. Для Pixabay значение от 3 до 200, для Pexel - от 1 до 80. По умолчанию - 200
@@ -1072,8 +1198,9 @@ async def guide(message: types.Message, args: str):
 ["grayscale", "transparent", "red", "orange", "yellow", "green", "turquoise", "blue", "lilac", "pink", "white", "gray", "black", "brown", "violet"]
     По умолчанию выставлены все цвета.
     'quote' - Запрос:
-    По умолчанию выбирается запрос из текста ответа на сообщение. Если сообщение без текста - выбирается запрос из сообщения с командой. По умолчанию - Пиво</blockquote>
-<code>/ttm 'format' 'quote'</code> - 🟪 ❌ Нанесение текста на нижнюю часть медиа<blockquote expandable>    Для команды требуется медиа в виде ответа либо в виде сообщения с описанием, в ином случае медиа будет подобрано из <code>/rp</code> либо <code>/rv</code>. 
+    По умолчанию выбирается запрос из текста ответа на сообщение. Если сообщение без текста - выбирается запрос из сообщения с командой. По умолчанию - Пиво
+<code>/ttm 'format' 'quote'</code> - 🟪 ❌ Нанесение текста на нижнюю часть медиа
+Для команды требуется медиа в виде ответа либо в виде сообщения с описанием, в ином случае медиа будет подобрано из <code>/rp</code> либо <code>/rv</code>. 
     'format' - если выставлено -v, видео-стикеры будут отображаться в виде GIF, а подбор медиа будет осуществлено с помощью <code>/rv</code>. Если формат отсутсвует, видео-стикеры будут отображать лишь первый кадр, а подбор медиа будет осуществлено с помощью <code>/rp</code>.
     'quote' - текст, который будет нанесён на медиа. Эмоции будут отображены как невидимые символы. При отправке запроса на <code>/rp</code> или <code>/rv</code>, параметры для них учитываются.</blockquote>
 """, parse_mode="HTML")
@@ -1275,6 +1402,9 @@ async def vse(message: Message):
             args = parts[1] if len(parts) > 1 else ""
             if cmd in chest["stick"]:
                 pack_list = chest["stick"].get(cmd, [])
+            if cmd in chest["objecto"]:
+                pack_list = chest["objecto"].get(cmd, [])
+            if cmd in (chest["objecto"] or chest["stick"]):
                 if not pack_list:
                     return await message.reply("Бармен не предоставил мне стикерпаков =/")
                 chosen = random.choice(pack_list)
@@ -1410,7 +1540,9 @@ async def alarms():
             await asyncio.sleep(51)
         await asyncio.sleep(10)
 
+
         
+
 
 
 
