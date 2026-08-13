@@ -1404,7 +1404,7 @@ async def vse(message: Message):
                 pack_list = chest["stick"].get(cmd, [])
             if cmd in chest["objecto"]:
                 pack_list = chest["objecto"].get(cmd, [])
-            if cmd in (chest["objecto"] or chest["stick"]):
+            if cmd in chest["stick"] or cmd in chest["objecto"]:
                 if not pack_list:
                     return await message.reply("Бармен не предоставил мне стикерпаков =/")
                 chosen = random.choice(pack_list)
