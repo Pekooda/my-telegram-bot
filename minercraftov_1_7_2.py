@@ -1483,8 +1483,7 @@ async def vse(message: Message):
 ## Реакция на текст в сообщении
         if message.chat.id == OT_ID and "все" in message.text.lower() and random.random() < 0.01:
             await message.reply_sticker(sticker=VSE_NIQ)
-        if (message.from_user.id == PEKO_ID and (any(word.lower().startswith(mat) for word in message.text.split() for mat in MATUUUK) or any(matu in message.text.lower() for matu in FUL_MATUUUK))) and not any(mata in message.text.lower() for mata in NO_MATUK):
-            return await message.answer("Кейн, купи пиво")
+        if (message.from_user.id == TIM_ID and (any(word.lower().startswith(mat) for word in message.text.split() for mat in MATUUUK) or any(matu in message.text.lower() for matu in FUL_MATUUUK))) and not any(mata in message.text.lower() for mata in NO_MATUK):
             matmat = True
             await bot.delete_message(chat_id=chat_id, message_id=message_id)
             await orluk(message, "ОРЛЮКИ ОБКЛЕВАЛИ СООБЩЕНИЕ ТИМА И ЕГО ЖЕ САМОГО НА 5 МИНУТ!")
@@ -1506,7 +1505,7 @@ async def vse(message: Message):
             testube = result["ParsedResults"][0]["ParsedText"].lower()
             areyousure = testube.replace(" ", "")
             print(testube or "No text ;(")
-            if any(word.lower().startswith(mat) for word in testube.split() for mat in MATUUUK) or any(matu in areyousure for matu in FUL_MATUUUK):
+            if (any(word.lower().startswith(mat) for word in testube.split() for mat in MATUUUK) or any(matu in areyousure for matu in FUL_MATUUUK)) and not any(mata in areyousure for mata in NO_MATUK):
                 matmat = True
                 await orluk(message, "ты не думай, что я не вижу матюки в картинках, тим")
                 await bot.delete_message(chat_id=chat_id, message_id=message_id)
