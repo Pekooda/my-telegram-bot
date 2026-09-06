@@ -1250,6 +1250,7 @@ async def ro(message: types.Message, args: str):
     return await message.reply("https://t.me/c/" + str(OTOLD_ID).removeprefix("-100") + "/" + str(numba))
 
 async def makaka(message: types.Message, args: str):
+    global matmat
     matmat = True
     await orluk(message, "ворон", "ВОРО НАЛЕТЕЛИ И ДАЛИ ТИМУ СОННОЕ ПИВО НА 5 МИНУТ")
     await bot.restrict_chat_member(chat_id=OT_ID, user_id=TIM_ID, permissions=ChatPermissions(can_send_photos=False))
