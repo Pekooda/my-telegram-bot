@@ -60,7 +60,7 @@ matmat = False
 
 
 ### ХЛАМ
-comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "rp", "rv", "ttm", "makaka", "pokapoka", "text", "rr40", "osc", "ors", "re", "ro"]
+comasiv = ["start", "guide", "data", "admin", "gm", "id", "like", "nolike", "mathi", "wts", "rs", "rp", "rv", "ttm", "makaka", "pokapoka", "text", "rr40", "osc", "ors", "ree", "roo"]
 MC_NAME = ["майнер крафтов", "мк"]
 DEFAULT_QUERY = ["пиво", "пиво"]
 MURA_NIQ = "CAACAgIAAxkBAAIkI2jqorXAlw9LHSiFH0RuuXOBrOmpAAIaAAPy6LAmfmdy1pU2dIY2BA"
@@ -1236,13 +1236,13 @@ async def guide(message: types.Message, args: str):
 
 
 #### КОНСОЛЬНАЯ ХЕРНЯ
-async def re(message: types.Message, args: str):
+async def ree(message: types.Message, args: str):
     chat_id = message.chat.id
     if chat_id != OT_ID and chat_id != OTOLD_ID:
         return
     numba = random.randint(1, 123147)
     return await message.reply("https://t.me/c/" + str(OT_ID).removeprefix("-100") + "/" + str(numba))
-async def ro(message: types.Message, args: str):
+async def roo(message: types.Message, args: str):
     chat_id = message.chat.id
     if chat_id != OT_ID and chat_id != OTOLD_ID:
         return
