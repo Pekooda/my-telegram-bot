@@ -1585,6 +1585,8 @@ async def pivtime():
             try:
                 matmat = False
                 await asyncio.sleep(300)
+                if matmat:
+                    return
                 cha = await bot.get_chat(OT_ID)
                 await bot.restrict_chat_member(chat_id=OT_ID, user_id=TIM_ID, permissions=cha.permissions)
             except Exception as e:
