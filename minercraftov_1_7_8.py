@@ -1468,9 +1468,10 @@ async def vse(message: Message):
         if message.sticker:
             media = message.sticker.file_id
             await bot.send_sticker(chat_id=chat_id, sticker=media)
-    if chest["rich"][f"{chat_id}"]["hii"]:
-        whoya = re.sub(r'\bя(?:\s+я)+\b', 'я', message.text, flags=re.IGNORECASE)
-        whoi = re.sub(r'\bi(?:\s+i)+\b', 'i', message.text, flags=re.IGNORECASE)
+    if chest["rich"][f"{chat_id}"]["hii"] and (message.text or message.caption):
+        REB = message.text or message.caption
+        whoya = re.sub(r'\bя(?:\s+я)+\b', 'я', REB, flags=re.IGNORECASE)
+        whoi = re.sub(r'\bi(?:\s+i)+\b', 'i', REB, flags=re.IGNORECASE)
         matchya = re.search(r'\bЯ\b(.*)', whoya, re.IGNORECASE)
         matchi = re.search(r'\bI\b(.*)', whoi, re.IGNORECASE)
         if matchya:
