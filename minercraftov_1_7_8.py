@@ -1513,7 +1513,7 @@ async def vse(message: Message):
             await message.answer_sticker(sticker=LEAFY_NIQ, reply_parameters={"message_id": message_id, "quote": FORESTS})
 ## Реакция на текст в сообщении
         ans = re.search(r'все', message.text, re.IGNORECASE)
-        if ans and message.chat.id == OT_ID and random.random() < 0.01:
+        if ans and message.chat.id == OT_ID and random.random() < 0.0025:
             FORES = message.text[ans.start():ans.end()]
             await message.answer_sticker(sticker=VSE_NIQ, reply_parameters={"message_id": message_id, "quote": FORES})
         anad = re.search(r'майнера крафтов', message.text, re.IGNORECASE)
